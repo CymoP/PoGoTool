@@ -1,0 +1,32 @@
+Project Details
+
+Management 
+
+Trello Board - https://trello.com/b/v6WDRVmD/fyp
+
+Project
+
+Repository - https://github.com/CymoP/PoGoTool
+
+
+Ideas
+
+Configurable UI
+
+Select modules to load
+
+UI Builds itself based on config
+
+Multiple profiles
+
+Multiple users
+
+
+Module Ideas
+
+Shinies
+Damage table 
+Counters
+Tasks
+Raid bosses
+Calculators - IVs / Evolution CP
