@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * POJO encapsulating data about a move
+ */
 public class Move {
 
     private Type type;

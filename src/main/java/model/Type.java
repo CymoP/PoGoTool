@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * POJO encapsulating data about a Type
+ */
 public class Type {
 
     private String typeName;

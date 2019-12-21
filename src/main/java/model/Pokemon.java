@@ -2,6 +2,9 @@ package model;
 
 import java.util.List;
 
+/**
+ * POJO encapsulating data about a Pokemon
+ */
 public class Pokemon {
 
     private String pokemonName;

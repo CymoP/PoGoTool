@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * POJO encapsulating data about a moveset
+ */
 public class Moveset {
 
     private Move fastMove;
