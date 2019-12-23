@@ -1,6 +1,8 @@
+import controller.ProfileSetupController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.User;
 import view.RootPane;
 
 /**
@@ -8,11 +10,15 @@ import view.RootPane;
  */
 public class ApplicationLoader extends Application {
 
-    private RootPane view = new RootPane();
+    private RootPane view;
+    private User userModel;
+    private ProfileSetupController controller;
 
     @Override
     public void init(){
-
+        userModel = new User();
+        view = new RootPane();
+        controller = new ProfileSetupController(view, userModel);
     }
 
     public void start(Stage stage) throws Exception {
