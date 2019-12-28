@@ -43,7 +43,7 @@ public class ApplicationLoader extends Application {
 
     public void gotoDashboard() {
         try {
-            replaceSceneContent("../dashboard.fxml", 800, 600);
+            replaceSceneContent("../view/dashboard.fxml", 800, 600);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,7 +51,7 @@ public class ApplicationLoader extends Application {
 
     public void gotoSignup() {
         try {
-            replaceSceneContent("../signup.fxml", 400, 400);
+            replaceSceneContent("../view/signup.fxml", 400, 400);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -59,7 +59,7 @@ public class ApplicationLoader extends Application {
 
     private void gotoLogin() {
         try {
-            replaceSceneContent("../login.fxml", 300, 300);
+            replaceSceneContent("../view/login.fxml", 300, 300);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
