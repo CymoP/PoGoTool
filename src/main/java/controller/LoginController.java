@@ -2,10 +2,13 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import loader.ApplicationLoader;
 import services.UserService;
+
+import java.sql.SQLException;
 
 
 public class LoginController {
@@ -23,9 +26,17 @@ public class LoginController {
     }
 
     @FXML
-    protected void handleLoginButtonAction(ActionEvent event) {
+    protected void handleLoginButtonAction(ActionEvent event) throws SQLException {
         if(userService.isExistingUser(usernameField.getText(), passwordField.getText())){
             ApplicationLoader.getInstance().gotoDashboard();
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Invalid Credentials");
+            alert.setHeaderText("Try again...");
+            alert.setContentText("Review input data then try again");
+
+            alert.showAndWait();
         }
     }
 
