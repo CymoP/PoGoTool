@@ -1,13 +1,10 @@
 package model;
 
-import data_access.UserDA;
-
 public class User {
 
     private String username;
     private String password;
     private String role;
-    private UserDA userDA = new UserDA();
 
     public User(){
     }
@@ -34,9 +31,5 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public boolean isExistingUser(String username, String password){
-        return 1 == userDA.getUserByUsernameAndPassword(username, password);
     }
 }
