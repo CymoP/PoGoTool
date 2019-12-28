@@ -18,11 +18,11 @@ public class ApplicationLoader extends Application {
     private Stage stage;
     private static ApplicationLoader instance;
 
-    public ApplicationLoader(){
+    public ApplicationLoader() {
         instance = this;
     }
 
-    public static ApplicationLoader getInstance(){
+    public static ApplicationLoader getInstance() {
         return instance;
     }
 
@@ -43,15 +43,15 @@ public class ApplicationLoader extends Application {
 
     public void gotoDashboard() {
         try {
-            replaceSceneContent("../dashboard.fxml");
+            replaceSceneContent("../dashboard.fxml", 800, 600);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void gotoSignup(){
+    public void gotoSignup() {
         try {
-            replaceSceneContent("../signup.fxml");
+            replaceSceneContent("../signup.fxml", 400, 400);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -59,24 +59,20 @@ public class ApplicationLoader extends Application {
 
     private void gotoLogin() {
         try {
-            replaceSceneContent("../login.fxml");
+            replaceSceneContent("../login.fxml", 300, 300);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
 
-    private Parent replaceSceneContent(String fxml) throws Exception {
+    private Parent replaceSceneContent(String fxml, int width, int height) throws Exception {
         Parent page = (Parent) FXMLLoader.load(ApplicationLoader.class.getResource(fxml), null, new JavaFXBuilderFactory());
-        Scene scene = stage.getScene();
+        Scene scene = new Scene(page, width, height);
 
-        if (scene == null) {
-            scene = new Scene(page, 700, 450);
-            stage.setScene(scene);
-        } else {
-            stage.getScene().setRoot(page);
-        }
+        stage.setScene(scene);
         stage.sizeToScene();
+
         return page;
     }
 }
