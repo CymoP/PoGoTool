@@ -17,7 +17,6 @@ DPT int(10) NOT NULL,
 EPT int(10) NOT NULL,
 PRIMARY KEY (MoveID));
 
-
 CREATE TABLE Pokémon (
 PokémonID int(10) NOT NULL AUTO_INCREMENT,
 PokémonName varchar(32) NOT NULL UNIQUE,
@@ -28,7 +27,6 @@ BaseAttack int(11) NOT NULL,
 BaseDefence int(11) NOT NULL,
 BaseStamina int(11) NOT NULL,
 PRIMARY KEY (PokémonID));
-
 
 CREATE TABLE PokémonMove (
 PokémonID int(10) NOT NULL,

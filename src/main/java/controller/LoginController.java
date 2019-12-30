@@ -22,7 +22,6 @@ public class LoginController {
     private UserService userService = new UserService();
 
     public LoginController(){
-
     }
 
     @FXML
