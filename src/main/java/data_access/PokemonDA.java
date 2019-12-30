@@ -8,6 +8,8 @@ import model.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +23,7 @@ public class PokemonDA {
         verifyUserPrepareStatement.setInt(2, generation);
         verifyUserPrepareStatement.setString(3, type);
 
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, getPokemonByNameAndGenerationAndTypeSQL());
+        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getPokemonByNameAndGenerationAndTypeSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
         if(result.first()){
             return new Pokemon(result.getString("PokemonName"),
@@ -34,6 +36,29 @@ public class PokemonDA {
         }
 
         return null;
+    }
+
+    public List<String> getPokemonNameList() throws SQLException {
+        List<String> pokemonNameList = new ArrayList<>();
+
+        PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(getPokemonNameSQL());
+
+        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getPokemonNameSQL());
+        ResultSet result = verifyUserPrepareStatement.executeQuery();
+
+        if(result.first()){
+            while(result.next()){
+                pokemonNameList.add(result.getString("PokemonName"));
+            }
+            return pokemonNameList;
+        }
+
+        return null;
+    }
+
+    private String getPokemonNameSQL() {
+        return "SELECT pokemonName AS PokemonName" +
+                "FROM Pokemon ";
     }
 
     private String getPokemonByNameAndGenerationAndTypeSQL() {
