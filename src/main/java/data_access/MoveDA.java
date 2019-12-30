@@ -18,7 +18,7 @@ public class MoveDA {
         PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(getMoveByNameSQL());
         verifyUserPrepareStatement.setString(1, moveName);
 
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, getMoveByNameSQL());
+        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getMoveByNameSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
         if(result.first()){
             return mapMoveColumnsToObject(result);
@@ -36,7 +36,7 @@ public class MoveDA {
         verifyUserPrepareStatement.setString(3, type);
         verifyUserPrepareStatement.setString(4, moveUsage);
 
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, getMoveListForPokemonByUsageSQL());
+        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getMoveListForPokemonByUsageSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
 
         if(result.first()){

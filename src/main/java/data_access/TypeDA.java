@@ -17,7 +17,7 @@ public class TypeDA {
         PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(sql);
         verifyUserPrepareStatement.setString(1, typeName);
 
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, sql);
+        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, sql);
         ResultSet result = verifyUserPrepareStatement.executeQuery();
         if(result.first()){
             return new Type(
