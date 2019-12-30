@@ -13,7 +13,21 @@ public class UserDA {
 
     public User getUserByUsernameAndPassword(String username, String password) throws SQLException {
 
-        String sql = "SELECT Username AS username, " +
+        PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(getUserByUsernameAndPasswordSQL());
+        verifyUserPrepareStatement.setString(1, username);
+        verifyUserPrepareStatement.setString(2, password);
+
+        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, getUserByUsernameAndPasswordSQL());
+        ResultSet result = verifyUserPrepareStatement.executeQuery();
+        if(result.first()){
+            return new User(result.getString("username"), result.getString("password"), result.getString("rolename"));
+        }
+
+        return null;
+    }
+
+    private String getUserByUsernameAndPasswordSQL() {
+        return "SELECT Username AS username, " +
                 "UserPassword AS password, " +
                 "r.RoleName AS rolename " +
                 "FROM User u " +
@@ -21,17 +35,5 @@ public class UserDA {
                 "INNER JOIN Role r ON ur.RoleID = r.RoleID " +
                 "WHERE UserName = ? " +
                 "AND UserPassword = ?";
-
-        PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(sql);
-        verifyUserPrepareStatement.setString(1, username);
-        verifyUserPrepareStatement.setString(2, password);
-
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, sql);
-        ResultSet result = verifyUserPrepareStatement.executeQuery();
-        if(result.first()){
-            return new User(result.getString("username"), result.getString("password"), result.getString("rolename"));
-        }
-
-        return null;
     }
 }

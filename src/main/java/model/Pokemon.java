@@ -14,7 +14,20 @@ public class Pokemon {
     private Integer baseAttack;
     private Integer baseDefense;
     private Integer baseStamina;
-    private List<Moveset> movesetList;
+    private List<Move> movesetList;
+
+    public Pokemon() {
+    }
+
+    public Pokemon(String pokemonName, Integer generation, Type pokemonType, Type pokemonDualType, Integer baseAttack, Integer baseDefense, Integer baseStamina){
+        this.pokemonName = pokemonName;
+        this.generation = generation;
+        this.pokemonType = pokemonType;
+        this.pokemonDualType = pokemonDualType;
+        this.baseAttack = baseAttack;
+        this.baseDefense = baseDefense;
+        this.baseStamina = baseStamina;
+    }
 
     public String getPokemonName() {
         return pokemonName;
@@ -72,11 +85,11 @@ public class Pokemon {
         this.baseStamina = baseStamina;
     }
 
-    public List<Moveset> getMovesetList() {
+    public List<Move> getMovesetList() {
         return movesetList;
     }
 
-    public void setMovesetList(List<Moveset> movesetList) {
+    public void setMovesetList(List<Move> movesetList) {
         this.movesetList = movesetList;
     }
 }
