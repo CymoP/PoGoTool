@@ -7,6 +7,7 @@ PRIMARY KEY (ConfigurationOptionID));
 
 CREATE TABLE Move (
 MoveID int(10) NOT NULL AUTO_INCREMENT,
+MoveName varchar(32) NOT NULL,
 TypeName varchar(32) NOT NULL,
 MoveUsage varchar(32) NOT NULL,
 DPS int(10) NOT NULL,
@@ -17,19 +18,19 @@ DPT int(10) NOT NULL,
 EPT int(10) NOT NULL,
 PRIMARY KEY (MoveID));
 
-CREATE TABLE Pokémon (
-PokémonID int(10) NOT NULL AUTO_INCREMENT,
-PokémonName varchar(32) NOT NULL UNIQUE,
+CREATE TABLE Pokemon (
+PokemonID int(10) NOT NULL AUTO_INCREMENT,
+PokemonName varchar(32) NOT NULL UNIQUE,
 Generation int(10) NOT NULL UNIQUE,
 TypeName varchar(32) NOT NULL,
 DualTypeName2 varchar(32),
 BaseAttack int(11) NOT NULL,
 BaseDefence int(11) NOT NULL,
 BaseStamina int(11) NOT NULL,
-PRIMARY KEY (PokémonID));
+PRIMARY KEY (PokemonID));
 
-CREATE TABLE PokémonMove (
-PokémonID int(10) NOT NULL,
+CREATE TABLE PokemonMove (
+PokemonID int(10) NOT NULL,
 MoveID int(10) NOT NULL);
 
 CREATE TABLE Role (
@@ -70,13 +71,13 @@ CREATE TABLE UserRole (
 RoleID int(10) NOT NULL,
 UserID int(10) NOT NULL);
 
-ALTER TABLE PokémonMove
-ADD CONSTRAINT FKPokémonMov894181
-FOREIGN KEY (PokémonID)
-REFERENCES Pokémon (PokémonID);
+ALTER TABLE PokemonMove
+ADD CONSTRAINT FKPokemonMov894181
+FOREIGN KEY (PokemonID)
+REFERENCES Pokemon (PokemonID);
 
-ALTER TABLE PokémonMove
-ADD CONSTRAINT FKPokémonMov82480
+ALTER TABLE PokemonMove
+ADD CONSTRAINT FKPokemonMov82480
 FOREIGN KEY (MoveID)
 REFERENCES Move (MoveID);
 
@@ -85,13 +86,13 @@ ADD CONSTRAINT FKMove701165
 FOREIGN KEY (TypeName)
 REFERENCES Type (TypeName);
 
-ALTER TABLE Pokémon
-ADD CONSTRAINT FKPokémon448323
+ALTER TABLE Pokemon
+ADD CONSTRAINT FKPokemon448323
 FOREIGN KEY (TypeName)
 REFERENCES Type (TypeName);
 
-ALTER TABLE Pokémon
-ADD CONSTRAINT FKPokémon415334
+ALTER TABLE Pokemon
+ADD CONSTRAINT FKPokemon415334
 FOREIGN KEY (DualTypeName2)
 REFERENCES Type (TypeName);
 
