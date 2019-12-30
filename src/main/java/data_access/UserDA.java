@@ -17,7 +17,7 @@ public class UserDA {
         verifyUserPrepareStatement.setString(1, username);
         verifyUserPrepareStatement.setString(2, password);
 
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, getUserByUsernameAndPasswordSQL());
+        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getUserByUsernameAndPasswordSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
         if(result.first()){
             return new User(result.getString("username"), result.getString("password"), result.getString("rolename"));
