@@ -2,8 +2,6 @@ package data_access;
 
 import loader.ApplicationLoader;
 import model.Pokemon;
-import model.Type;
-import model.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
