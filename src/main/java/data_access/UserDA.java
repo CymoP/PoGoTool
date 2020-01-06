@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 public class UserDA {
 
     public User getUserByUsernameAndPassword(String username, String password) throws SQLException {
-
         PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(getUserByUsernameAndPasswordSQL());
         verifyUserPrepareStatement.setString(1, username);
         verifyUserPrepareStatement.setString(2, password);
@@ -24,6 +23,29 @@ public class UserDA {
         }
 
         return null;
+    }
+
+    public boolean createNewUserByUsernameAndPassword(String username, String password) throws SQLException {
+        PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(createNewUserByUsernameAndPasswordSQL());
+        verifyUserPrepareStatement.setString(1, username);
+        verifyUserPrepareStatement.setString(2, password);
+
+        verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(addRoleToNewUserSQL());
+        verifyUserPrepareStatement.setString(1, username);
+        verifyUserPrepareStatement.setString(2, password);
+
+        return true;
+    }
+
+    private String createNewUserByUsernameAndPasswordSQL() {
+        return "INSERT INTO USER (username, userpassword) " +
+                "VALUES (?, ?)";
+    }
+
+    private String addRoleToNewUserSQL() {
+        return "INSERT INTO UserRole(RoleID, UserID) " +
+                "VALUES ((SELECT RoleID FROM Role WHERE RoleName = 'User'), " +
+                "(SELECT UserID FROM User WHERE UserName = ? AND UserPassword = ?))";
     }
 
     private String getUserByUsernameAndPasswordSQL() {
