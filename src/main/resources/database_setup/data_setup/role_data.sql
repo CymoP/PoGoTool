@@ -1,2 +1,2 @@
-INSERT INTO ROLE (RoleName) value ('User');
-INSERT INTO ROLE (RoleName) value ('Admin');
+INSERT INTO Role (RoleName) value ('User');
+INSERT INTO Role (RoleName) value ('Admin');
