@@ -38,28 +38,6 @@ RoleID int(10) NOT NULL AUTO_INCREMENT,
 RoleName varchar(32) NOT NULL UNIQUE,
 PRIMARY KEY (RoleID));
 
-CREATE TABLE Type (
-TypeName varchar(32) NOT NULL,
-MultiplierBug int(10),
-MultiplierDark int(11),
-MultiplierDragon int(11),
-MultiplierElectric int(11),
-MultiplierFairy int(11),
-MultiplierFighting int(11),
-MultiplierFire int(11),
-MultiplierFlying int(11),
-MultiplierGhost int(11),
-MultiplierGrass int(11),
-MultiplierGround int(11),
-MultiplierIce int(11),
-MultiplierNormal int(11),
-MultiplierPoison int(11),
-MultiplierPsychic int(11),
-MultiplierRock int(11),
-MultiplierSteel int(11),
-MultiplierWater int(11),
-PRIMARY KEY (TypeName));
-
 CREATE TABLE User (
 UserID int(10) NOT NULL AUTO_INCREMENT,
 ConfigurationOptionID int(10),
@@ -80,21 +58,6 @@ ALTER TABLE PokemonMove
 ADD CONSTRAINT FKPokemonMov82480
 FOREIGN KEY (MoveID)
 REFERENCES Move (MoveID);
-
-ALTER TABLE Move
-ADD CONSTRAINT FKMove701165
-FOREIGN KEY (TypeName)
-REFERENCES Type (TypeName);
-
-ALTER TABLE Pokemon
-ADD CONSTRAINT FKPokemon448323
-FOREIGN KEY (TypeName)
-REFERENCES Type (TypeName);
-
-ALTER TABLE Pokemon
-ADD CONSTRAINT FKPokemon415334
-FOREIGN KEY (DualTypeName2)
-REFERENCES Type (TypeName);
 
 ALTER TABLE UserRole
 ADD CONSTRAINT FKUserRole532117
