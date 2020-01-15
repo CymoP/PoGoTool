@@ -1,7 +1,7 @@
 package data_access;
 
 import loader.ApplicationLoader;
-import loader.DatabaseSingleton;
+import utils.DatabaseSingleton;
 import model.Pokemon;
 
 import java.sql.Connection;

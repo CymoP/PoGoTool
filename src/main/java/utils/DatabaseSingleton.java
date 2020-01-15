@@ -1,4 +1,6 @@
-package loader;
+package utils;
+
+import loader.ApplicationLoader;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
