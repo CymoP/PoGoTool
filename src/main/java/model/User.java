@@ -7,16 +7,16 @@ public class User {
     private String role;
     private boolean loggedInUser;
 
-    public User(){
+    public User() {
     }
 
-    public User(String username, String password, String role){
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
         this.role = role;
     }
 
-    public User(String username, String password, String role, boolean loggedInUser){
+    public User(String username, String password, String role, boolean loggedInUser) {
         this.username = username;
         this.password = password;
         this.role = role;

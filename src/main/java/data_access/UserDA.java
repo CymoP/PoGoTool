@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class UserDA implements IUserDA{
+public class UserDA implements IUserDA {
 
     private Connection connection = DatabaseSingleton.getInstance().getConnection();
 
@@ -22,7 +22,7 @@ public class UserDA implements IUserDA{
 
         Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getUserByUsernameAndPasswordSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
-        if(result.first()){
+        if (result.first()) {
             return new User(result.getString("username"), result.getString("password"), result.getString("rolename"));
         }
 

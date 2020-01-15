@@ -25,15 +25,15 @@ public class Type {
     private Integer multiplierSteel;
     private Integer multiplierWater;
 
-    public Type(){
+    public Type() {
 
     }
 
-    public Type(String typeName){
+    public Type(String typeName) {
         this.typeName = typeName;
     }
 
-    public Type(String typeName, Integer multiplierBug, Integer multiplierDark, Integer multiplierDragon, Integer multiplierElectric, Integer multiplierFairy, Integer multiplierFighting, Integer multiplierFire, Integer multiplierFlying, Integer multiplierGhost, Integer multiplierGrass, Integer multiplierGround, Integer multiplierIce, Integer multiplierNormal, Integer multiplierPoison, Integer multiplierPsychic, Integer multiplierRock, Integer multiplierSteel, Integer multiplierWater){
+    public Type(String typeName, Integer multiplierBug, Integer multiplierDark, Integer multiplierDragon, Integer multiplierElectric, Integer multiplierFairy, Integer multiplierFighting, Integer multiplierFire, Integer multiplierFlying, Integer multiplierGhost, Integer multiplierGrass, Integer multiplierGround, Integer multiplierIce, Integer multiplierNormal, Integer multiplierPoison, Integer multiplierPsychic, Integer multiplierRock, Integer multiplierSteel, Integer multiplierWater) {
         this.typeName = typeName;
         this.multiplierBug = multiplierBug;
         this.multiplierDark = multiplierDark;

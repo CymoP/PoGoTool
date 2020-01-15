@@ -15,7 +15,7 @@ public class Move {
     private Integer dpt;
     private Integer ept;
 
-    public Move(){
+    public Move() {
 
     }
 

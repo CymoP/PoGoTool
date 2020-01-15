@@ -19,7 +19,7 @@ public class Pokemon {
     public Pokemon() {
     }
 
-    public Pokemon(String pokemonName, Integer generation, Type pokemonType, Type pokemonDualType, Integer baseAttack, Integer baseDefense, Integer baseStamina){
+    public Pokemon(String pokemonName, Integer generation, Type pokemonType, Type pokemonDualType, Integer baseAttack, Integer baseDefense, Integer baseStamina) {
         this.pokemonName = pokemonName;
         this.generation = generation;
         this.pokemonType = pokemonType;

@@ -16,8 +16,7 @@ public class DatabaseSingleton {
     private static DatabaseSingleton instance = null;
     private Connection connection;
 
-
-    private DatabaseSingleton(){
+    private DatabaseSingleton() {
         makeJDBCConnection();
     }
 
@@ -26,8 +25,8 @@ public class DatabaseSingleton {
      *
      * @return Database connection instance
      */
-    public static DatabaseSingleton getInstance(){
-        if (instance == null){
+    public static DatabaseSingleton getInstance() {
+        if (instance == null) {
             instance = new DatabaseSingleton();
         }
 
@@ -43,8 +42,8 @@ public class DatabaseSingleton {
         return connection;
     }
 
-    private void makeJDBCConnection(){
-        try{
+    private void makeJDBCConnection() {
+        try {
             Class.forName("com.mysql.jdbc.Driver");
             this.connection = DriverManager.getConnection(DATABASE_URL + DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD);
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, "Connection made to " + DATABASE_URL + DATABASE_NAME + " " + new Timestamp(System.currentTimeMillis()));

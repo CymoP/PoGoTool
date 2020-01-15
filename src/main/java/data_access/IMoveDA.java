@@ -20,9 +20,9 @@ public interface IMoveDA {
      * Returns the list of moves for a given pokemon
      *
      * @param pokemonName given pokemon name
-     * @param generation given generation
-     * @param type given type
-     * @param moveUsage given move usage - fast|charge
+     * @param generation  given generation
+     * @param type        given type
+     * @param moveUsage   given move usage - fast|charge
      * @return move list for a given pokemon
      * @throws SQLException
      */

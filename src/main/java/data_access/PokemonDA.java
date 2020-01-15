@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PokemonDA implements IPokemonDA{
+public class PokemonDA implements IPokemonDA {
 
     private Connection connection = DatabaseSingleton.getInstance().getConnection();
 
@@ -27,7 +27,7 @@ public class PokemonDA implements IPokemonDA{
 
         Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getPokemonByNameAndGenerationAndTypeSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
-        if(result.first()){
+        if (result.first()) {
             return new Pokemon(result.getString("PokemonName"),
                     result.getInt("Generation"),
                     typeDA.getTypeByName(result.getString("TypeName")),
@@ -48,8 +48,8 @@ public class PokemonDA implements IPokemonDA{
         Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getPokemonNameSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
 
-        if(result.first()){
-            while(result.next()){
+        if (result.first()) {
+            while (result.next()) {
                 pokemonNameList.add(result.getString("PokemonName"));
             }
             return pokemonNameList;

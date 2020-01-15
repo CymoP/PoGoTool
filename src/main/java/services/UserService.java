@@ -10,13 +10,13 @@ public class UserService {
     private UserDA userDA = new UserDA();
     private User loggedInUser;
 
-    public UserService(){
+    public UserService() {
     }
 
     public boolean isExistingUser(String username, String password) throws SQLException {
         loggedInUser = userDA.getUserByUsernameAndPassword(username, password);
 
-        if (loggedInUser != null){
+        if (loggedInUser != null) {
             loggedInUser.setLoggedInUser(true);
             return true;
         }
@@ -24,7 +24,7 @@ public class UserService {
         return false;
     }
 
-    public User getLoggedInUser(){
+    public User getLoggedInUser() {
         return loggedInUser;
     }
 }

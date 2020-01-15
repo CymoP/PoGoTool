@@ -2,7 +2,6 @@ package services;
 
 import data_access.MoveDA;
 import data_access.PokemonDA;
-import data_access.TypeDA;
 import model.Pokemon;
 
 import java.sql.SQLException;

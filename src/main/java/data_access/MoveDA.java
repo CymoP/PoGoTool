@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MoveDA implements IMoveDA{
+public class MoveDA implements IMoveDA {
 
     private Connection connection = DatabaseSingleton.getInstance().getConnection();
 
@@ -24,7 +24,7 @@ public class MoveDA implements IMoveDA{
 
         Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getMoveByNameSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
-        if(result.first()){
+        if (result.first()) {
             return mapMoveColumnsToObject(result);
         }
 
@@ -43,8 +43,8 @@ public class MoveDA implements IMoveDA{
         Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getMoveListForPokemonByUsageSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
 
-        if(result.first()){
-            while(result.next()){
+        if (result.first()) {
+            while (result.next()) {
                 moveList.add(mapMoveColumnsToObject(result));
             }
             return moveList;
