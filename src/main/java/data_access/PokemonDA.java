@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PokemonDA {
+public class PokemonDA implements IPokemonDA{
 
     private Connection connection = DatabaseSingleton.getInstance().getConnection();
 
