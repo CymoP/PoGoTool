@@ -25,7 +25,7 @@ public class LoginController {
     }
 
     @FXML
-    protected void handleLoginButtonAction(ActionEvent event) throws SQLException {
+    protected void handleLoginButtonAction() throws SQLException {
         if(userService.isExistingUser(usernameField.getText(), passwordField.getText())){
             ApplicationLoader.getInstance().gotoDashboard();
         }
@@ -40,7 +40,7 @@ public class LoginController {
     }
 
     @FXML
-    protected void handleSignUpButtonAction(ActionEvent event) {
+    protected void handleSignUpButtonAction() {
         ApplicationLoader.getInstance().gotoSignup();
     }
 }

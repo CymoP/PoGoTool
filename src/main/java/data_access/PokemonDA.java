@@ -1,8 +1,10 @@
 package data_access;
 
 import loader.ApplicationLoader;
+import loader.DatabaseSingleton;
 import model.Pokemon;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,10 +15,12 @@ import java.util.logging.Logger;
 
 public class PokemonDA {
 
+    private Connection connection = DatabaseSingleton.getInstance().getConnection();
+
     private TypeDA typeDA = new TypeDA();
 
     public Pokemon getPokemonByNameAndGenerationAndType(String pokemonName, int generation, String type) throws SQLException {
-        PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(getPokemonByNameAndGenerationAndTypeSQL());
+        PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getPokemonByNameAndGenerationAndTypeSQL());
         verifyUserPrepareStatement.setString(1, pokemonName);
         verifyUserPrepareStatement.setInt(2, generation);
         verifyUserPrepareStatement.setString(3, type);
@@ -39,7 +43,7 @@ public class PokemonDA {
     public List<String> getPokemonNameList() throws SQLException {
         List<String> pokemonNameList = new ArrayList<>();
 
-        PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(getPokemonNameSQL());
+        PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getPokemonNameSQL());
 
         Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getPokemonNameSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();

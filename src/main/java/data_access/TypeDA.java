@@ -1,8 +1,10 @@
 package data_access;
 
 import loader.ApplicationLoader;
+import loader.DatabaseSingleton;
 import model.Type;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,10 +13,12 @@ import java.util.logging.Logger;
 
 public class TypeDA {
 
+    private Connection connection = DatabaseSingleton.getInstance().getConnection();
+
     public Type getTypeByName(String typeName) throws SQLException {
         String sql = getTypeByNameSQL();
 
-        PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(sql);
+        PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(sql);
         verifyUserPrepareStatement.setString(1, typeName);
 
         Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, sql);

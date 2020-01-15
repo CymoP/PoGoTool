@@ -1,9 +1,11 @@
 package data_access;
 
 import loader.ApplicationLoader;
+import loader.DatabaseSingleton;
 import model.Move;
 import model.Type;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,8 +16,10 @@ import java.util.logging.Logger;
 
 public class MoveDA {
 
+    private Connection connection = DatabaseSingleton.getInstance().getConnection();
+
     public Move getMoveByName(String moveName) throws SQLException {
-        PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(getMoveByNameSQL());
+        PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getMoveByNameSQL());
         verifyUserPrepareStatement.setString(1, moveName);
 
         Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getMoveByNameSQL());
@@ -30,7 +34,7 @@ public class MoveDA {
     public List<Move> getMoveListForPokemonByUsage(String pokemonName, int generation, String type, String moveUsage) throws SQLException {
         List<Move> moveList = new ArrayList<>();
 
-        PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(getMoveListForPokemonByUsageSQL());
+        PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getMoveListForPokemonByUsageSQL());
         verifyUserPrepareStatement.setString(1, pokemonName);
         verifyUserPrepareStatement.setInt(2, generation);
         verifyUserPrepareStatement.setString(3, type);

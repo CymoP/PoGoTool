@@ -1,8 +1,10 @@
 package data_access;
 
 import loader.ApplicationLoader;
+import loader.DatabaseSingleton;
 import model.User;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,8 +13,10 @@ import java.util.logging.Logger;
 
 public class UserDA {
 
+    private Connection connection = DatabaseSingleton.getInstance().getConnection();
+
     public User getUserByUsernameAndPassword(String username, String password) throws SQLException {
-        PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(getUserByUsernameAndPasswordSQL());
+        PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getUserByUsernameAndPasswordSQL());
         verifyUserPrepareStatement.setString(1, username);
         verifyUserPrepareStatement.setString(2, password);
 
@@ -26,11 +30,11 @@ public class UserDA {
     }
 
     public boolean createNewUserByUsernameAndPassword(String username, String password) throws SQLException {
-        PreparedStatement verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(createNewUserByUsernameAndPasswordSQL());
+        PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(createNewUserByUsernameAndPasswordSQL());
         verifyUserPrepareStatement.setString(1, username);
         verifyUserPrepareStatement.setString(2, password);
 
-        verifyUserPrepareStatement = ApplicationLoader.getConnection().prepareStatement(addRoleToNewUserSQL());
+        verifyUserPrepareStatement = connection.prepareStatement(addRoleToNewUserSQL());
         verifyUserPrepareStatement.setString(1, username);
         verifyUserPrepareStatement.setString(2, password);
 
