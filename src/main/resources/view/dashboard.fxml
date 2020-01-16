@@ -4,9 +4,10 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Button?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="controller.LoginController"
+          fx:controller="controller.DashboardController"
           prefHeight="400.0"
           prefWidth="600.0">
 
@@ -14,6 +15,11 @@
           GridPane.columnIndex="0" GridPane.rowIndex="0"
           GridPane.columnSpan="2"/>
 
+    <HBox spacing="10" alignment="bottom_right"
+          GridPane.columnIndex="0" GridPane.rowIndex="4">
+        <Button text="Battle Simulator"
+                onAction="#handleBattleSimulatorComponentButtonAction"/>
+    </HBox>
 
 
 </GridPane>

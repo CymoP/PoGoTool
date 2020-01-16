@@ -6,11 +6,11 @@
 <?import javafx.scene.text.Text?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="controller.LoginController"
+          fx:controller="controller.BattleSimulatorController"
           prefHeight="400.0"
           prefWidth="600.0">
 
-    <Text text="Dashboard Example"
+    <Text text="Battle Simulator Example"
           GridPane.columnIndex="0" GridPane.rowIndex="0"
           GridPane.columnSpan="2"/>
 

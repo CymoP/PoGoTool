@@ -20,8 +20,7 @@ public class LoginController {
 
     private UserService userService = new UserService();
 
-    public LoginController() {
-    }
+    public LoginController() {}
 
     @FXML
     protected void handleLoginButtonAction() throws SQLException {
