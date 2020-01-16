@@ -6,20 +6,83 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.BattleSimulatorController"
-          prefHeight="400.0"
-          prefWidth="600.0">
+          alignment="TOP_CENTER">
 
-    <Text text="Battle Simulator Example"
-          GridPane.columnIndex="0" GridPane.rowIndex="0"
-          GridPane.columnSpan="2"/>
+    <Text GridPane.columnIndex="0" GridPane.rowIndex="0"  text="Pokemon One Image Place Holder" />
 
-    <ComboBox fx:id="pokemonNameListComboBox" layoutX="210.0" layoutY="108.0" prefHeight="27.0" prefWidth="102.0" promptText="Select">
+    <Text GridPane.columnIndex="2" GridPane.rowIndex="0" text="Pokemon Two Image Place Holder" />
+
+    <ComboBox fx:id="pokemonNameListComboBox1" GridPane.columnIndex="0" GridPane.rowIndex="1" promptText="Select">
         <items>
             <FXCollections fx:factory="observableArrayList" />
         </items>
     </ComboBox>
+
+    <ComboBox fx:id="pokemonNameListComboBox2" GridPane.columnIndex="2" GridPane.rowIndex="1" promptText="Select">
+        <items>
+            <FXCollections fx:factory="observableArrayList" />
+        </items>
+    </ComboBox>
+
+    <Text GridPane.columnIndex="0" GridPane.rowIndex="2" text="Pokemon One Level and IVs" />
+
+    <Text GridPane.columnIndex="2" GridPane.rowIndex="2" text="Pokemon Two Level and IVs" />
+
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="3">
+        <HBox>
+            <TextField text="1" prefWidth="30">
+
+            </TextField>
+            <TextField text="2" prefWidth="30">
+
+            </TextField>
+            <TextField text="3" prefWidth="30">
+
+            </TextField>
+            <TextField text="4" prefWidth="30">
+
+            </TextField>
+        </HBox>
+    </VBox>
+
+    <VBox GridPane.columnIndex="2" GridPane.rowIndex="3">
+        <HBox>
+            <TextField text="5" prefWidth="30">
+
+            </TextField>
+            <TextField text="6" prefWidth="30">
+
+            </TextField>
+            <TextField text="7" prefWidth="30">
+
+            </TextField>
+            <TextField text="8" prefWidth="30">
+
+            </TextField>
+        </HBox>
+    </VBox>
+
+    <Text GridPane.columnIndex="0" GridPane.rowIndex="4" text="Pokemon One Fast Move Selection..." />
+
+    <Text GridPane.columnIndex="2" GridPane.rowIndex="4" text="Pokemon Two Fast Move Selection..." />
+
+    <Text GridPane.columnIndex="0" GridPane.rowIndex="5" text="Pokemon One Fast Move Combobox Placeholder" />
+
+    <Text GridPane.columnIndex="2" GridPane.rowIndex="5" text="Pokemon Two Fast Move Combobox Placeholder" />
+
+    <Text GridPane.columnIndex="0" GridPane.rowIndex="6" text="Pokemon One Charge Move Selection..." />
+
+    <Text GridPane.columnIndex="2" GridPane.rowIndex="6" text="Pokemon Two Charge Move Selection..." />
+
+    <Text GridPane.columnIndex="0" GridPane.rowIndex="7" text="Pokemon One Charge Move Combobox Placeholder" />
+
+    <Text GridPane.columnIndex="2" GridPane.rowIndex="7" text="Pokemon One Charge Move Combobox Placeholder" />
+
+    <Button GridPane.columnIndex="1" GridPane.rowIndex="8" text="Simulate" onAction="#handleSimulateButtonAction"/>
 
 </GridPane>

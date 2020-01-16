@@ -35,7 +35,10 @@ public class BattleSimulatorController implements Initializable {
     private ComboBox chargeMove;
 
     @FXML
-    private ComboBox<String> pokemonNameListComboBox;
+    private ComboBox<String> pokemonNameListComboBox1;
+
+    @FXML
+    private ComboBox<String> pokemonNameListComboBox2;
 
     private PokemonService pokemonService = new PokemonService();
     private BattleSimulator battleSimulator = new BattleSimulator();
@@ -56,8 +59,11 @@ public class BattleSimulatorController implements Initializable {
     protected void handleSimulateButtonAction() {}
 
     private void setPokemonNameData() throws SQLException {
-        pokemonNameListComboBox.getItems().clear();
         ObservableList pokemonNameList = FXCollections.observableList(pokemonDA.getPokemonNameList());
-        pokemonNameListComboBox.getItems().addAll(pokemonNameList);
+
+        pokemonNameListComboBox1.getItems().clear();
+        pokemonNameListComboBox2.getItems().clear();
+        pokemonNameListComboBox1.getItems().addAll(pokemonNameList);
+        pokemonNameListComboBox2.getItems().addAll(pokemonNameList);
     }
 }
