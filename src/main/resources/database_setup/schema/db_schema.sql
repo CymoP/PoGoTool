@@ -25,7 +25,7 @@ Generation int(10) NOT NULL UNIQUE,
 TypeName varchar(32) NOT NULL,
 DualTypeName varchar(32),
 BaseAttack int(11) NOT NULL,
-BaseDefence int(11) NOT NULL,
+BaseDefense int(11) NOT NULL,
 BaseStamina int(11) NOT NULL,
 PRIMARY KEY (PokemonID));
 

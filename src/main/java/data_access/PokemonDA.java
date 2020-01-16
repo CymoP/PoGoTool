@@ -33,7 +33,7 @@ public class PokemonDA implements IPokemonDA {
                     typeService.getTypeByTypeName(result.getString("TypeName")),
                     typeService.getTypeByTypeName(result.getString("DualTypeName")),
                     result.getInt("BaseAttack"),
-                    result.getInt("BaseDefence"),
+                    result.getInt("BaseDefense"),
                     result.getInt("BaseStamina"));
         }
 
@@ -69,7 +69,7 @@ public class PokemonDA implements IPokemonDA {
                 "typename AS TypeName, " +
                 "dualtype AS DualTypeName, " +
                 "baseattack AS BaseAttack, " +
-                "basedefence AS BaseDefence, " +
+                "basedefense AS BaseDefense, " +
                 "basestamina AS BaseStamina" +
                 "FROM pokemon " +
                 "WHERE pokemonname = ? " +

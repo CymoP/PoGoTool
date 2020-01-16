@@ -12,6 +12,8 @@ public class PokemonService {
     private MoveDA moveDA = new MoveDA();
     private Pokemon pokemon;
 
+    public PokemonService(){}
+
     public Pokemon getPokemonDetails(String pokemonName, int generation, String typeName) throws SQLException {
 
         pokemon = pokemonDA.getPokemonByNameAndGenerationAndType(pokemonName, generation, typeName);
