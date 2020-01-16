@@ -7,10 +7,10 @@ public class SelectedPokemon {
     private int ivAttack;
     private int ivDefense;
     private int ivStamina;
-    private Move fastMove;
-    private Move chargeMove;
+    private Move selectedFastMove;
+    private Move selectedChargeMove;
 
-    public SelectedPokemon(Pokemon basePokemon, Double level, int ivAttack, int ivDefense, int ivStamina, Move fastMove, Move chargeMove){}
+    public SelectedPokemon(Pokemon basePokemon, Double level, int ivAttack, int ivDefense, int ivStamina, Move selectedFastMove, Move selectedChargeMove){}
 
     public Pokemon getBasePokemon() {
         return basePokemon;
@@ -52,19 +52,19 @@ public class SelectedPokemon {
         this.ivStamina = ivStamina;
     }
 
-    public Move getFastMove() {
-        return fastMove;
+    public Move getSelectedFastMove() {
+        return selectedFastMove;
     }
 
-    public void setFastMove(Move fastMove) {
-        this.fastMove = fastMove;
+    public void setSelectedFastMove(Move selectedFastMove) {
+        this.selectedFastMove = selectedFastMove;
     }
 
-    public Move getChargeMove() {
-        return chargeMove;
+    public Move getSelectedChargeMove() {
+        return selectedChargeMove;
     }
 
-    public void setChargeMove(Move chargeMove) {
-        this.chargeMove = chargeMove;
+    public void setSelectedChargeMove(Move selectedChargeMove) {
+        this.selectedChargeMove = selectedChargeMove;
     }
 }
