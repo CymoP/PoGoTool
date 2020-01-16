@@ -4,6 +4,8 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.BattleSimulatorController"
@@ -14,6 +16,10 @@
           GridPane.columnIndex="0" GridPane.rowIndex="0"
           GridPane.columnSpan="2"/>
 
-
+    <ComboBox fx:id="pokemonNameListComboBox" layoutX="210.0" layoutY="108.0" prefHeight="27.0" prefWidth="102.0" promptText="Select">
+        <items>
+            <FXCollections fx:factory="observableArrayList" />
+        </items>
+    </ComboBox>
 
 </GridPane>

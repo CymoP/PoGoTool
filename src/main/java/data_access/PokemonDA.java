@@ -59,8 +59,8 @@ public class PokemonDA implements IPokemonDA {
     }
 
     private String getPokemonNameSQL() {
-        return "SELECT pokemonName AS PokemonName" +
-                "FROM Pokemon ";
+        return "SELECT pokemonName AS PokemonName " +
+                "FROM Pokemon";
     }
 
     private String getPokemonByNameAndGenerationAndTypeSQL() {
