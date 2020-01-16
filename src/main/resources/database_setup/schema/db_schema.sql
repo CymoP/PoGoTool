@@ -21,7 +21,7 @@ PRIMARY KEY (MoveID));
 CREATE TABLE Pokemon (
 PokemonID int(10) NOT NULL AUTO_INCREMENT,
 PokemonName varchar(32) NOT NULL UNIQUE,
-Generation int(10) NOT NULL UNIQUE,
+Generation int(10) NOT NULL,
 TypeName varchar(32) NOT NULL,
 DualTypeName varchar(32),
 BaseAttack int(11) NOT NULL,
