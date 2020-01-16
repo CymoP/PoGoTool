@@ -1,6 +1,7 @@
 package data_access;
 
 import loader.ApplicationLoader;
+import services.TypeService;
 import utils.DatabaseSingleton;
 import model.Pokemon;
 
@@ -16,8 +17,7 @@ import java.util.logging.Logger;
 public class PokemonDA implements IPokemonDA {
 
     private Connection connection = DatabaseSingleton.getInstance().getConnection();
-
-    private TypeDA typeDA = new TypeDA();
+    private TypeService typeService = TypeService.getInstance();
 
     public Pokemon getPokemonByNameAndGenerationAndType(String pokemonName, int generation, String type) throws SQLException {
         PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getPokemonByNameAndGenerationAndTypeSQL());
@@ -30,8 +30,8 @@ public class PokemonDA implements IPokemonDA {
         if (result.first()) {
             return new Pokemon(result.getString("PokemonName"),
                     result.getInt("Generation"),
-                    typeDA.getTypeByName(result.getString("TypeName")),
-                    typeDA.getTypeByName(result.getString("DualTypeName")),
+                    typeService.getTypeByTypeName(result.getString("TypeName")),
+                    typeService.getTypeByTypeName(result.getString("DualTypeName")),
                     result.getInt("BaseAttack"),
                     result.getInt("BaseDefence"),
                     result.getInt("BaseStamina"));

@@ -1,10 +1,10 @@
 package services;
 
 import builder.TypeBuilder;
+import model.Type;
 import utils.BiHashMap;
 
 import java.util.List;
-import java.util.Map;
 
 public class TypeService {
 
@@ -30,8 +30,8 @@ public class TypeService {
         return instance;
     }
 
-    public Map<String, List<String>> getType(String typeName) {
-        return typeMap.get(typeName);
+    public Type getTypeByTypeName(String typeName) {
+        return new Type(typeName, typeMap.get(typeName));
     }
 
     public List<String> getTypeResistanceList(String typeName) {

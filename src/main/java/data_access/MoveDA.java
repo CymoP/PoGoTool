@@ -1,9 +1,9 @@
 package data_access;
 
 import loader.ApplicationLoader;
+import services.TypeService;
 import utils.DatabaseSingleton;
 import model.Move;
-import model.Type;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 public class MoveDA implements IMoveDA {
 
     private Connection connection = DatabaseSingleton.getInstance().getConnection();
+    private TypeService typeService = TypeService.getInstance();
 
     public Move getMoveByName(String moveName) throws SQLException {
         PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getMoveByNameSQL());
@@ -55,7 +56,7 @@ public class MoveDA implements IMoveDA {
 
     private Move mapMoveColumnsToObject(ResultSet result) throws SQLException {
         return new Move(result.getString("moveName"),
-                new Type(result.getString("typeName")),
+                typeService.getTypeByTypeName(result.getString("TypeName")),
                 result.getString("moveUsage"),
                 result.getInt("dps"),
                 result.getInt("energyPvP"),
