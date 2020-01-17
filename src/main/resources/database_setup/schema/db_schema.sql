@@ -1,3 +1,7 @@
+CREATE DATABASE pokemondb;
+
+USE pokemondb;
+
 CREATE TABLE ConfigurationOptions (
 ConfigurationOptionID int(10) NOT NULL AUTO_INCREMENT,
 BattleSimulator tinyint(1) DEFAULT 0 NOT NULL,
