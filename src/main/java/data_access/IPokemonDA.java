@@ -25,4 +25,13 @@ public interface IPokemonDA {
      * @throws SQLException
      */
     List<String> getPokemonNameList() throws SQLException;
+
+
+    /**
+     * Returns all the pokemon from the database
+     *
+     * @return list of available pokemon
+     * @throws SQLException
+     */
+    List<Pokemon> getAllPokemon() throws SQLException;
 }
