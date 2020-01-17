@@ -14,12 +14,13 @@ public class Pokemon {
     private Integer baseAttack;
     private Integer baseDefense;
     private Integer baseStamina;
-    private List<Move> movesetList;
+    private List<FastMove> fastMoveList;
+    private List<ChargedMove> chargedMoveList;
 
     public Pokemon() {
     }
 
-    public Pokemon(String pokemonName, Integer generation, Type pokemonType, Type pokemonDualType, Integer baseAttack, Integer baseDefense, Integer baseStamina) {
+    public Pokemon(String pokemonName, Integer generation, Type pokemonType, Type pokemonDualType, Integer baseAttack, Integer baseDefense, Integer baseStamina, List<FastMove> fastMoveList, List<ChargedMove> chargedMoveList) {
         this.pokemonName = pokemonName;
         this.generation = generation;
         this.pokemonType = pokemonType;
@@ -27,6 +28,8 @@ public class Pokemon {
         this.baseAttack = baseAttack;
         this.baseDefense = baseDefense;
         this.baseStamina = baseStamina;
+        this.fastMoveList = fastMoveList;
+        this.chargedMoveList = chargedMoveList;
     }
 
     public String getPokemonName() {
@@ -85,11 +88,19 @@ public class Pokemon {
         this.baseStamina = baseStamina;
     }
 
-    public List<Move> getMovesetList() {
-        return movesetList;
+    public List<FastMove> getFastMoveList() {
+        return fastMoveList;
     }
 
-    public void setMovesetList(List<Move> movesetList) {
-        this.movesetList = movesetList;
+    public void setFastMoveList(List<FastMove> fastMoveList) {
+        this.fastMoveList = fastMoveList;
+    }
+
+    public List<ChargedMove> getChargedMoveList() {
+        return chargedMoveList;
+    }
+
+    public void setChargedMoveList(List<ChargedMove> chargedMoveList) {
+        this.chargedMoveList = chargedMoveList;
     }
 }

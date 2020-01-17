@@ -1,6 +1,7 @@
 package data_access;
 
-import model.Move;
+import model.ChargedMove;
+import model.FastMove;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -14,17 +15,27 @@ public interface IMoveDA {
      * @return move object for the given name
      * @throws SQLException
      */
-    Move getMoveByName(String moveName) throws SQLException;
+    FastMove getMoveByName(String moveName) throws SQLException;
 
     /**
-     * Returns the list of moves for a given pokemon
+     * Returns the list of fast moves for a given pokemon
      *
      * @param pokemonName given pokemon name
      * @param generation  given generation
      * @param type        given type
-     * @param moveUsage   given move usage - fast|charge
      * @return move list for a given pokemon
      * @throws SQLException
      */
-    List<Move> getMoveListForPokemonByUsage(String pokemonName, int generation, String type, String moveUsage) throws SQLException;
+    List<FastMove> getFastMoveListByPokemon(String pokemonName, int generation, String type) throws SQLException;
+
+    /**
+     * Returns the list of charged moves for a given pokemon
+     *
+     * @param pokemonName given pokemon name
+     * @param generation  given generation
+     * @param type        given type
+     * @return move list for a given pokemon
+     * @throws SQLException
+     */
+    List<ChargedMove> getChargedMoveListByPokemon(String pokemonName, int generation, String type) throws SQLException;
 }

@@ -1,9 +1,9 @@
 package data_access;
 
 import loader.ApplicationLoader;
+import model.Pokemon;
 import services.TypeService;
 import utils.DatabaseSingleton;
-import model.Pokemon;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +18,7 @@ public class PokemonDA implements IPokemonDA {
 
     private Connection connection = DatabaseSingleton.getInstance().getConnection();
     private TypeService typeService = TypeService.getInstance();
+    private MoveDA moveDA = new MoveDA();
 
     public Pokemon getPokemonByNameAndGenerationAndType(String pokemonName, int generation, String type) throws SQLException {
         PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getPokemonByNameAndGenerationAndTypeSQL());
@@ -34,7 +35,28 @@ public class PokemonDA implements IPokemonDA {
                     typeService.getTypeByTypeName(result.getString("DualTypeName")),
                     result.getInt("BaseAttack"),
                     result.getInt("BaseDefense"),
-                    result.getInt("BaseStamina"));
+                    result.getInt("BaseStamina"),
+                    moveDA.getFastMoveListByPokemon(pokemonName, generation, type),
+                    moveDA.getChargedMoveListByPokemon(pokemonName, generation, type));
+        }
+
+        return null;
+    }
+
+    public List<Pokemon> getAllPokemon() throws SQLException {
+        List<Pokemon> pokemonList = new ArrayList<>();
+
+        PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getAllPokemonSQL());
+
+        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getAllPokemonSQL());
+        ResultSet result = verifyUserPrepareStatement.executeQuery();
+
+        if (result.first()) {
+            do {
+                pokemonList.add(mapPokemonColumnToObject(result));
+            }
+            while (result.next());
+            return pokemonList;
         }
 
         return null;
@@ -49,18 +71,46 @@ public class PokemonDA implements IPokemonDA {
         ResultSet result = verifyUserPrepareStatement.executeQuery();
 
         if (result.first()) {
-            while (result.next()) {
+            do {
                 pokemonNameList.add(result.getString("PokemonName"));
             }
+            while (result.next());
             return pokemonNameList;
         }
 
         return null;
     }
 
+    private Pokemon mapPokemonColumnToObject(ResultSet result) throws SQLException {
+        String pokemonName = result.getString("PokemonName");
+        int generation = result.getInt("Generation");
+        String typeName = result.getString("TypeName");
+
+        return new Pokemon(pokemonName,
+                generation,
+                typeService.getTypeByTypeName(result.getString("TypeName")),
+                typeService.getTypeByTypeName(result.getString("DualTypeName")),
+                result.getInt("BaseAttack"),
+                result.getInt("BaseDefense"),
+                result.getInt("BaseStamina"),
+                moveDA.getFastMoveListByPokemon(pokemonName, generation, typeName),
+                moveDA.getChargedMoveListByPokemon(pokemonName, generation, typeName));
+    }
+
     private String getPokemonNameSQL() {
         return "SELECT pokemonName AS PokemonName " +
                 "FROM Pokemon";
+    }
+
+    private String getAllPokemonSQL() {
+        return "SELECT pokemonName AS PokemonName, " +
+                "generation AS Generation, " +
+                "typename AS TypeName, " +
+                "dualtypename AS DualTypeName, " +
+                "baseattack AS BaseAttack, " +
+                "basedefense AS BaseDefense, " +
+                "basestamina AS BaseStamina " +
+                "FROM pokemon";
     }
 
     private String getPokemonByNameAndGenerationAndTypeSQL() {
