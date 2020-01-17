@@ -9,16 +9,22 @@ UserMaintenance tinyint(1) DEFAULT 0 NOT NULL,
 DataMaintenance tinyint(1) DEFAULT 0 NOT NULL,
 PRIMARY KEY (ConfigurationOptionID));
 
-CREATE TABLE Move (
-MoveID int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE ChargedMove (
+ChargedMoveID int(10) NOT NULL AUTO_INCREMENT,
 MoveName varchar(32) NOT NULL,
 TypeName varchar(32) NOT NULL,
-MoveUsage varchar(32) NOT NULL,
 DamagePvP int(10) NOT NULL,
 EnergyPvP int(10) NOT NULL,
-DPT int(10) NOT NULL,
-EPT int(10) NOT NULL,
-PRIMARY KEY (MoveID));
+PRIMARY KEY (ChargedMoveID));
+
+CREATE TABLE FastMove (
+FastMoveID int(10) NOT NULL AUTO_INCREMENT,
+MoveName varchar(32) NOT NULL,
+TypeName varchar(32) NOT NULL,
+DamagePvP int(10) NOT NULL,
+EnergyPvP int(10) NOT NULL,
+Duration int(10) NOT NULL,
+PRIMARY KEY (FastMoveID));
 
 CREATE TABLE Pokemon (
 PokemonID int(10) NOT NULL AUTO_INCREMENT,
@@ -31,7 +37,11 @@ BaseDefense int(11) NOT NULL,
 BaseStamina int(11) NOT NULL,
 PRIMARY KEY (PokemonID));
 
-CREATE TABLE PokemonMove (
+CREATE TABLE PokemonChargedMove (
+PokemonID int(10) NOT NULL,
+MoveID int(10) NOT NULL);
+
+CREATE TABLE PokemonFastMove (
 PokemonID int(10) NOT NULL,
 MoveID int(10) NOT NULL);
 
@@ -56,9 +66,14 @@ ADD CONSTRAINT FKPokemonMov894181
 FOREIGN KEY (PokemonID)
 REFERENCES Pokemon (PokemonID);
 
-ALTER TABLE PokemonMove
+ALTER TABLE PokemonChargedMove
 ADD CONSTRAINT FKPokemonMov82480
-FOREIGN KEY (MoveID)
+FOREIGN KEY (ChargedMoveID)
+REFERENCES Move (MoveID);
+
+ALTER TABLE PokemonFastMove
+ADD CONSTRAINT FKPokemonMov82481
+FOREIGN KEY (FastMoveID)
 REFERENCES Move (MoveID);
 
 ALTER TABLE UserRole
