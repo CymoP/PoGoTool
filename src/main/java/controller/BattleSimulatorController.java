@@ -147,7 +147,7 @@ public class BattleSimulatorController implements Initializable {
             try {
                 Integer parsedInt = Integer.parseInt(newValue);
 
-                if (parsedInt > 15 || parsedInt < 1 || parsedInt == null) {
+                if (parsedInt > 15 || parsedInt < 0 || parsedInt == null) {
                     ivTextField.setStyle("-fx-border-style: solid; -fx-border-width: 1px; -fx-border-color: red;");
                     //error message
                 } else {
