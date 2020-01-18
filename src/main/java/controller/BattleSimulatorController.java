@@ -5,11 +5,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.ChargedMove;
+import model.FastMove;
 import model.Pokemon;
+import model.SelectedPokemon;
+import services.MoveService;
 import services.PokemonService;
 import utils.BattleSimulator;
 
@@ -52,25 +57,29 @@ public class BattleSimulatorController implements Initializable {
     public ImageView pokemonTwoImageView;
 
     @FXML
-    private ComboBox<String> pokemonNameListComboBox1;
+    public Button simulateButton;
 
     @FXML
-    private ComboBox<String> pokemonNameListComboBox2;
+    private ComboBox<String> pokemonOneNameListComboBox;
 
     @FXML
-    public ComboBox pokemonFastMoveListComboBox1;
+    private ComboBox<String> pokemonTwoNameListComboBox;
 
     @FXML
-    public ComboBox pokemonFastMoveListComboBox2;
+    public ComboBox pokemonOneFastMoveListComboBox;
 
     @FXML
-    public ComboBox pokemonChargedMoveListComboBox1;
+    public ComboBox pokemonTwoFastMoveListComboBox;
 
     @FXML
-    public ComboBox pokemonChargedMoveListComboBox2;
+    public ComboBox pokemonOneChargedMoveListComboBox;
+
+    @FXML
+    public ComboBox pokemonTwoChargedMoveListComboBox;
 
     private PokemonService pokemonService = new PokemonService();
     private BattleSimulator battleSimulator = new BattleSimulator();
+    private MoveService moveService = new MoveService();
 
     public BattleSimulatorController() throws SQLException {
     }
@@ -82,25 +91,20 @@ public class BattleSimulatorController implements Initializable {
 
     @FXML
     protected void handleSimulateButtonAction() {
-    }
+        SelectedPokemon opponentOne = buildSelectedPokemon(pokemonOneNameListComboBox, levelPokemonOne, ivAttackPokemonOne, ivDefensePokemonOne, ivStaminaPokemonOne, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
+        SelectedPokemon opponentTwo = buildSelectedPokemon(pokemonTwoNameListComboBox, levelPokemonTwo, ivAttackPokemonTwo, ivDefensePokemonTwo, ivStaminaPokemonTwo, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
 
-    private void setPokemonNameData() {
-        ObservableList pokemonNameList = FXCollections.observableList(pokemonService.getAllPokemonNamesList());
-
-        pokemonNameListComboBox1.getItems().clear();
-        pokemonNameListComboBox2.getItems().clear();
-        pokemonNameListComboBox1.getItems().addAll(pokemonNameList);
-        pokemonNameListComboBox2.getItems().addAll(pokemonNameList);
+        battleSimulator.calculateTimeToWin(opponentOne, opponentTwo);
     }
 
     public void handleLoadPokemonOneData(ActionEvent actionEvent) throws SQLException {
-        loadData(pokemonNameListComboBox1, pokemonFastMoveListComboBox1, pokemonChargedMoveListComboBox1);
-        loadImage(pokemonNameListComboBox1, pokemonOneImageView);
+        loadData(pokemonOneNameListComboBox, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
+        loadImage(pokemonOneNameListComboBox, pokemonOneImageView);
     }
 
     public void handleLoadPokemonTwoData(ActionEvent actionEvent) throws SQLException {
-        loadData(pokemonNameListComboBox2, pokemonFastMoveListComboBox2, pokemonChargedMoveListComboBox2);
-        loadImage(pokemonNameListComboBox2, pokemonTwoImageView);
+        loadData(pokemonTwoNameListComboBox, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
+        loadImage(pokemonTwoNameListComboBox, pokemonTwoImageView);
     }
 
     public void levelPokemonOneFieldListener() {
@@ -140,6 +144,30 @@ public class BattleSimulatorController implements Initializable {
         File file = new File("src/main/resources/images/" + pokemonName + ".png");
         Image image = new Image(file.toURI().toString());
         pokemonImageView.setImage(image);
+    }
+
+    private SelectedPokemon buildSelectedPokemon(ComboBox<String> pokemonNameListComboBox, TextField levelPokemonTextField, TextField ivAttackTextField, TextField ivDefenseTextField, TextField ivStaminaTextField, ComboBox pokemonFastMoveListComboBox, ComboBox pokemonChargedMoveListComboBox) {
+        String pokemonName = pokemonNameListComboBox.getSelectionModel().getSelectedItem();
+        Pokemon selectedPokemon = pokemonService.getPokemonByName(pokemonName);
+        Double selectPokemonLevel = Double.parseDouble(levelPokemonTextField.getText());
+        int selectedPokemonIVAttack = Integer.parseInt(ivAttackTextField.getText());
+        int selectedPokemonIVDefense = Integer.parseInt(ivDefenseTextField.getText());
+        int selectedPokemonIVStamina = Integer.parseInt(ivStaminaTextField.getText());
+        String fastMoveName = pokemonFastMoveListComboBox.getSelectionModel().getSelectedItem().toString();
+        FastMove selectedPokemonFastMove = moveService.getFastMoveDetailsByName(selectedPokemon, fastMoveName);
+        String chargedMoveName = pokemonChargedMoveListComboBox.getSelectionModel().getSelectedItem().toString();
+        ChargedMove selectedPokemonChargedMove = moveService.getChargedMoveDetailsByName(selectedPokemon, chargedMoveName);
+
+        return new SelectedPokemon(selectedPokemon, selectPokemonLevel, selectedPokemonIVAttack, selectedPokemonIVDefense, selectedPokemonIVStamina, selectedPokemonFastMove, selectedPokemonChargedMove);
+    }
+
+    private void setPokemonNameData() {
+        ObservableList pokemonNameList = FXCollections.observableList(pokemonService.getAllPokemonNamesList());
+
+        pokemonOneNameListComboBox.getItems().clear();
+        pokemonTwoNameListComboBox.getItems().clear();
+        pokemonOneNameListComboBox.getItems().addAll(pokemonNameList);
+        pokemonTwoNameListComboBox.getItems().addAll(pokemonNameList);
     }
 
     private void verifyIVTextFieldInput(TextField ivTextField) {

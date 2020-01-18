@@ -19,13 +19,13 @@
         <ImageView fx:id="pokemonTwoImageView" />
     </HBox>
 
-    <ComboBox fx:id="pokemonNameListComboBox1" GridPane.columnIndex="0" GridPane.rowIndex="1" promptText="Select"  prefWidth="200" onAction="#handleLoadPokemonOneData">
+    <ComboBox fx:id="pokemonOneNameListComboBox" GridPane.columnIndex="0" GridPane.rowIndex="1" promptText="Select" prefWidth="200" onAction="#handleLoadPokemonOneData">
         <items>
             <FXCollections fx:factory="observableArrayList" />
         </items>
     </ComboBox>
 
-    <ComboBox fx:id="pokemonNameListComboBox2" GridPane.columnIndex="2" GridPane.rowIndex="1" promptText="Select" prefWidth="200" onAction="#handleLoadPokemonTwoData">
+    <ComboBox fx:id="pokemonTwoNameListComboBox" GridPane.columnIndex="2" GridPane.rowIndex="1" promptText="Select" prefWidth="200" onAction="#handleLoadPokemonTwoData">
         <items>
             <FXCollections fx:factory="observableArrayList" />
         </items>
@@ -73,13 +73,13 @@
 
     <Text GridPane.columnIndex="2" GridPane.rowIndex="4" text="Pokemon Two Fast Move Selection..." />
 
-    <ComboBox fx:id="pokemonFastMoveListComboBox1" GridPane.columnIndex="0" GridPane.rowIndex="5" promptText="Select" prefWidth="200">
+    <ComboBox fx:id="pokemonOneFastMoveListComboBox" GridPane.columnIndex="0" GridPane.rowIndex="5" promptText="Select" prefWidth="200">
         <items>
             <FXCollections fx:factory="observableArrayList" />
         </items>
     </ComboBox>
 
-    <ComboBox fx:id="pokemonFastMoveListComboBox2" GridPane.columnIndex="2" GridPane.rowIndex="5" promptText="Select" prefWidth="200">
+    <ComboBox fx:id="pokemonTwoFastMoveListComboBox" GridPane.columnIndex="2" GridPane.rowIndex="5" promptText="Select" prefWidth="200">
         <items>
             <FXCollections fx:factory="observableArrayList" />
         </items>
@@ -89,18 +89,18 @@
 
     <Text GridPane.columnIndex="2" GridPane.rowIndex="6" text="Pokemon Two Charge Move Selection..." />
 
-    <ComboBox fx:id="pokemonChargedMoveListComboBox1" GridPane.columnIndex="0" GridPane.rowIndex="7" promptText="Select" prefWidth="200">
+    <ComboBox fx:id="pokemonOneChargedMoveListComboBox" GridPane.columnIndex="0" GridPane.rowIndex="7" promptText="Select" prefWidth="200">
         <items>
             <FXCollections fx:factory="observableArrayList" />
         </items>
     </ComboBox>
 
-    <ComboBox fx:id="pokemonChargedMoveListComboBox2" GridPane.columnIndex="2" GridPane.rowIndex="7" promptText="Select" prefWidth="200">
+    <ComboBox fx:id="pokemonTwoChargedMoveListComboBox" GridPane.columnIndex="2" GridPane.rowIndex="7" promptText="Select" prefWidth="200">
         <items>
             <FXCollections fx:factory="observableArrayList" />
         </items>
     </ComboBox>
 
-    <Button GridPane.columnIndex="1" GridPane.rowIndex="8" text="Simulate" onAction="#handleSimulateButtonAction"/>
+    <Button fx:id="simulateButton" GridPane.columnIndex="1" GridPane.rowIndex="8" text="Simulate" onAction="#handleSimulateButtonAction"/>
 
 </GridPane>
