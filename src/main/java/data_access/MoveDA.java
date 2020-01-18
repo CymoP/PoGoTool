@@ -106,7 +106,7 @@ public class MoveDA implements IMoveDA {
     private String getChargedMoveListForPokemonSQL() {
         return "SELECT MoveName as moveName, TypeName as typeName, DamagePvP as damagePvP, EnergyPvP as energyPvp\n" +
                 "FROM chargedmove\n" +
-                "       INNER JOIN pokemonfastmove pfm ON chargedmove.MoveID = (SELECT pfm.MoveID\n" +
+                "       INNER JOIN pokemonchargedmove pcm ON chargedmove.MoveID = (SELECT pcm.MoveID\n" +
                 "                                                            WHERE PokemonID = (SELECT PokemonID\n" +
                 "                                                                               FROM pokemon\n" +
                 "                                                                               WHERE PokemonName = ?\n" +
