@@ -94,7 +94,7 @@ public class BattleSimulatorController implements Initializable {
         SelectedPokemon opponentOne = buildSelectedPokemon(pokemonOneNameListComboBox, levelPokemonOne, ivAttackPokemonOne, ivDefensePokemonOne, ivStaminaPokemonOne, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
         SelectedPokemon opponentTwo = buildSelectedPokemon(pokemonTwoNameListComboBox, levelPokemonTwo, ivAttackPokemonTwo, ivDefensePokemonTwo, ivStaminaPokemonTwo, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
 
-        battleSimulator.calculateTimeToWin(opponentOne, opponentTwo);
+        battleSimulator.simulatorAlgorithm(opponentOne, opponentTwo);
     }
 
     public void handleLoadPokemonOneData(ActionEvent actionEvent) throws SQLException {
