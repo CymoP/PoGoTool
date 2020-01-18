@@ -9,6 +9,7 @@ public class TypeBuilder {
 
     private static final String RESISTANCE = "resistance";
     private static final String IMMUNITY = "immunity";
+    private static final String WEAKNESS = "weakness";
     private static final String TYPE_NAME_NORMAL = "normal";
     private static final String TYPE_NAME_FIGHTING = "fighting";
     private static final String TYPE_NAME_FLYING = "flying";
@@ -34,31 +35,191 @@ public class TypeBuilder {
     public static BiHashMap<String, String, List<String>> buildTypeMap(){
         typeMap = new BiHashMap<>();
 
-        addTypeData(TYPE_NAME_NORMAL, buildNormalTypeResistanceList(), buildNormalTypeImmunityList());
-        addTypeData(TYPE_NAME_FIGHTING, buildFightingTypeResistanceList(), buildFightingTypeImmunityList());
-        addTypeData(TYPE_NAME_FLYING, buildFlyingTypeResistanceList(), buildFlyingTypeImmunityList());
-        addTypeData(TYPE_NAME_POISON, buildPoisonTypeResistanceList(), buildPoisonTypeImmunityList());
-        addTypeData(TYPE_NAME_GROUND, buildGroundTypeResistanceList(), buildGroundTypeImmunityList());
-        addTypeData(TYPE_NAME_ROCK, buildRockTypeResistanceList(), buildRockTypeImmunityList());
-        addTypeData(TYPE_NAME_BUG, buildBugTypeResistanceList(), buildBugTypeImmunityList());
-        addTypeData(TYPE_NAME_GHOST, buildGhostTypeResistanceList(), buildGhostTypeImmunityList());
-        addTypeData(TYPE_NAME_STEEL, buildSteelTypeResistanceList(), buildSteelTypeImmunityList());
-        addTypeData(TYPE_NAME_FIRE, buildFireTypeResistanceList(), buildFireTypeImmunityList());
-        addTypeData(TYPE_NAME_WATER, buildWaterTypeResistanceList(), buildWaterTypeImmunityList());
-        addTypeData(TYPE_NAME_GRASS, buildGrassTypeResistanceList(), buildGrassTypeImmunityList());
-        addTypeData(TYPE_NAME_ELECTRIC, buildElectricTypeResistanceList(), buildElectricTypeImmunityList());
-        addTypeData(TYPE_NAME_PSYCHIC, buildPsychicTypeResistanceList(), buildPsychicTypeImmunityList());
-        addTypeData(TYPE_NAME_ICE, buildIceTypeResistanceList(), buildIceTypeImmunityList());
-        addTypeData(TYPE_NAME_DRAGON, buildDragonTypeResistanceList(), buildDragonTypeImmunityList());
-        addTypeData(TYPE_NAME_DARK, buildDarkTypeResistanceList(), buildDarkTypeImmunityList());
-        addTypeData(TYPE_NAME_FAIRY, buildFairyTypeResistanceList(), buildFairyTypeImmunityList());
+        addTypeData(TYPE_NAME_NORMAL, buildNormalTypeResistanceList(), buildNormalTypeImmunityList(), buildNormalTypeWeaknessList());
+        addTypeData(TYPE_NAME_FIGHTING, buildFightingTypeResistanceList(), buildFightingTypeImmunityList(), buildFightingTypeWeaknessList());
+        addTypeData(TYPE_NAME_FLYING, buildFlyingTypeResistanceList(), buildFlyingTypeImmunityList(), buildFlyingTypeWeaknessList());
+        addTypeData(TYPE_NAME_POISON, buildPoisonTypeResistanceList(), buildPoisonTypeImmunityList(), buildPoisonTypeWeaknessList());
+        addTypeData(TYPE_NAME_GROUND, buildGroundTypeResistanceList(), buildGroundTypeImmunityList(), buildGroundTypeWeaknessList());
+        addTypeData(TYPE_NAME_ROCK, buildRockTypeResistanceList(), buildRockTypeImmunityList(), buildRockTypeWeaknessList());
+        addTypeData(TYPE_NAME_BUG, buildBugTypeResistanceList(), buildBugTypeImmunityList(), buildBugTypeWeaknessList());
+        addTypeData(TYPE_NAME_GHOST, buildGhostTypeResistanceList(), buildGhostTypeImmunityList(), buildGhostTypeWeaknessList());
+        addTypeData(TYPE_NAME_STEEL, buildSteelTypeResistanceList(), buildSteelTypeImmunityList(), buildSteelTypeWeaknessList());
+        addTypeData(TYPE_NAME_FIRE, buildFireTypeResistanceList(), buildFireTypeImmunityList(), buildFireTypeWeaknessList());
+        addTypeData(TYPE_NAME_WATER, buildWaterTypeResistanceList(), buildWaterTypeImmunityList(), buildWaterTypeWeaknessList());
+        addTypeData(TYPE_NAME_GRASS, buildGrassTypeResistanceList(), buildGrassTypeImmunityList(), buildGrassTypeWeaknessList());
+        addTypeData(TYPE_NAME_ELECTRIC, buildElectricTypeResistanceList(), buildElectricTypeImmunityList(), buildElectricTypeWeaknessList());
+        addTypeData(TYPE_NAME_PSYCHIC, buildPsychicTypeResistanceList(), buildPsychicTypeImmunityList(), buildPsychicTypeWeaknessList());
+        addTypeData(TYPE_NAME_ICE, buildIceTypeResistanceList(), buildIceTypeImmunityList(), buildIceTypeWeaknessList());
+        addTypeData(TYPE_NAME_DRAGON, buildDragonTypeResistanceList(), buildDragonTypeImmunityList(), buildDragonTypeWeaknessList());
+        addTypeData(TYPE_NAME_DARK, buildDarkTypeResistanceList(), buildDarkTypeImmunityList(), buildDarkTypeWeaknessList());
+        addTypeData(TYPE_NAME_FAIRY, buildFairyTypeResistanceList(), buildFairyTypeImmunityList(), buildFairyTypeWeaknessList());
 
         return typeMap;
     }
 
-    private static void addTypeData(String typeName, List<String> resistanceList, List<String> immunityList) {
+    private static void addTypeData(String typeName, List<String> resistanceList, List<String> immunityList, List<String> weaknessList) {
         typeMap.put(typeName, RESISTANCE, resistanceList);
         typeMap.put(typeName, IMMUNITY, immunityList);
+        typeMap.put(typeName, WEAKNESS, weaknessList);
+    }
+
+    private static List<String> buildNormalTypeWeaknessList() {
+        List<String> normalTypeWeaknessList = new ArrayList<>();
+        normalTypeWeaknessList.add(TYPE_NAME_FIGHTING);
+
+        return normalTypeWeaknessList;
+    }
+
+    private static List<String> buildFightingTypeWeaknessList() {
+        List<String> fightingTypeWeaknessList = new ArrayList<>();
+        fightingTypeWeaknessList.add(TYPE_NAME_FLYING);
+        fightingTypeWeaknessList.add(TYPE_NAME_PSYCHIC);
+        fightingTypeWeaknessList.add(TYPE_NAME_FAIRY);
+
+        return fightingTypeWeaknessList;
+    }
+
+    private static List<String> buildFlyingTypeWeaknessList() {
+        List<String> flyingTypeWeaknessList = new ArrayList<>();
+        flyingTypeWeaknessList.add(TYPE_NAME_ROCK);
+        flyingTypeWeaknessList.add(TYPE_NAME_ELECTRIC);
+        flyingTypeWeaknessList.add(TYPE_NAME_ICE);
+
+        return flyingTypeWeaknessList;
+    }
+
+    private static List<String> buildPoisonTypeWeaknessList() {
+        List<String> poisonTypeWeaknessList = new ArrayList<>();
+        poisonTypeWeaknessList.add(TYPE_NAME_GROUND);
+        poisonTypeWeaknessList.add(TYPE_NAME_PSYCHIC);
+
+        return poisonTypeWeaknessList;
+    }
+
+    private static List<String> buildGroundTypeWeaknessList() {
+        List<String> groundTypeWeaknessList = new ArrayList<>();
+        groundTypeWeaknessList.add(TYPE_NAME_WATER);
+        groundTypeWeaknessList.add(TYPE_NAME_GRASS);
+        groundTypeWeaknessList.add(TYPE_NAME_ICE);
+
+        return groundTypeWeaknessList;
+    }
+
+    private static List<String> buildRockTypeWeaknessList() {
+        List<String> rockTypeWeaknessList = new ArrayList<>();
+        rockTypeWeaknessList.add(TYPE_NAME_FIGHTING);
+        rockTypeWeaknessList.add(TYPE_NAME_GROUND);
+        rockTypeWeaknessList.add(TYPE_NAME_STEEL);
+        rockTypeWeaknessList.add(TYPE_NAME_WATER);
+        rockTypeWeaknessList.add(TYPE_NAME_GRASS);
+
+        return rockTypeWeaknessList;
+    }
+
+    private static List<String> buildBugTypeWeaknessList() {
+        List<String> bugTypeWeaknessList = new ArrayList<>();
+        bugTypeWeaknessList.add(TYPE_NAME_FLYING);
+        bugTypeWeaknessList.add(TYPE_NAME_ROCK);
+        bugTypeWeaknessList.add(TYPE_NAME_FIRE);
+
+        return bugTypeWeaknessList;
+    }
+
+    private static List<String> buildGhostTypeWeaknessList() {
+        List<String> ghostTypeWeaknessList = new ArrayList<>();
+        ghostTypeWeaknessList.add(TYPE_NAME_GHOST);
+        ghostTypeWeaknessList.add(TYPE_NAME_DARK);
+
+        return ghostTypeWeaknessList;
+    }
+
+    private static List<String> buildSteelTypeWeaknessList() {
+        List<String> steelTypeWeaknessList = new ArrayList<>();
+        steelTypeWeaknessList.add(TYPE_NAME_FIGHTING);
+        steelTypeWeaknessList.add(TYPE_NAME_GROUND);
+        steelTypeWeaknessList.add(TYPE_NAME_FIRE);
+
+        return steelTypeWeaknessList;
+    }
+
+    private static List<String> buildFireTypeWeaknessList() {
+        List<String> fireTypeWeaknessList = new ArrayList<>();
+        fireTypeWeaknessList.add(TYPE_NAME_GROUND);
+        fireTypeWeaknessList.add(TYPE_NAME_ROCK);
+        fireTypeWeaknessList.add(TYPE_NAME_WATER);
+
+        return fireTypeWeaknessList;
+    }
+
+    private static List<String> buildWaterTypeWeaknessList() {
+        List<String> waterTypeWeaknessList = new ArrayList<>();
+        waterTypeWeaknessList.add(TYPE_NAME_GRASS);
+        waterTypeWeaknessList.add(TYPE_NAME_ELECTRIC);
+
+        return waterTypeWeaknessList;
+    }
+
+    private static List<String> buildGrassTypeWeaknessList() {
+        List<String> grassTypeWeaknessList = new ArrayList<>();
+        grassTypeWeaknessList.add(TYPE_NAME_FLYING);
+        grassTypeWeaknessList.add(TYPE_NAME_POISON);
+        grassTypeWeaknessList.add(TYPE_NAME_BUG);
+        grassTypeWeaknessList.add(TYPE_NAME_FIRE);
+        grassTypeWeaknessList.add(TYPE_NAME_ICE);
+
+        return grassTypeWeaknessList;
+    }
+
+    private static List<String> buildElectricTypeWeaknessList() {
+        List<String> electricTypeWeaknessList = new ArrayList<>();
+        electricTypeWeaknessList.add(TYPE_NAME_GROUND);
+
+        return electricTypeWeaknessList;
+    }
+
+    private static List<String> buildPsychicTypeWeaknessList() {
+        List<String> psychicTypeWeaknessList = new ArrayList<>();
+        psychicTypeWeaknessList.add(TYPE_NAME_BUG);
+        psychicTypeWeaknessList.add(TYPE_NAME_GHOST);
+        psychicTypeWeaknessList.add(TYPE_NAME_DARK);
+
+        return psychicTypeWeaknessList;
+    }
+
+    private static List<String> buildIceTypeWeaknessList() {
+        List<String> iceTypeWeaknessList = new ArrayList<>();
+        iceTypeWeaknessList.add(TYPE_NAME_FIGHTING);
+        iceTypeWeaknessList.add(TYPE_NAME_ROCK);
+        iceTypeWeaknessList.add(TYPE_NAME_STEEL);
+        iceTypeWeaknessList.add(TYPE_NAME_FIRE);
+
+        return iceTypeWeaknessList;
+    }
+
+    private static List<String> buildDragonTypeWeaknessList() {
+        List<String> dragonTypeWeaknessList = new ArrayList<>();
+        dragonTypeWeaknessList.add(TYPE_NAME_ICE);
+        dragonTypeWeaknessList.add(TYPE_NAME_DRAGON);
+        dragonTypeWeaknessList.add(TYPE_NAME_FAIRY);
+
+        return dragonTypeWeaknessList;
+    }
+
+    private static List<String> buildDarkTypeWeaknessList() {
+        List<String> darkTypeWeaknessList = new ArrayList<>();
+        darkTypeWeaknessList.add(TYPE_NAME_FIGHTING);
+        darkTypeWeaknessList.add(TYPE_NAME_BUG);
+        darkTypeWeaknessList.add(TYPE_NAME_FAIRY);
+
+        return darkTypeWeaknessList;
+    }
+
+    private static List<String> buildFairyTypeWeaknessList() {
+        List<String> fairyTypeWeaknessList = new ArrayList<>();
+        fairyTypeWeaknessList.add(TYPE_NAME_POISON);
+        fairyTypeWeaknessList.add(TYPE_NAME_STEEL);
+
+        return fairyTypeWeaknessList;
     }
 
     private static List<String> buildFairyTypeResistanceList() {
