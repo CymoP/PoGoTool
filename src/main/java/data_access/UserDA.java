@@ -15,6 +15,15 @@ public class UserDA implements IUserDA {
 
     private Connection connection = DatabaseSingleton.getInstance().getConnection();
 
+    public boolean getUserByUsername(String username) throws SQLException {
+        PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getUserByUsernameSQL());
+        verifyUserPrepareStatement.setString(1, username);
+
+        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getUserByUsernameSQL());
+        ResultSet result = verifyUserPrepareStatement.executeQuery();
+        return result.first();
+    }
+
     public User getUserByUsernameAndPassword(String username, String password) throws SQLException {
         PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getUserByUsernameAndPasswordSQL());
         verifyUserPrepareStatement.setString(1, username);
@@ -30,19 +39,29 @@ public class UserDA implements IUserDA {
     }
 
     public boolean createNewUserByUsernameAndPassword(String username, String password) throws SQLException {
-        PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(createNewUserByUsernameAndPasswordSQL());
-        verifyUserPrepareStatement.setString(1, username);
-        verifyUserPrepareStatement.setString(2, password);
+        PreparedStatement createNewUserPrepareStatement = connection.prepareStatement(createNewUserByUsernameAndPasswordSQL());
+        createNewUserPrepareStatement.setString(1, username);
+        createNewUserPrepareStatement.setString(2, password);
+        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, createNewUserByUsernameAndPasswordSQL());
 
-        verifyUserPrepareStatement = connection.prepareStatement(addRoleToNewUserSQL());
-        verifyUserPrepareStatement.setString(1, username);
-        verifyUserPrepareStatement.setString(2, password);
+        if (createNewUserPrepareStatement.execute()){
+            return addRoleToNewUser(username, password);
+        }
 
-        return true;
+        return false;
+    }
+
+    private boolean addRoleToNewUser(String username, String password) throws SQLException {
+        PreparedStatement addRoleToUserPrepareStatement = connection.prepareStatement(addRoleToNewUserSQL());
+        addRoleToUserPrepareStatement.setString(1, username);
+        addRoleToUserPrepareStatement.setString(2, password);
+        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, addRoleToNewUserSQL());
+
+        return addRoleToUserPrepareStatement.execute();
     }
 
     private String createNewUserByUsernameAndPasswordSQL() {
-        return "INSERT INTO USER (username, userpassword) " +
+        return "INSERT INTO User (username, userpassword) " +
                 "VALUES (?, ?)";
     }
 
@@ -50,6 +69,16 @@ public class UserDA implements IUserDA {
         return "INSERT INTO UserRole(RoleID, UserID) " +
                 "VALUES ((SELECT RoleID FROM Role WHERE RoleName = 'User'), " +
                 "(SELECT UserID FROM User WHERE UserName = ? AND UserPassword = ?))";
+    }
+
+    private String getUserByUsernameSQL() {
+        return "SELECT Username AS username, " +
+                "UserPassword AS password, " +
+                "r.RoleName AS rolename " +
+                "FROM User u " +
+                "INNER JOIN UserRole ur ON u.UserID = ur.UserID " +
+                "INNER JOIN Role r ON ur.RoleID = r.RoleID " +
+                "WHERE UserName = ? ";
     }
 
     private String getUserByUsernameAndPasswordSQL() {
