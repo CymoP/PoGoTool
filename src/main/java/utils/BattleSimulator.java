@@ -23,10 +23,7 @@ public class BattleSimulator {
     }
 
     public int simulatorAlgorithm(SelectedPokemon opponentOne, SelectedPokemon opponentTwo) {
-
-        Map<Integer, String> battleSimulatorLog = new HashMap<>();
-
-        int currentTurnCounter = 0;
+        int currentTurnCounter = 1;
 
         double opponentOneStamina = SelectedPokemonService.getStaminaStat(opponentOne);
         int opponentOneEnergy = 0;
@@ -39,82 +36,120 @@ public class BattleSimulator {
         int opponentOneChargedMoveEnergyCost = opponentOneChargedMove.getEnergyPvP();
         int opponentOneFastMoveEnergyGain = opponentOneFastMove.getEnergyPvP();
         int opponentOneFastMoveDuration = opponentOneFastMove.getDuration();
-        int opponentOneTurnCounter = 0;
+        int opponentOneTurnCounter = 1;
 
         FastMove opponentTwoFastMove = opponentTwo.getSelectedFastMove();
         ChargedMove opponentTwoChargedMove = opponentTwo.getSelectedChargedMove();
         int opponentTwoChargedMoveEnergyCost = opponentTwoChargedMove.getEnergyPvP();
         int opponentTwoFastMoveEnergyGain = opponentTwoFastMove.getEnergyPvP();
         int opponentTwoFastMoveDuration = opponentTwoFastMove.getDuration();
-        int opponentTwoTurnCounter = 0;
+        int opponentTwoTurnCounter = 1;
 
         int logCounter = 0;
 
-        battleSimulatorLog.put(logCounter, "opponentOne - " + "Pokemon Name - " + opponentOne.getBasePokemon().getPokemonName());
-        battleSimulatorLog.put(++logCounter, "opponentOne - " + "Pokemon Attack Stat - " + SelectedPokemonService.getAttackStat(opponentOne));
-        battleSimulatorLog.put(++logCounter, "opponentOne - " + "Pokemon Defense Stat - " + SelectedPokemonService.getDefenseStat(opponentOne));
-        battleSimulatorLog.put(++logCounter, "opponentOne - " + "Pokemon Stamina Stat - " + SelectedPokemonService.getStaminaStat(opponentOne));
-        battleSimulatorLog.put(++logCounter, "opponentOne - " + "Pokemon Fast Move - " + opponentOne.getSelectedFastMove().getMoveName());
-        battleSimulatorLog.put(++logCounter, "opponentOne - " + "Pokemon Charge Move - " + opponentOne.getSelectedChargedMove().getMoveName());
+        Map<Integer, String> battleSimulatorLog = addPokemonDetailsToLog(logCounter, opponentOne, opponentTwo, currentTurnCounter);
 
-        battleSimulatorLog.put(++logCounter, "opponentTwo - " + "Pokemon Name - " + opponentTwo.getBasePokemon().getPokemonName());
-        battleSimulatorLog.put(++logCounter, "opponentTwo - " + "Pokemon Attack Stat - " + SelectedPokemonService.getAttackStat(opponentTwo));
-        battleSimulatorLog.put(++logCounter, "opponentTwo - " + "Pokemon Defense Stat - " + SelectedPokemonService.getDefenseStat(opponentTwo));
-        battleSimulatorLog.put(++logCounter, "opponentTwo - " + "Pokemon Stamina Stat - " + SelectedPokemonService.getStaminaStat(opponentTwo));
-        battleSimulatorLog.put(++logCounter, "opponentTwo - " + "Pokemon Fast Move - " + opponentTwo.getSelectedFastMove().getMoveName());
-        battleSimulatorLog.put(++logCounter, "opponentTwo - " + "Pokemon Charge Move - " + opponentTwo.getSelectedChargedMove().getMoveName());
+        boolean chargeMoveIntermissionState = false;
 
         while (currentTurnCounter <= MAXIMUM_TURNS) {
-            if (currentTurnCounter == opponentOneTurnCounter) {
-                if (opponentOneChargedMoveEnergyCost == opponentOneEnergy) {
-                    opponentTwoStamina -= calculateChargeMoveDamage(opponentOne, opponentTwo);
-                    opponentOneEnergy -= opponentOneChargedMoveEnergyCost;
-                    opponentOneTurnCounter += CHARGE_UP_DURATION;
-                    battleSimulatorLog.put(++logCounter, "opponentOne - " + opponentOne.getBasePokemon().getPokemonName() + " used " + opponentOneChargedMove.getMoveName());
-                } else {
-                    opponentTwoStamina -= calculateFastMoveDamage(opponentOne, opponentTwo);
-                    opponentOneEnergy += opponentOneFastMoveEnergyGain;
-                    opponentOneTurnCounter += opponentOneFastMoveDuration;
-                    battleSimulatorLog.put(++logCounter, "opponentOne - " + opponentOne.getBasePokemon().getPokemonName() + " used " + opponentOneFastMove.getMoveName());
+            while (!chargeMoveIntermissionState) {
+                if (currentTurnCounter == opponentOneTurnCounter) {
+                    if (opponentOneChargedMoveEnergyCost == opponentOneEnergy) {
+                        opponentTwoStamina -= calculateChargeMoveDamage(opponentOne, opponentTwo);
+                        opponentOneEnergy -= opponentOneChargedMoveEnergyCost;
+                        opponentOneTurnCounter += CHARGE_UP_DURATION;
+                        opponentTwoTurnCounter = opponentOneTurnCounter;
+                        chargeMoveIntermissionState = true;
+                        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + opponentOne.getBasePokemon().getPokemonName() + " used " + opponentOneChargedMove.getMoveName());
+                    } else {
+                        opponentTwoStamina -= calculateFastMoveDamage(opponentOne, opponentTwo);
+                        opponentOneEnergy += opponentOneFastMoveEnergyGain;
+                        opponentOneTurnCounter += opponentOneFastMoveDuration;
+                        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + opponentOne.getBasePokemon().getPokemonName() + " used " + opponentOneFastMove.getMoveName());
+                    }
+                }
+                else{
+                    battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + opponentOne.getBasePokemon().getPokemonName() + " is waiting for fast move intermission to end");
+                }
+
+                //break if opponent one has won
+                if (!(opponentTwoStamina > 0)) {
+                    battleSimulatorLog.put(++logCounter, "Winner - Opponent One has won on turn " + currentTurnCounter);
+
+                    for (int keyCount = 0; keyCount < battleSimulatorLog.size(); keyCount++) {
+                        System.out.println(battleSimulatorLog.get(keyCount));
+                    }
+
+                    return 0;
+                }
+
+                if (currentTurnCounter == opponentTwoTurnCounter) {
+                    if (opponentTwoChargedMoveEnergyCost == opponentTwoEnergy) {
+                        opponentOneStamina -= calculateChargeMoveDamage(opponentTwo, opponentOne);
+                        opponentTwoEnergy -= opponentTwoChargedMoveEnergyCost;
+                        opponentTwoTurnCounter += CHARGE_UP_DURATION;
+                        opponentOneTurnCounter += opponentTwoTurnCounter;
+                        chargeMoveIntermissionState = true;
+                        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + opponentTwo.getBasePokemon().getPokemonName() + " used " + opponentOneChargedMove.getMoveName());
+                    } else {
+                        opponentOneStamina -= calculateFastMoveDamage(opponentTwo, opponentOne);
+                        opponentTwoEnergy += opponentTwoFastMoveEnergyGain;
+                        opponentTwoTurnCounter += opponentTwoFastMoveDuration;
+                        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + opponentTwo.getBasePokemon().getPokemonName() + " used " + opponentTwoFastMove.getMoveName());
+                    }
+                }
+                else{
+                    battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + opponentTwo.getBasePokemon().getPokemonName() + " is waiting for fast move intermission to end");
+                }
+
+                //break if opponent two has won
+                if (!(opponentOneStamina > 0)) {
+                    battleSimulatorLog.put(++logCounter, "Winner - Opponent Two has won on turn " + currentTurnCounter);
+
+                    for (int keyCount = 0; keyCount < battleSimulatorLog.size(); keyCount++) {
+                        System.out.println(battleSimulatorLog.get(keyCount));
+                    }
+
+                    return 0;
+                }
+
+                currentTurnCounter++;
+            }
+            while (chargeMoveIntermissionState) {
+
+                if (currentTurnCounter == opponentOneTurnCounter && currentTurnCounter == opponentTwoTurnCounter) {
+                    chargeMoveIntermissionState = false;
+                }
+                else {
+                    battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + opponentOne.getBasePokemon().getPokemonName() + " is waiting for charge move intermission to end");
+                    battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + opponentTwo.getBasePokemon().getPokemonName() + " is waiting for charge move intermission to end");
+
+                    currentTurnCounter++;
                 }
             }
-
-            if (!(opponentTwoStamina > 0)) {
-                break;
-            }
-
-            if (currentTurnCounter == opponentTwoTurnCounter) {
-                if (opponentTwoChargedMoveEnergyCost == opponentTwoEnergy) {
-                    opponentOneStamina -= calculateChargeMoveDamage(opponentTwo, opponentOne);
-                    opponentTwoEnergy -= opponentTwoChargedMoveEnergyCost;
-                    opponentTwoTurnCounter += CHARGE_UP_DURATION;
-                    battleSimulatorLog.put(++logCounter, "opponentTwo - " + opponentTwo.getBasePokemon().getPokemonName() + " used " + opponentTwoFastMove.getMoveName());
-                } else {
-                    opponentOneStamina -= calculateFastMoveDamage(opponentTwo, opponentOne);
-                    opponentTwoEnergy += opponentTwoFastMoveEnergyGain;
-                    opponentTwoTurnCounter += opponentTwoFastMoveDuration;
-                    battleSimulatorLog.put(++logCounter, "opponentTwo - " + opponentTwo.getBasePokemon().getPokemonName() + " used " + opponentTwoChargedMove.getMoveName());
-                }
-            }
-
-            if (!(opponentOneStamina > 0)) {
-                break;
-            }
-
-            currentTurnCounter++;
-        }
-
-        if (opponentOneStamina > 0) {
-            battleSimulatorLog.put(++logCounter, "Winner - Opponent One has won");
-        } else {
-            battleSimulatorLog.put(++logCounter, "Winner - Opponent Two has won");
-        }
-
-        for (int keyCount = 0; keyCount < battleSimulatorLog.size(); keyCount++){
-            System.out.println(battleSimulatorLog.get(keyCount));
         }
 
         return 0;
+    }
+
+    private Map<Integer, String> addPokemonDetailsToLog(int logCounter, SelectedPokemon opponentOne, SelectedPokemon opponentTwo, int currentTurnCounter) {
+        Map<Integer, String> battleSimulatorLog = new HashMap<>();
+
+        battleSimulatorLog.put(logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Name - " + opponentOne.getBasePokemon().getPokemonName());
+        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Attack Stat - " + SelectedPokemonService.getAttackStat(opponentOne));
+        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Defense Stat - " + SelectedPokemonService.getDefenseStat(opponentOne));
+        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Stamina Stat - " + SelectedPokemonService.getStaminaStat(opponentOne));
+        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Fast Move - " + opponentOne.getSelectedFastMove().getMoveName());
+        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Charge Move - " + opponentOne.getSelectedChargedMove().getMoveName());
+
+        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Name - " + opponentTwo.getBasePokemon().getPokemonName());
+        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Attack Stat - " + SelectedPokemonService.getAttackStat(opponentTwo));
+        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Defense Stat - " + SelectedPokemonService.getDefenseStat(opponentTwo));
+        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Stamina Stat - " + SelectedPokemonService.getStaminaStat(opponentTwo));
+        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Fast Move - " + opponentTwo.getSelectedFastMove().getMoveName());
+        battleSimulatorLog.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Charge Move - " + opponentTwo.getSelectedChargedMove().getMoveName());
+
+        return battleSimulatorLog;
     }
 
     private double calculateFastMoveDamage(SelectedPokemon attackerPokemon, SelectedPokemon defenderPokemon) {

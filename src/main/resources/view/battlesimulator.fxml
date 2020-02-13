@@ -37,16 +37,16 @@
 
     <VBox GridPane.columnIndex="0" GridPane.rowIndex="3">
         <HBox>
-            <TextField fx:id="levelPokemonOne" style="-fx-border-color: black" text="1" prefWidth="50" onKeyPressed="#levelPokemonOneFieldListener" alignment="CENTER">
+            <TextField fx:id="levelPokemonOne" style="-fx-border-color: black" text="40" prefWidth="50" onKeyPressed="#levelPokemonOneFieldListener" alignment="CENTER">
 
             </TextField>
-            <TextField fx:id="ivAttackPokemonOne" style="-fx-border-color: black" text="2" prefWidth="50" onKeyPressed="#ivAttackPokemonOneListener" alignment="CENTER">
+            <TextField fx:id="ivAttackPokemonOne" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivAttackPokemonOneListener" alignment="CENTER">
 
             </TextField>
-            <TextField fx:id="ivDefensePokemonOne" style="-fx-border-color: black" text="3" prefWidth="50" onKeyPressed="#ivDefensePokemonOneListener" alignment="CENTER">
+            <TextField fx:id="ivDefensePokemonOne" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivDefensePokemonOneListener" alignment="CENTER">
 
             </TextField>
-            <TextField fx:id="ivStaminaPokemonOne" style="-fx-border-color: black" text="4" prefWidth="50" onKeyPressed="#ivStaminaPokemonOneListener" alignment="CENTER">
+            <TextField fx:id="ivStaminaPokemonOne" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivStaminaPokemonOneListener" alignment="CENTER">
 
             </TextField>
         </HBox>
@@ -54,16 +54,16 @@
 
     <VBox GridPane.columnIndex="2" GridPane.rowIndex="3">
         <HBox>
-            <TextField fx:id="levelPokemonTwo" style="-fx-border-color: black" text="5" prefWidth="50" onKeyPressed="#levelPokemonTwoFieldListener" alignment="CENTER">
+            <TextField fx:id="levelPokemonTwo" style="-fx-border-color: black" text="40" prefWidth="50" onKeyPressed="#levelPokemonTwoFieldListener" alignment="CENTER">
 
             </TextField>
-            <TextField fx:id="ivAttackPokemonTwo" style="-fx-border-color: black" text="6" prefWidth="50" onKeyPressed="#ivAttackPokemonTwoListener" alignment="CENTER">
+            <TextField fx:id="ivAttackPokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivAttackPokemonTwoListener" alignment="CENTER">
 
             </TextField>
-            <TextField fx:id="ivDefensePokemonTwo" style="-fx-border-color: black" text="7" prefWidth="50" onKeyPressed="#ivDefensePokemonTwoListener" alignment="CENTER">
+            <TextField fx:id="ivDefensePokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivDefensePokemonTwoListener" alignment="CENTER">
 
             </TextField>
-            <TextField fx:id="ivStaminaPokemonTwo" style="-fx-border-color: black" text="8" prefWidth="50" onKeyPressed="#ivStaminaPokemonTwoListener" alignment="CENTER">
+            <TextField fx:id="ivStaminaPokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivStaminaPokemonTwoListener" alignment="CENTER">
 
             </TextField>
         </HBox>
