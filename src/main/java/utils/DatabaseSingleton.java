@@ -9,6 +9,9 @@ import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * DatabaseSingleton is a class for handling the connection to the database in a static immutable context
+ */
 public class DatabaseSingleton {
 
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/";

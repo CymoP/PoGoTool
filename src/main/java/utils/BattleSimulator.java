@@ -6,6 +6,9 @@ import model.SelectedPokemon;
 import model.Type;
 import services.SelectedPokemonService;
 
+/**
+ * BattleSimulator is a class used to determining the winner of a battle
+ */
 public class BattleSimulator {
 
     private static final int MAXIMUM_TURNS = 240;
@@ -20,7 +23,13 @@ public class BattleSimulator {
     public BattleSimulator() {
     }
 
-    public int simulatorAlgorithm(SelectedPokemon opponentOne, SelectedPokemon opponentTwo) {
+    /**
+     * Derives the winner of the battle using user input
+     *
+     * @param opponentOne selected pokemon one
+     * @param opponentTwo selected pokemon two
+     */
+    public void simulatorAlgorithm(SelectedPokemon opponentOne, SelectedPokemon opponentTwo) {
         int currentTurnCounter = 1;
 
         double opponentOneStamina = SelectedPokemonService.getStaminaStat(opponentOne);
@@ -71,8 +80,6 @@ public class BattleSimulator {
                 if (!(opponentTwoStamina > 0)) {
                     battleSimulatorReport.addPokemonWinner(currentTurnCounter, 1);
                     battleSimulatorReport.printOutput();
-
-                    return 0;
                 }
 
                 if (currentTurnCounter == opponentTwoTurnCounter) {
@@ -97,8 +104,6 @@ public class BattleSimulator {
                 if (!(opponentOneStamina > 0)) {
                     battleSimulatorReport.addPokemonWinner(currentTurnCounter, 2);
                     battleSimulatorReport.printOutput();
-
-                    return 0;
                 }
 
                 currentTurnCounter++;
@@ -115,8 +120,6 @@ public class BattleSimulator {
                 }
             }
         }
-
-        return 0;
     }
 
     private double calculateFastMoveDamage(SelectedPokemon attackerPokemon, SelectedPokemon defenderPokemon) {
