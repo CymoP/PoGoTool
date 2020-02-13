@@ -9,6 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * PokemonService is a service class for all Pokemon business logic
+ *
+ */
 public class PokemonService {
 
     private List<Pokemon> pokemonList;
@@ -18,6 +22,12 @@ public class PokemonService {
         pokemonList = pokemonDA.getAllPokemon();
     }
 
+    /**
+     * Returns a pokemon object from the pokemon list by it's name
+     *
+     * @param pokemonName given pokemon name
+     * @return pokemon object for given name
+     */
     public Pokemon getPokemonByName(String pokemonName) {
 
         for (Pokemon pokemon : pokemonList) {
@@ -29,6 +39,11 @@ public class PokemonService {
         return new Pokemon();
     }
 
+    /**
+     * Returns the list of all the name of all the pokemon in the database
+     *
+     * @return pokemon name list
+     */
     public List<String> getAllPokemonNamesList() {
         List<String> pokemonNameList = new ArrayList<>();
 
@@ -39,6 +54,12 @@ public class PokemonService {
         return pokemonNameList;
     }
 
+    /**
+     * Returns the fast move list for a given pokemon
+     *
+     * @param pokemon given pokemon
+     * @return pokemon fast move list
+     */
     public List<String> getPokemonFastMoveNameList(Pokemon pokemon) {
         List<String> pokemonFastMoveNameList = new ArrayList<>();
 
@@ -49,6 +70,12 @@ public class PokemonService {
         return pokemonFastMoveNameList;
     }
 
+    /**
+     * Returns the charged move list for a given pokemon
+     *
+     * @param pokemon given pokemon
+     * @return pokemon charged move list
+     */
     public List<String> getPokemonChargedMoveNameList(Pokemon pokemon) {
         List<String> pokemonChargedMoveNameList = new ArrayList<>();
 

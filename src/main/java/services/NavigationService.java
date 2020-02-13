@@ -9,6 +9,10 @@ import loader.ApplicationLoader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * NavigationService is a service class for handling all navigational logic within the application
+ *
+ */
 public class NavigationService {
 
     private static final String LOGIN_FXML_FILE_LOCATION = "../view/login.fxml";
@@ -19,6 +23,9 @@ public class NavigationService {
     private NavigationService() {
     }
 
+    /**
+     * Navigate the user to the dashboard scene
+     */
     public static void gotoDashboard() {
         try {
             replaceSceneContent(DASHBOARD_FXML_FILE_LOCATION, 800, 600);
@@ -27,6 +34,9 @@ public class NavigationService {
         }
     }
 
+    /**
+     * Navigate the user to the signup scene
+     */
     public static void gotoSignup() {
         try {
             replaceSceneContent(SIGNUP_FXML_FILE_LOCATION, 400, 400);
@@ -35,6 +45,9 @@ public class NavigationService {
         }
     }
 
+    /**
+     * Navigate the user to the login scene
+     */
     public static void gotoLogin() {
         try {
             replaceSceneContent(LOGIN_FXML_FILE_LOCATION, 300, 300);
@@ -43,6 +56,9 @@ public class NavigationService {
         }
     }
 
+    /**
+     * Navigate the user to the battle simulator scene
+     */
     public static void gotoBattleSimulator() {
         try {
             replaceSceneContent(BATTLE_SIMULATOR_FXML_FILE_LOCATION, 1200, 800);

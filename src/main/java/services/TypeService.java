@@ -6,6 +6,9 @@ import utils.BiHashMap;
 
 import java.util.List;
 
+/**
+ * TypeService is a service class for all Type related business logic
+ */
 public class TypeService {
 
     private static final String RESISTANCE = "resistance";
@@ -30,6 +33,12 @@ public class TypeService {
         return instance;
     }
 
+    /**
+     * Returns the type object for the given type name
+     *
+     * @param typeName given type name
+     * @return type object for the given type name
+     */
     public Type getTypeByTypeName(String typeName) {
         return new Type(typeName, typeMap.get(typeName));
     }

@@ -5,6 +5,9 @@ import model.User;
 
 import java.sql.SQLException;
 
+/**
+ * UserService is a service class for all User related business logic
+ */
 public class UserService {
 
     private UserDA userDA = new UserDA();
@@ -54,7 +57,6 @@ public class UserService {
 
     /**
      * Creates a new user with the given details
-     *
      */
     public boolean createNewUser(String username, String password) throws SQLException {
         return userDA.createNewUserByUsernameAndPassword(username, password);
