@@ -59,8 +59,8 @@ public class BattleSimulator {
 
         while (currentTurnCounter <= MAXIMUM_TURNS) {
             while (!chargeMoveIntermissionState) {
-                if (currentTurnCounter == opponentOneTurnCounter) {
-                    if (opponentOneChargedMoveEnergyCost == opponentOneEnergy) {
+                if (checkActionAvailable(currentTurnCounter, opponentOneTurnCounter)) {
+                    if (checkChargedMoveAvailable(opponentOneEnergy, opponentOneChargedMoveEnergyCost)) {
                         opponentTwoStamina -= calculateChargeMoveDamage(opponentOne, opponentTwo);
                         opponentOneEnergy -= opponentOneChargedMoveEnergyCost;
                         opponentOneTurnCounter += CHARGE_UP_DURATION;
@@ -85,8 +85,8 @@ public class BattleSimulator {
                     return 0;
                 }
 
-                if (currentTurnCounter == opponentTwoTurnCounter) {
-                    if (opponentTwoChargedMoveEnergyCost == opponentTwoEnergy) {
+                if (checkActionAvailable(currentTurnCounter, opponentTwoTurnCounter)) {
+                    if (checkChargedMoveAvailable(opponentTwoEnergy, opponentTwoChargedMoveEnergyCost)) {
                         opponentOneStamina -= calculateChargeMoveDamage(opponentTwo, opponentOne);
                         opponentTwoEnergy -= opponentTwoChargedMoveEnergyCost;
                         opponentTwoTurnCounter += CHARGE_UP_DURATION;
@@ -115,7 +115,7 @@ public class BattleSimulator {
             }
             while (chargeMoveIntermissionState) {
 
-                if (currentTurnCounter == opponentOneTurnCounter && currentTurnCounter == opponentTwoTurnCounter) {
+                if (checkActionAvailable(currentTurnCounter, opponentOneTurnCounter) && checkActionAvailable(currentTurnCounter, opponentTwoTurnCounter)) {
                     chargeMoveIntermissionState = false;
                 } else {
                     battleSimulatorReport.addPokemonWaitingForChargedMoveIntermission(currentTurnCounter, 1, opponentOne);
@@ -126,6 +126,14 @@ public class BattleSimulator {
             }
         }
         return 0;
+    }
+
+    private boolean checkActionAvailable(int currentTurnCounter, int pokemonContextTurnCounter) {
+        return currentTurnCounter == pokemonContextTurnCounter;
+    }
+
+    private boolean checkChargedMoveAvailable(int currentEnergy, int chargedMoveEnergyCost) {
+        return currentEnergy >= chargedMoveEnergyCost;
     }
 
     private double calculateFastMoveDamage(SelectedPokemon attackerPokemon, SelectedPokemon defenderPokemon) {
