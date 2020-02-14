@@ -4,14 +4,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import loader.ApplicationLoader;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * NavigationService is a service class for handling all navigational logic within the application
- *
  */
 public class NavigationService {
 
@@ -19,6 +20,9 @@ public class NavigationService {
     private static final String SIGNUP_FXML_FILE_LOCATION = "../view/signup.fxml";
     private static final String DASHBOARD_FXML_FILE_LOCATION = "../view/dashboard.fxml";
     private static final String BATTLE_SIMULATOR_FXML_FILE_LOCATION = "../view/battlesimulator.fxml";
+    private static final String BATTLE_SIMULATOR_REPORT_FXML_FILE_LOCATION = "../view/battlesimulatorreport.fxml";
+
+    private static Stage reportStage;
 
     private NavigationService() {
     }
@@ -65,6 +69,18 @@ public class NavigationService {
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public static void gotoReport() throws IOException {
+        Parent root = FXMLLoader.load(ApplicationLoader.class.getResource(BATTLE_SIMULATOR_REPORT_FXML_FILE_LOCATION));
+        Scene scene = new Scene(root);
+
+        if (reportStage == null) {
+            reportStage = new Stage();
+        }
+
+        reportStage.setScene(scene);
+        reportStage.show();
     }
 
     private static Parent replaceSceneContent(String fxml, int width, int height) throws Exception {

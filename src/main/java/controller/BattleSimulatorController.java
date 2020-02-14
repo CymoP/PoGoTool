@@ -15,10 +15,12 @@ import model.FastMove;
 import model.Pokemon;
 import model.SelectedPokemon;
 import services.MoveService;
+import services.NavigationService;
 import services.PokemonService;
 import utils.BattleSimulator;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -90,11 +92,13 @@ public class BattleSimulatorController implements Initializable {
     }
 
     @FXML
-    protected void handleSimulateButtonAction() {
+    protected void handleSimulateButtonAction() throws IOException {
         SelectedPokemon opponentOne = buildSelectedPokemon(pokemonOneNameListComboBox, levelPokemonOne, ivAttackPokemonOne, ivDefensePokemonOne, ivStaminaPokemonOne, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
         SelectedPokemon opponentTwo = buildSelectedPokemon(pokemonTwoNameListComboBox, levelPokemonTwo, ivAttackPokemonTwo, ivDefensePokemonTwo, ivStaminaPokemonTwo, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
 
         battleSimulator.simulatorAlgorithm(opponentOne, opponentTwo);
+
+        NavigationService.gotoReport();
     }
 
     public void handleLoadPokemonOneData(ActionEvent actionEvent) throws SQLException {

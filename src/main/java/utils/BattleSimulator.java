@@ -18,7 +18,6 @@ public class BattleSimulator {
     private static final double IMMUNITY_MULTIPLIER = 0.390625;
     private static final double RESISTANCE_MULTIPLIER = 0.625;
     private static final double WEAKNESS_MULTIPLIER = 1.6;
-    private BattleSimulatorReport battleSimulatorReport = new BattleSimulatorReport();
 
     public BattleSimulator() {
     }
@@ -29,7 +28,9 @@ public class BattleSimulator {
      * @param opponentOne selected pokemon one
      * @param opponentTwo selected pokemon two
      */
-    public void simulatorAlgorithm(SelectedPokemon opponentOne, SelectedPokemon opponentTwo) {
+    public int simulatorAlgorithm(SelectedPokemon opponentOne, SelectedPokemon opponentTwo) {
+        BattleSimulatorReport battleSimulatorReport = BattleSimulatorReport.getInstance();
+
         int currentTurnCounter = 1;
 
         double opponentOneStamina = SelectedPokemonService.getStaminaStat(opponentOne);
@@ -79,7 +80,9 @@ public class BattleSimulator {
                 //break if opponent one has won
                 if (!(opponentTwoStamina > 0)) {
                     battleSimulatorReport.addPokemonWinner(currentTurnCounter, 1);
-                    battleSimulatorReport.printOutput();
+                    battleSimulatorReport.setOutput();
+
+                    return 0;
                 }
 
                 if (currentTurnCounter == opponentTwoTurnCounter) {
@@ -103,7 +106,9 @@ public class BattleSimulator {
                 //break if opponent two has won
                 if (!(opponentOneStamina > 0)) {
                     battleSimulatorReport.addPokemonWinner(currentTurnCounter, 2);
-                    battleSimulatorReport.printOutput();
+                    battleSimulatorReport.setOutput();
+
+                    return 0;
                 }
 
                 currentTurnCounter++;
@@ -120,6 +125,7 @@ public class BattleSimulator {
                 }
             }
         }
+        return 0;
     }
 
     private double calculateFastMoveDamage(SelectedPokemon attackerPokemon, SelectedPokemon defenderPokemon) {
