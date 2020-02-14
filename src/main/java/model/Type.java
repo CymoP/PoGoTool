@@ -3,6 +3,9 @@ package model;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Type POJO for details regarding pokemon types
+ */
 public class Type {
 
     private String typeName;

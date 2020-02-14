@@ -71,7 +71,12 @@ public class NavigationService {
         }
     }
 
-    public static void gotoReport() throws IOException {
+    /**
+     * Opens the report window when using the battle simulator
+     *
+     * @throws IOException
+     */
+    public static void gotoBattleReport() throws IOException {
         Parent root = FXMLLoader.load(ApplicationLoader.class.getResource(BATTLE_SIMULATOR_REPORT_FXML_FILE_LOCATION));
         Scene scene = new Scene(root);
 

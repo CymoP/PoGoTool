@@ -5,6 +5,9 @@ import utils.BiHashMap;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TypeBuilder is a class dedicated to defining type logic
+ */
 public class TypeBuilder {
 
     private static final String RESISTANCE = "resistance";

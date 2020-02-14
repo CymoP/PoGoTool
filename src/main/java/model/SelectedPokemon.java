@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Selected Pokemon POJO for details regarding pokemon selected in the battle simulator
+ */
 public class SelectedPokemon {
 
     private Pokemon basePokemon;

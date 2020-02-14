@@ -9,7 +9,9 @@ import services.UserService;
 
 import java.sql.SQLException;
 
-
+/**
+ * LoginController is the class for controlling user interactions on the login window to the model
+ */
 public class LoginController {
 
     @FXML

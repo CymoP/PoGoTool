@@ -1,7 +1,7 @@
 package model;
 
 /**
- * POJO encapsulating data about a move
+ * POJO encapsulating data about a charged move
  */
 public class ChargedMove {
 

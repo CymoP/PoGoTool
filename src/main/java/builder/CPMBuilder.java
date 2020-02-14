@@ -3,6 +3,9 @@ package builder;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * CPMBuilder is a class dedicated to defining CPM logic
+ */
 public class CPMBuilder {
 
     private static final double LEVEL_ONE = 1.0;

@@ -1,7 +1,7 @@
 package model;
 
 /**
- * POJO encapsulating data about a move
+ * POJO encapsulating data about a fast move
  */
 public class FastMove {
 

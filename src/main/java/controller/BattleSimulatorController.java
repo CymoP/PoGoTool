@@ -25,8 +25,10 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * BattleSimulatorController is the class for controlling user interactions on the battle simulator window to the model
+ */
 public class BattleSimulatorController implements Initializable {
-
 
     @FXML
     public TextField ivStaminaPokemonOne;
@@ -98,7 +100,7 @@ public class BattleSimulatorController implements Initializable {
 
         battleSimulator.simulatorAlgorithm(opponentOne, opponentTwo);
 
-        NavigationService.gotoReport();
+        NavigationService.gotoBattleReport();
     }
 
     public void handleLoadPokemonOneData(ActionEvent actionEvent) throws SQLException {
