@@ -109,12 +109,13 @@ public class BattleSimulatorController implements Initializable {
     public void handleLoadPokemonOneData() {
         loadPokemonMoveSetData(pokemonOnePokemonListComboBox, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
         loadPokemonImage(pokemonOnePokemonListComboBox, pokemonOneImageView);
-
+        setPokemonComboBoxColourByType(pokemonOnePokemonListComboBox);
     }
 
     public void handleLoadPokemonTwoData() {
         loadPokemonMoveSetData(pokemonTwoPokemonListComboBox, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
         loadPokemonImage(pokemonTwoPokemonListComboBox, pokemonTwoImageView);
+        setPokemonComboBoxColourByType(pokemonTwoPokemonListComboBox);
     }
 
     public void handlePokemonOneFastMoveComboBoxColor() {
@@ -122,7 +123,7 @@ public class BattleSimulatorController implements Initializable {
     }
 
     public void handlePokemonOneChargedMoveComboBoxColor() {
-        setChargedMoveComboBoxByType(pokemonOneChargedMoveListComboBox);
+        setChargedMoveComboBoxColourByType(pokemonOneChargedMoveListComboBox);
     }
 
     public void handlePokemonTwoFastMoveComboBoxColor() {
@@ -130,7 +131,7 @@ public class BattleSimulatorController implements Initializable {
     }
 
     public void handlePokemonTwoChargedMoveComboBoxColor() {
-        setChargedMoveComboBoxByType(pokemonTwoChargedMoveListComboBox);
+        setChargedMoveComboBoxColourByType(pokemonTwoChargedMoveListComboBox);
     }
 
     public void levelPokemonOneFieldListener() {
@@ -174,9 +175,9 @@ public class BattleSimulatorController implements Initializable {
         pokemonImageView.setImage(image);
     }
 
-    private SelectedPokemon buildSelectedPokemon(ComboBox<String> pokemonNameListComboBox, TextField levelPokemonTextField, TextField ivAttackTextField, TextField ivDefenseTextField, TextField ivStaminaTextField, ComboBox pokemonFastMoveListComboBox, ComboBox pokemonChargedMoveListComboBox) {
-        String pokemonName = pokemonNameListComboBox.getSelectionModel().getSelectedItem();
-        Pokemon selectedPokemon = pokemonService.getPokemonByName(pokemonName);
+    private SelectedPokemon buildSelectedPokemon(ComboBox pokemonNameListComboBox, TextField levelPokemonTextField, TextField ivAttackTextField, TextField ivDefenseTextField, TextField ivStaminaTextField, ComboBox pokemonFastMoveListComboBox, ComboBox pokemonChargedMoveListComboBox) {
+        Pokemon pokemon = (Pokemon) pokemonNameListComboBox.getSelectionModel().getSelectedItem();
+        Pokemon selectedPokemon = pokemonService.getPokemonByName(pokemon.getPokemonName());
         Double selectPokemonLevel = Double.parseDouble(levelPokemonTextField.getText());
         int selectedPokemonIVAttack = Integer.parseInt(ivAttackTextField.getText());
         int selectedPokemonIVDefense = Integer.parseInt(ivDefenseTextField.getText());
@@ -260,7 +261,7 @@ public class BattleSimulatorController implements Initializable {
         fastMoveComboBox.setStyle(style);
     }
 
-    private void setChargedMoveComboBoxByType(ComboBox chargedMoveComboBox) {
+    private void setChargedMoveComboBoxColourByType(ComboBox chargedMoveComboBox) {
         ChargedMove chargedMove = (ChargedMove) chargedMoveComboBox.getSelectionModel().getSelectedItem();
         String colour;
 
@@ -275,4 +276,18 @@ public class BattleSimulatorController implements Initializable {
         chargedMoveComboBox.setStyle(style);
     }
 
+    private void setPokemonComboBoxColourByType(ComboBox pokemonComboBox) {
+        Pokemon pokemon = (Pokemon) pokemonComboBox.getSelectionModel().getSelectedItem();
+        String colour;
+
+        if (pokemon != null) {
+            colour = colourChooser.chooseColour(pokemon.getPokemonType().getTypeName());
+        } else {
+            colour = "e1e1e1";
+        }
+
+        String style = "-fx-background-color: " + colour;
+
+        pokemonComboBox.setStyle(style);
+    }
 }
