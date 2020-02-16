@@ -17,7 +17,7 @@
             <ImageView fx:id="pokemonOneImageView" />
         </HBox>
 
-        <ComboBox fx:id="pokemonOneNameListComboBox" promptText="Select" prefWidth="200"
+        <ComboBox fx:id="pokemonOnePokemonListComboBox" promptText="Select" prefWidth="200"
                   onAction="#handleLoadPokemonOneData">
             <items>
                 <FXCollections fx:factory="observableArrayList"/>
@@ -74,7 +74,7 @@
             <ImageView fx:id="pokemonTwoImageView" />
         </HBox>
 
-        <ComboBox fx:id="pokemonTwoNameListComboBox" GridPane.columnIndex="2" GridPane.rowIndex="1" promptText="Select"
+        <ComboBox fx:id="pokemonTwoPokemonListComboBox" GridPane.columnIndex="2" GridPane.rowIndex="1" promptText="Select"
                   prefWidth="200" onAction="#handleLoadPokemonTwoData">
             <items>
                 <FXCollections fx:factory="observableArrayList"/>
