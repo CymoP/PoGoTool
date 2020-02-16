@@ -11,96 +11,113 @@
           fx:controller="controller.BattleSimulatorController"
           alignment="TOP_CENTER">
 
-    <HBox GridPane.columnIndex="0" GridPane.rowIndex="0" prefHeight="200" prefWidth="200">
-        <ImageView fx:id="pokemonOneImageView" />
-    </HBox>
 
-    <HBox GridPane.columnIndex="2" GridPane.rowIndex="0" prefHeight="200" prefWidth="200">
-        <ImageView fx:id="pokemonTwoImageView" />
-    </HBox>
-
-    <ComboBox fx:id="pokemonOneNameListComboBox" GridPane.columnIndex="0" GridPane.rowIndex="1" promptText="Select" prefWidth="200" onAction="#handleLoadPokemonOneData">
-        <items>
-            <FXCollections fx:factory="observableArrayList" />
-        </items>
-    </ComboBox>
-
-    <ComboBox fx:id="pokemonTwoNameListComboBox" GridPane.columnIndex="2" GridPane.rowIndex="1" promptText="Select" prefWidth="200" onAction="#handleLoadPokemonTwoData">
-        <items>
-            <FXCollections fx:factory="observableArrayList" />
-        </items>
-    </ComboBox>
-
-    <Text GridPane.columnIndex="0" GridPane.rowIndex="2" text="Pokemon One Level and IVs" />
-
-    <Text GridPane.columnIndex="2" GridPane.rowIndex="2" text="Pokemon Two Level and IVs" />
-
-    <VBox GridPane.columnIndex="0" GridPane.rowIndex="3">
-        <HBox>
-            <TextField fx:id="levelPokemonOne" style="-fx-border-color: black" text="40" prefWidth="50" onKeyPressed="#levelPokemonOneFieldListener" alignment="CENTER">
-
-            </TextField>
-            <TextField fx:id="ivAttackPokemonOne" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivAttackPokemonOneListener" alignment="CENTER">
-
-            </TextField>
-            <TextField fx:id="ivDefensePokemonOne" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivDefensePokemonOneListener" alignment="CENTER">
-
-            </TextField>
-            <TextField fx:id="ivStaminaPokemonOne" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivStaminaPokemonOneListener" alignment="CENTER">
-
-            </TextField>
+    <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" prefWidth="200">
+        <HBox prefHeight="200" prefWidth="200">
+            <ImageView fx:id="pokemonOneImageView" />
         </HBox>
+
+        <ComboBox fx:id="pokemonOneNameListComboBox" promptText="Select" prefWidth="200"
+                  onAction="#handleLoadPokemonOneData">
+            <items>
+                <FXCollections fx:factory="observableArrayList"/>
+            </items>
+        </ComboBox>
+
+        <Text text="Pokemon One Level and IVs"/>
+
+        <VBox>
+            <HBox>
+                <TextField fx:id="levelPokemonOne" style="-fx-border-color: black" text="40" prefWidth="50"
+                           onKeyPressed="#levelPokemonOneFieldListener" alignment="CENTER">
+
+                </TextField>
+                <TextField fx:id="ivAttackPokemonOne" style="-fx-border-color: black" text="15" prefWidth="50"
+                           onKeyPressed="#ivAttackPokemonOneListener" alignment="CENTER">
+
+                </TextField>
+                <TextField fx:id="ivDefensePokemonOne" style="-fx-border-color: black" text="15" prefWidth="50"
+                           onKeyPressed="#ivDefensePokemonOneListener" alignment="CENTER">
+
+                </TextField>
+                <TextField fx:id="ivStaminaPokemonOne" style="-fx-border-color: black" text="15" prefWidth="50"
+                           onKeyPressed="#ivStaminaPokemonOneListener" alignment="CENTER">
+
+                </TextField>
+            </HBox>
+        </VBox>
+
+        <Text text="Pokemon One Fast Move Selection..."/>
+
+        <ComboBox fx:id="pokemonOneFastMoveListComboBox" promptText="Select" prefWidth="200">
+            <items>
+                <FXCollections fx:factory="observableArrayList"/>
+            </items>
+        </ComboBox>
+
+        <Text text="Pokemon One Charge Move Selection..."/>
+
+        <ComboBox fx:id="pokemonOneChargedMoveListComboBox" promptText="Select" prefWidth="200">
+            <items>
+                <FXCollections fx:factory="observableArrayList"/>
+            </items>
+        </ComboBox>
     </VBox>
 
-    <VBox GridPane.columnIndex="2" GridPane.rowIndex="3">
-        <HBox>
-            <TextField fx:id="levelPokemonTwo" style="-fx-border-color: black" text="40" prefWidth="50" onKeyPressed="#levelPokemonTwoFieldListener" alignment="CENTER">
-
-            </TextField>
-            <TextField fx:id="ivAttackPokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivAttackPokemonTwoListener" alignment="CENTER">
-
-            </TextField>
-            <TextField fx:id="ivDefensePokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivDefensePokemonTwoListener" alignment="CENTER">
-
-            </TextField>
-            <TextField fx:id="ivStaminaPokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50" onKeyPressed="#ivStaminaPokemonTwoListener" alignment="CENTER">
-
-            </TextField>
-        </HBox>
+    <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="BOTTOM_CENTER">
+        <Button fx:id="simulateButton" text="Simulate"
+                onAction="#handleSimulateButtonAction"/>
     </VBox>
 
-    <Text GridPane.columnIndex="0" GridPane.rowIndex="4" text="Pokemon One Fast Move Selection..." />
+    <VBox GridPane.columnIndex="2" GridPane.rowIndex="0" prefWidth="200">
+        <HBox prefHeight="200" prefWidth="200">
+            <ImageView fx:id="pokemonTwoImageView" />
+        </HBox>
 
-    <Text GridPane.columnIndex="2" GridPane.rowIndex="4" text="Pokemon Two Fast Move Selection..." />
+        <ComboBox fx:id="pokemonTwoNameListComboBox" GridPane.columnIndex="2" GridPane.rowIndex="1" promptText="Select"
+                  prefWidth="200" onAction="#handleLoadPokemonTwoData">
+            <items>
+                <FXCollections fx:factory="observableArrayList"/>
+            </items>
+        </ComboBox>
 
-    <ComboBox fx:id="pokemonOneFastMoveListComboBox" GridPane.columnIndex="0" GridPane.rowIndex="5" promptText="Select" prefWidth="200">
-        <items>
-            <FXCollections fx:factory="observableArrayList" />
-        </items>
-    </ComboBox>
+        <Text text="Pokemon Two Level and IVs"/>
 
-    <ComboBox fx:id="pokemonTwoFastMoveListComboBox" GridPane.columnIndex="2" GridPane.rowIndex="5" promptText="Select" prefWidth="200">
-        <items>
-            <FXCollections fx:factory="observableArrayList" />
-        </items>
-    </ComboBox>
+        <VBox>
+            <HBox>
+                <TextField fx:id="levelPokemonTwo" style="-fx-border-color: black" text="40" prefWidth="50"
+                           onKeyPressed="#levelPokemonTwoFieldListener" alignment="CENTER">
 
-    <Text GridPane.columnIndex="0" GridPane.rowIndex="6" text="Pokemon One Charge Move Selection..." />
+                </TextField>
+                <TextField fx:id="ivAttackPokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50"
+                           onKeyPressed="#ivAttackPokemonTwoListener" alignment="CENTER">
 
-    <Text GridPane.columnIndex="2" GridPane.rowIndex="6" text="Pokemon Two Charge Move Selection..." />
+                </TextField>
+                <TextField fx:id="ivDefensePokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50"
+                           onKeyPressed="#ivDefensePokemonTwoListener" alignment="CENTER">
 
-    <ComboBox fx:id="pokemonOneChargedMoveListComboBox" GridPane.columnIndex="0" GridPane.rowIndex="7" promptText="Select" prefWidth="200">
-        <items>
-            <FXCollections fx:factory="observableArrayList" />
-        </items>
-    </ComboBox>
+                </TextField>
+                <TextField fx:id="ivStaminaPokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50"
+                           onKeyPressed="#ivStaminaPokemonTwoListener" alignment="CENTER">
 
-    <ComboBox fx:id="pokemonTwoChargedMoveListComboBox" GridPane.columnIndex="2" GridPane.rowIndex="7" promptText="Select" prefWidth="200">
-        <items>
-            <FXCollections fx:factory="observableArrayList" />
-        </items>
-    </ComboBox>
+                </TextField>
+            </HBox>
+        </VBox>
 
-    <Button fx:id="simulateButton" GridPane.columnIndex="1" GridPane.rowIndex="8" text="Simulate" onAction="#handleSimulateButtonAction"/>
+        <Text text="Pokemon Two Fast Move Selection..."/>
 
+        <ComboBox fx:id="pokemonTwoFastMoveListComboBox" promptText="Select" prefWidth="200">
+            <items>
+                <FXCollections fx:factory="observableArrayList"/>
+            </items>
+        </ComboBox>
+
+        <Text text="Pokemon Two Charge Move Selection..."/>
+
+        <ComboBox fx:id="pokemonTwoChargedMoveListComboBox" promptText="Select" prefWidth="200">
+            <items>
+                <FXCollections fx:factory="observableArrayList"/>
+            </items>
+        </ComboBox>
+    </VBox>
 </GridPane>
