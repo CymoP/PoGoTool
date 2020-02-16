@@ -86,6 +86,8 @@ public class BattleSimulatorController implements Initializable {
     private MoveService moveService = new MoveService();
     private ColourChooser colourChooser = ColourChooser.getInstance();
 
+    private static final String POKEMON_IMAGES_FILE_PATH = "src/main/resources/images/";
+
     public BattleSimulatorController() throws SQLException {
     }
 
@@ -104,29 +106,30 @@ public class BattleSimulatorController implements Initializable {
         NavigationService.gotoBattleReport();
     }
 
-    public void handleLoadPokemonOneData() throws SQLException {
+    public void handleLoadPokemonOneData() {
         loadPokemonMoveSetData(pokemonOnePokemonListComboBox, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
         loadPokemonImage(pokemonOnePokemonListComboBox, pokemonOneImageView);
 
     }
 
-    public void handleLoadPokemonTwoData() throws SQLException {
+    public void handleLoadPokemonTwoData() {
         loadPokemonMoveSetData(pokemonTwoPokemonListComboBox, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
         loadPokemonImage(pokemonTwoPokemonListComboBox, pokemonTwoImageView);
     }
 
-    public void handlePokemonOneFastMoveComboBoxColor(){
+    public void handlePokemonOneFastMoveComboBoxColor() {
         setFastMoveComboBoxColourByType(pokemonOneFastMoveListComboBox);
     }
 
-    public void handlePokemonOneChargedMoveComboBoxColor(){
+    public void handlePokemonOneChargedMoveComboBoxColor() {
         setChargedMoveComboBoxByType(pokemonOneChargedMoveListComboBox);
     }
-    public void handlePokemonTwoFastMoveComboBoxColor(){
+
+    public void handlePokemonTwoFastMoveComboBoxColor() {
         setFastMoveComboBoxColourByType(pokemonTwoFastMoveListComboBox);
     }
 
-    public void handlePokemonTwoChargedMoveComboBoxColor(){
+    public void handlePokemonTwoChargedMoveComboBoxColor() {
         setChargedMoveComboBoxByType(pokemonTwoChargedMoveListComboBox);
     }
 
@@ -162,9 +165,11 @@ public class BattleSimulatorController implements Initializable {
         verifyIVTextFieldInput(ivStaminaPokemonTwo);
     }
 
-    private void loadPokemonImage(ComboBox<String> pokemonNameListComboBox2, ImageView pokemonImageView) {
-        String pokemonName = pokemonNameListComboBox2.getSelectionModel().getSelectedItem().toLowerCase();
-        File file = new File("src/main/resources/images/" + pokemonName + ".png");
+    private void loadPokemonImage(ComboBox pokemonListComboBox, ImageView pokemonImageView) {
+        Pokemon pokemon = (Pokemon) pokemonListComboBox.getSelectionModel().getSelectedItem();
+        String pokemonName = pokemon.getPokemonName().toLowerCase();
+
+        File file = new File(POKEMON_IMAGES_FILE_PATH + pokemonName + ".png");
         Image image = new Image(file.toURI().toString());
         pokemonImageView.setImage(image);
     }
@@ -185,7 +190,7 @@ public class BattleSimulatorController implements Initializable {
     }
 
     private void setPokemonNameData() {
-        ObservableList pokemonNameList = FXCollections.observableList(pokemonService.getAllPokemonNamesList());
+        ObservableList pokemonNameList = FXCollections.observableList(pokemonService.getPokemonList());
 
         pokemonOnePokemonListComboBox.getItems().clear();
         pokemonTwoPokemonListComboBox.getItems().clear();
@@ -229,12 +234,11 @@ public class BattleSimulatorController implements Initializable {
         });
     }
 
-    private void loadPokemonMoveSetData(ComboBox<String> pokemonListComboBox, ComboBox pokemonFastMoveListComboBox, ComboBox pokemonChargedMoveListComboBox) {
-        String pokemonName = pokemonListComboBox.getSelectionModel().getSelectedItem();
-        Pokemon selectedPokemon = pokemonService.getPokemonByName(pokemonName);
+    private void loadPokemonMoveSetData(ComboBox pokemonListComboBox, ComboBox pokemonFastMoveListComboBox, ComboBox pokemonChargedMoveListComboBox) {
+        Pokemon pokemon = (Pokemon) pokemonListComboBox.getSelectionModel().getSelectedItem();
 
-        ObservableList pokemonFastMoveNameList = FXCollections.observableList(selectedPokemon.getFastMoveList());
-        ObservableList pokemonChargedMoveNameList = FXCollections.observableList(selectedPokemon.getChargedMoveList());
+        ObservableList pokemonFastMoveNameList = FXCollections.observableList(pokemon.getFastMoveList());
+        ObservableList pokemonChargedMoveNameList = FXCollections.observableList(pokemon.getChargedMoveList());
 
         pokemonFastMoveListComboBox.getItems().clear();
         pokemonChargedMoveListComboBox.getItems().clear();
@@ -246,10 +250,9 @@ public class BattleSimulatorController implements Initializable {
         FastMove fastMove = (FastMove) fastMoveComboBox.getSelectionModel().getSelectedItem();
         String colour;
 
-        if(fastMove != null){
+        if (fastMove != null) {
             colour = colourChooser.chooseColour(fastMove.getType().getTypeName());
-        }
-        else {
+        } else {
             colour = "e1e1e1";
         }
         String style = "-fx-background-color: " + colour;
@@ -261,10 +264,9 @@ public class BattleSimulatorController implements Initializable {
         ChargedMove chargedMove = (ChargedMove) chargedMoveComboBox.getSelectionModel().getSelectedItem();
         String colour;
 
-        if(chargedMove != null){
+        if (chargedMove != null) {
             colour = colourChooser.chooseColour(chargedMove.getType().getTypeName());
-        }
-        else {
+        } else {
             colour = "e1e1e1";
         }
 

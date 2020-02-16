@@ -103,4 +103,9 @@ public class Pokemon {
     public void setChargedMoveList(List<ChargedMove> chargedMoveList) {
         this.chargedMoveList = chargedMoveList;
     }
+
+    @Override
+    public String toString(){
+        return this.getPokemonName();
+    }
 }

@@ -1,8 +1,6 @@
 package services;
 
 import data_access.PokemonDA;
-import model.ChargedMove;
-import model.FastMove;
 import model.Pokemon;
 
 import java.sql.SQLException;
@@ -37,21 +35,6 @@ public class PokemonService {
         }
 
         return new Pokemon();
-    }
-
-    /**
-     * Returns the list of all the name of all the pokemon in the database
-     *
-     * @return pokemon name list
-     */
-    public List<String> getAllPokemonNamesList() {
-        List<String> pokemonNameList = new ArrayList<>();
-
-        for (Pokemon pokemon : pokemonList) {
-            pokemonNameList.add(pokemon.getPokemonName());
-        }
-
-        return pokemonNameList;
     }
 
     public List<Pokemon> getPokemonList() {
