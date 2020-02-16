@@ -11,9 +11,9 @@ import java.util.HashMap;
 public class BattleSimulatorReport {
 
     private static BattleSimulatorReport instance;
-    private HashMap<Integer, String> battleSimulatorReport = new HashMap<>();
+    private static HashMap<Integer, String> battleSimulatorReport = new HashMap<>();
     private String output;
-    private int logCounter;
+    private static int logCounter;
 
     private BattleSimulatorReport() {
 
@@ -29,6 +29,9 @@ public class BattleSimulatorReport {
             instance = new BattleSimulatorReport();
         }
 
+        battleSimulatorReport.clear();
+        logCounter = 0;
+
         return instance;
     }
 
@@ -36,71 +39,73 @@ public class BattleSimulatorReport {
     /**
      * Adds initial pokemon details to the report log
      *
-     * @param currentTurnCounter Current turn context within the battle simulation
-     * @param opponentOne        Selected pokemon one
-     * @param opponentTwo        Selected pokemon two
+     * @param opponentOne Selected pokemon one
+     * @param opponentTwo Selected pokemon two
      */
-    public void addPokemonDetailsToLog(int currentTurnCounter, SelectedPokemon opponentOne, SelectedPokemon opponentTwo) {
-        battleSimulatorReport.clear();
-        logCounter = 0;
+    public void addPokemonDetailsToLog(SelectedPokemon opponentOne, SelectedPokemon opponentTwo) {
+        battleSimulatorReport.put(logCounter, "Pokemon One Details");
+        buildPokemonDetails(opponentOne);
 
-        battleSimulatorReport.put(logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Name - " + opponentOne.getBasePokemon().getPokemonName());
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Attack Stat - " + SelectedPokemonService.getAttackStat(opponentOne));
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Defense Stat - " + SelectedPokemonService.getDefenseStat(opponentOne));
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Stamina Stat - " + SelectedPokemonService.getStaminaStat(opponentOne));
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Fast Move - " + opponentOne.getSelectedFastMove().getMoveName());
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentOne - " + "Pokemon Charge Move - " + opponentOne.getSelectedChargedMove().getMoveName());
-
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Name - " + opponentTwo.getBasePokemon().getPokemonName());
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Attack Stat - " + SelectedPokemonService.getAttackStat(opponentTwo));
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Defense Stat - " + SelectedPokemonService.getDefenseStat(opponentTwo));
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Stamina Stat - " + SelectedPokemonService.getStaminaStat(opponentTwo));
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Fast Move - " + opponentTwo.getSelectedFastMove().getMoveName());
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponentTwo - " + "Pokemon Charge Move - " + opponentTwo.getSelectedChargedMove().getMoveName());
+        battleSimulatorReport.put(++logCounter, "Pokemon Two Details");
+        buildPokemonDetails(opponentTwo);
     }
 
     /**
      * Adds using charge move details to the log
      *
      * @param currentTurnCounter Current turn context within the battle simulation
-     * @param opponentNumber     Which pokemon is being logged
-     * @param selectedPokemon    Selected pokemon
+     * @param attackingPokemon   Attacking pokemon
+     * @param defendingPokemon   Defending pokemon
+     * @param currentHealth      Current health of defending pokemon
      */
-    public void addPokemonUsedChargedMove(int currentTurnCounter, int opponentNumber, SelectedPokemon selectedPokemon) {
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponent " + opponentNumber + " - " + selectedPokemon.getBasePokemon().getPokemonName() + " used " + selectedPokemon.getSelectedChargedMove().getMoveName());
+    public void addPokemonUsedChargedMove(int currentTurnCounter, SelectedPokemon attackingPokemon, SelectedPokemon defendingPokemon, double currentHealth) {
+        String output = "Turn context = " + currentTurnCounter + " | " +
+                attackingPokemon.getBasePokemon().getPokemonName() + " used " + attackingPokemon.getSelectedChargedMove().getMoveName() + " | " +
+                defendingPokemon.getBasePokemon().getPokemonName() + " current health " + currentHealth;
+
+        battleSimulatorReport.put(++logCounter, output);
     }
 
     /**
      * Adds using fast move details to the log
      *
      * @param currentTurnCounter Current turn context within the battle simulation
-     * @param opponentNumber     Which pokemon is being logged
-     * @param selectedPokemon    Selected pokemon
+     * @param attackingPokemon   Attacking pokemon
+     * @param defendingPokemon   Defending pokemon
+     * @param currentHealth      Current health of defending pokemon
      */
-    public void addPokemonUserFastMove(int currentTurnCounter, int opponentNumber, SelectedPokemon selectedPokemon) {
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponent " + opponentNumber + " - " + selectedPokemon.getBasePokemon().getPokemonName() + " used " + selectedPokemon.getSelectedFastMove().getMoveName());
+    public void addPokemonUsedFastMove(int currentTurnCounter, SelectedPokemon attackingPokemon, SelectedPokemon defendingPokemon, double currentHealth) {
+        String output = "Turn context = " + currentTurnCounter + " | " +
+                attackingPokemon.getBasePokemon().getPokemonName() + " used " + attackingPokemon.getSelectedFastMove().getMoveName() + " | " +
+                defendingPokemon.getBasePokemon().getPokemonName() + " current health " + currentHealth;
+
+        battleSimulatorReport.put(++logCounter, output);
     }
 
     /**
      * Adds fast move intermission wait times to the log
      *
      * @param currentTurnCounter Current turn context within the battle simulation
-     * @param opponentNumber     Which pokemon is being logged
      * @param selectedPokemon    Selected pokemon
      */
-    public void addPokemonWaitingForFastMoveIntermission(int currentTurnCounter, int opponentNumber, SelectedPokemon selectedPokemon) {
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponent " + opponentNumber + " - " + selectedPokemon.getBasePokemon().getPokemonName() + " is waiting for fast move intermission to end");
+    public void addPokemonWaitingForFastMoveIntermission(int currentTurnCounter, SelectedPokemon selectedPokemon) {
+        String output = "Turn context = " + currentTurnCounter + " | " +
+                selectedPokemon.getBasePokemon().getPokemonName() + " is waiting for fast move intermission to end";
+
+        battleSimulatorReport.put(++logCounter, output);
     }
 
     /**
      * Adds charge move intermission wait times to the log
      *
-     * @param currentTurnCounter Current turn context within the battle simulation
-     * @param opponentNumber     Which pokemon is being logged
+     * @param currentTurnCounter Current turn context within the battle simulatio
      * @param selectedPokemon    Selected pokemon
      */
-    public void addPokemonWaitingForChargedMoveIntermission(int currentTurnCounter, int opponentNumber, SelectedPokemon selectedPokemon) {
-        battleSimulatorReport.put(++logCounter, "Turn context = " + currentTurnCounter + "| opponent " + opponentNumber + " - " + selectedPokemon.getBasePokemon().getPokemonName() + " is waiting for charged move intermission to end");
+    public void addPokemonWaitingForChargedMoveIntermission(int currentTurnCounter, SelectedPokemon selectedPokemon) {
+        String output = "Turn context = " + currentTurnCounter + " | " +
+                selectedPokemon.getBasePokemon().getPokemonName() + " is waiting for charged move intermission to end";
+
+        battleSimulatorReport.put(++logCounter, output);
     }
 
     /**
@@ -110,7 +115,10 @@ public class BattleSimulatorReport {
      * @param opponentNumber     Which pokemon is being logged
      */
     public void addPokemonWinner(int currentTurnCounter, int opponentNumber) {
-        battleSimulatorReport.put(++logCounter, "Winner - Opponent " + opponentNumber + " has won on turn " + currentTurnCounter);
+        String output = "Winner - Opponent " + opponentNumber +
+                " has won on turn " + currentTurnCounter;
+
+        battleSimulatorReport.put(++logCounter, output);
     }
 
     public String getOutput() {
@@ -131,5 +139,14 @@ public class BattleSimulatorReport {
         }
 
         this.output = output.toString();
+    }
+
+    private void buildPokemonDetails(SelectedPokemon selectedPokemon) {
+        battleSimulatorReport.put(++logCounter, "Pokemon Name - " + selectedPokemon.getBasePokemon().getPokemonName());
+        battleSimulatorReport.put(++logCounter, "Pokemon Attack Stat - " + SelectedPokemonService.getAttackStat(selectedPokemon));
+        battleSimulatorReport.put(++logCounter, "Pokemon Defense Stat - " + SelectedPokemonService.getDefenseStat(selectedPokemon));
+        battleSimulatorReport.put(++logCounter, "Pokemon Stamina Stat - " + SelectedPokemonService.getStaminaStat(selectedPokemon));
+        battleSimulatorReport.put(++logCounter, "Pokemon Fast Move - " + selectedPokemon.getSelectedFastMove().getMoveName());
+        battleSimulatorReport.put(++logCounter, "Pokemon Charge Move - " + selectedPokemon.getSelectedChargedMove().getMoveName());
     }
 }
