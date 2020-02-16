@@ -49,7 +49,7 @@
 
         <Text text="Fast Move Selection"/>
 
-        <ComboBox fx:id="pokemonOneFastMoveListComboBox" promptText="Select" prefWidth="200">
+        <ComboBox fx:id="pokemonOneFastMoveListComboBox" promptText="Select" prefWidth="200" onAction="#handlePokemonOneFastMoveComboBoxColor">
             <items>
                 <FXCollections fx:factory="observableArrayList"/>
             </items>
@@ -57,7 +57,7 @@
 
         <Text text="Charge Move Selection"/>
 
-        <ComboBox fx:id="pokemonOneChargedMoveListComboBox" promptText="Select" prefWidth="200">
+        <ComboBox fx:id="pokemonOneChargedMoveListComboBox" promptText="Select" prefWidth="200" onAction="#handlePokemonOneChargedMoveComboBoxColor">
             <items>
                 <FXCollections fx:factory="observableArrayList"/>
             </items>
@@ -106,7 +106,7 @@
 
         <Text text="Fast Move Selection"/>
 
-        <ComboBox fx:id="pokemonTwoFastMoveListComboBox" promptText="Select" prefWidth="200">
+        <ComboBox fx:id="pokemonTwoFastMoveListComboBox" promptText="Select" prefWidth="200" onAction="#handlePokemonTwoFastMoveComboBoxColor">
             <items>
                 <FXCollections fx:factory="observableArrayList"/>
             </items>
@@ -114,7 +114,7 @@
 
         <Text text="Charge Move Selection"/>
 
-        <ComboBox fx:id="pokemonTwoChargedMoveListComboBox" promptText="Select" prefWidth="200">
+        <ComboBox fx:id="pokemonTwoChargedMoveListComboBox" promptText="Select" prefWidth="200" onAction="#handlePokemonTwoChargedMoveComboBoxColor">
             <items>
                 <FXCollections fx:factory="observableArrayList"/>
             </items>

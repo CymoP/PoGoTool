@@ -54,38 +54,6 @@ public class PokemonService {
         return pokemonNameList;
     }
 
-    /**
-     * Returns the fast move list for a given pokemon
-     *
-     * @param pokemon given pokemon
-     * @return pokemon fast move list
-     */
-    public List<String> getPokemonFastMoveNameList(Pokemon pokemon) {
-        List<String> pokemonFastMoveNameList = new ArrayList<>();
-
-        for (FastMove fastMove : pokemon.getFastMoveList()) {
-            pokemonFastMoveNameList.add(fastMove.getMoveName());
-        }
-
-        return pokemonFastMoveNameList;
-    }
-
-    /**
-     * Returns the charged move list for a given pokemon
-     *
-     * @param pokemon given pokemon
-     * @return pokemon charged move list
-     */
-    public List<String> getPokemonChargedMoveNameList(Pokemon pokemon) {
-        List<String> pokemonChargedMoveNameList = new ArrayList<>();
-
-        for (ChargedMove chargedMove : pokemon.getChargedMoveList()) {
-            pokemonChargedMoveNameList.add(chargedMove.getMoveName());
-        }
-
-        return pokemonChargedMoveNameList;
-    }
-
     public List<Pokemon> getPokemonList() {
         return pokemonList;
     }

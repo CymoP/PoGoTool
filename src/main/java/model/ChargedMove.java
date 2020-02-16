@@ -5,14 +5,14 @@ package model;
  */
 public class ChargedMove {
 
-    private String MoveName;
+    private String moveName;
     private Type type;
     private Integer damagePvP;
     private Integer energyPvP;
 
     public ChargedMove(String moveName, Type type, Integer damagePvP, Integer energyPvP) {
         this.type = type;
-        MoveName = moveName;
+        this.moveName = moveName;
         this.damagePvP = damagePvP;
         this.energyPvP = energyPvP;
     }
@@ -26,11 +26,11 @@ public class ChargedMove {
     }
 
     public String getMoveName() {
-        return MoveName;
+        return moveName;
     }
 
     public void setMoveName(String moveName) {
-        MoveName = moveName;
+        this.moveName = moveName;
     }
 
     public Integer getDamagePvP() {
@@ -47,5 +47,10 @@ public class ChargedMove {
 
     public void setEnergyPvP(Integer energyPvP) {
         this.energyPvP = energyPvP;
+    }
+
+    @Override
+    public String toString(){
+        return this.moveName;
     }
 }

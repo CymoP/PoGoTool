@@ -18,6 +18,7 @@ import services.MoveService;
 import services.NavigationService;
 import services.PokemonService;
 import utils.BattleSimulator;
+import utils.ColourChooser;
 
 import java.io.File;
 import java.io.IOException;
@@ -84,6 +85,7 @@ public class BattleSimulatorController implements Initializable {
     private PokemonService pokemonService = new PokemonService();
     private BattleSimulator battleSimulator = new BattleSimulator();
     private MoveService moveService = new MoveService();
+    private ColourChooser colourChooser = ColourChooser.getInstance();
 
     public BattleSimulatorController() throws SQLException {
     }
@@ -106,11 +108,27 @@ public class BattleSimulatorController implements Initializable {
     public void handleLoadPokemonOneData(ActionEvent actionEvent) throws SQLException {
         loadData(pokemonOneNameListComboBox, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
         loadImage(pokemonOneNameListComboBox, pokemonOneImageView);
+
     }
 
     public void handleLoadPokemonTwoData(ActionEvent actionEvent) throws SQLException {
         loadData(pokemonTwoNameListComboBox, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
         loadImage(pokemonTwoNameListComboBox, pokemonTwoImageView);
+    }
+
+    public void handlePokemonOneFastMoveComboBoxColor(){
+        setFastMoveComboBoxColourByType(pokemonOneFastMoveListComboBox);
+    }
+
+    public void handlePokemonOneChargedMoveComboBoxColor(){
+        setChargedMoveComboBoxByType(pokemonOneChargedMoveListComboBox);
+    }
+    public void handlePokemonTwoFastMoveComboBoxColor(){
+        setFastMoveComboBoxColourByType(pokemonTwoFastMoveListComboBox);
+    }
+
+    public void handlePokemonTwoChargedMoveComboBoxColor(){
+        setChargedMoveComboBoxByType(pokemonTwoChargedMoveListComboBox);
     }
 
     public void levelPokemonOneFieldListener() {
@@ -216,12 +234,44 @@ public class BattleSimulatorController implements Initializable {
         String pokemonName = pokemonNameListComboBox1.getSelectionModel().getSelectedItem();
         Pokemon selectedPokemon = pokemonService.getPokemonByName(pokemonName);
 
-        ObservableList pokemonFastMoveNameList = FXCollections.observableList(pokemonService.getPokemonFastMoveNameList(selectedPokemon));
-        ObservableList pokemonChargedMoveNameList = FXCollections.observableList(pokemonService.getPokemonChargedMoveNameList(selectedPokemon));
+        ObservableList pokemonFastMoveNameList = FXCollections.observableList(selectedPokemon.getFastMoveList());
+        ObservableList pokemonChargedMoveNameList = FXCollections.observableList(selectedPokemon.getChargedMoveList());
 
         pokemonFastMoveListComboBox1.getItems().clear();
         pokemonChargedMoveListComboBox1.getItems().clear();
         pokemonFastMoveListComboBox1.getItems().addAll(pokemonFastMoveNameList);
         pokemonChargedMoveListComboBox1.getItems().addAll(pokemonChargedMoveNameList);
     }
+
+    private void setFastMoveComboBoxColourByType(ComboBox pokemonOneFastMoveListComboBox) {
+        FastMove fastMove = (FastMove) pokemonOneFastMoveListComboBox.getSelectionModel().getSelectedItem();
+        String colour;
+
+        if(fastMove != null){
+            colour = colourChooser.chooseColour(fastMove.getType().getTypeName());
+        }
+        else {
+            colour = "e1e1e1";
+        }
+        String style = "-fx-background-color: " + colour;
+
+        pokemonOneFastMoveListComboBox.setStyle(style);
+    }
+
+    private void setChargedMoveComboBoxByType(ComboBox pokemonOneChargedMoveListComboBox) {
+        ChargedMove chargedMove = (ChargedMove) pokemonOneChargedMoveListComboBox.getSelectionModel().getSelectedItem();
+        String colour;
+
+        if(chargedMove != null){
+            colour = colourChooser.chooseColour(chargedMove.getType().getTypeName());
+        }
+        else {
+            colour = "e1e1e1";
+        }
+
+        String style = "-fx-background-color: " + colour;
+
+        pokemonOneChargedMoveListComboBox.setStyle(style);
+    }
+
 }

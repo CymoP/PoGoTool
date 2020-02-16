@@ -5,7 +5,7 @@ package model;
  */
 public class FastMove {
 
-    private String MoveName;
+    private String moveName;
     private Type type;
     private Integer damagePvP;
     private Integer energyPvP;
@@ -14,7 +14,7 @@ public class FastMove {
 
     public FastMove(String moveName, Type type, Integer damagePvP, Integer energyPvP, Integer duration) {
         this.type = type;
-        MoveName = moveName;
+        this.moveName = moveName;
         this.damagePvP = damagePvP;
         this.energyPvP = energyPvP;
         this.duration = duration;
@@ -29,11 +29,11 @@ public class FastMove {
     }
 
     public String getMoveName() {
-        return MoveName;
+        return moveName;
     }
 
     public void setMoveName(String moveName) {
-        MoveName = moveName;
+        this.moveName = moveName;
     }
 
     public Integer getDamagePvP() {
@@ -58,5 +58,10 @@ public class FastMove {
 
     public void setDuration(Integer duration) {
         this.duration = duration;
+    }
+
+    @Override
+    public String toString(){
+        return this.moveName;
     }
 }
