@@ -90,7 +90,7 @@ public class BattleSimulator {
                         opponentOneStamina -= calculateChargeMoveDamage(opponentTwo, opponentOne);
                         opponentTwoEnergy -= opponentTwoChargedMoveEnergyCost;
                         opponentTwoTurnCounter += CHARGE_UP_DURATION;
-                        opponentOneTurnCounter += opponentTwoTurnCounter;
+                        opponentOneTurnCounter = opponentTwoTurnCounter;
                         chargeMoveIntermissionState = true;
                         battleSimulatorReport.addPokemonUsedChargedMove(currentTurnCounter, 2, opponentTwo);
                     } else {
