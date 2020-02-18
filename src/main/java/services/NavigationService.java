@@ -31,7 +31,7 @@ public class NavigationService {
      */
     public static void gotoDashboard() {
         try {
-            replaceSceneContent(DASHBOARD_FXML_FILE_LOCATION, 800, 600);
+            replaceSceneContent(DASHBOARD_FXML_FILE_LOCATION, 1200, 800);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
