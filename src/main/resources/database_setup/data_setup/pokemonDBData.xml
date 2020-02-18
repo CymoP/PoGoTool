@@ -1,0 +1,235 @@
+<data>
+    <pokemon>
+        INSERT INTO Pokemon (PokemonName, Generation, TypeName, DualTypeName, BaseAttack, BaseDefense, BaseStamina)
+        VALUES ('Charizard', 1, 'fire', 'Flying', 223, 173, 186);
+
+        INSERT INTO Pokemon (PokemonName, Generation, TypeName, DualTypeName, BaseAttack, BaseDefense, BaseStamina)
+        VALUES ('Venusaur', 1, 'grass', 'Poison', 198, 189, 190);
+
+        INSERT INTO Pokemon (PokemonName, Generation, TypeName, DualTypeName, BaseAttack, BaseDefense, BaseStamina)
+        VALUES ('Alakazam', 1, 'psychic', null, 271, 167, 146);
+
+        INSERT INTO Pokemon (PokemonName, Generation, TypeName, DualTypeName, BaseAttack, BaseDefense, BaseStamina)
+        VALUES ('Electivire', 4, 'electric', null, 249, 163, 181);
+
+        INSERT INTO Pokemon (PokemonName, Generation, TypeName, DualTypeName, BaseAttack, BaseDefense, BaseStamina)
+        VALUES ('Garbodor', 5, 'poison', null, 181, 164, 190);
+
+        INSERT INTO Pokemon (PokemonName, Generation, TypeName, DualTypeName, BaseAttack, BaseDefense, BaseStamina)
+        VALUES ('Dewgong', 1, 'water', 'ice', 139, 177, 207);
+
+        INSERT INTO Pokemon (PokemonName, Generation, TypeName, DualTypeName, BaseAttack, BaseDefense, BaseStamina)
+        VALUES ('Umbreon', 2, 'dark', null, 126, 240, 216);
+
+        INSERT INTO Pokemon (PokemonName, Generation, TypeName, DualTypeName, BaseAttack, BaseDefense, BaseStamina)
+        VALUES ('Vaporeon', 1, 'water', null, 205, 161, 277);
+
+    </pokemon>
+    <fastmove>
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Fire Spin', 'fire', 9, 10, 3);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Wing Attack', 'flying', 5, 7, 2);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Vine Whip', 'grass', 5, 8, 2);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Razor Leaf', 'grass', 11, 4, 2);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Psycho Cut', 'psychic', 3, 9, 2);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Confusion', 'psychic', 16, 12, 4);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Thunder Shock', 'electric', 3, 9, 2);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Low Kick', 'fighting', 4, 5, 2);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Acid', 'poison', 6, 5, 2);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Infestation', 'bug', 6, 11, 3);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Frost Breath', 'ice', 7, 5, 2);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Iron Tail', 'steel', 9, 6, 3);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Snarl', 'dark', 5, 13, 3);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Feint Attack', 'dark', 6, 6, 2);
+
+        INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
+        VALUES ('Water Gun', 'water', 3, 3, 1);
+
+    </fastmove>
+    <chargemove>
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Blast Burn', 'fire', 110, 50);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Overheat', 'fire',  130, 55);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Frenzy Plant', 'grass', 100, 50);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Sludge Bomb', 'poison', 80, 50);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Psychic', 'psychic', 90, 55);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Shadow Ball', 'ghost', 100, 55);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Wild Charge', 'electric', 90, 50);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Thunder Punch', 'electric', 55, 40);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Gunk Shot', 'poison', 130, 75);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Body Slam', 'normal', 60, 35);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Blizzard', 'ice', 130, 75);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Aurora Beam', 'ice', 80, 60);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Foul Play', 'dark', 70, 45);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Last Resort', 'normal', 90, 55);
+
+        INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
+        VALUES ('Aqua Tail', 'water', 50, 35);
+
+    </chargemove>
+    <pokemonfastmove>
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Charizard' AND Generation = 1 AND TypeName = 'fire'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Fire Spin'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Charizard' AND Generation = 1 AND TypeName = 'fire'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Wing Attack'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Venusaur' AND Generation = 1 AND TypeName = 'grass'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Vine Whip'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Venusaur' AND Generation = 1 AND TypeName = 'grass'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Razor Leaf'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Alakazam' AND Generation = 1 AND TypeName = 'psychic'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Psycho Cut'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Alakazam' AND Generation = 1 AND TypeName = 'psychic'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Confusion'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Electivire' AND Generation = 4 AND TypeName = 'electric'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Thunder Shock'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Electivire' AND Generation = 4 AND TypeName = 'electric'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Low Kick'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Garbodor' AND Generation = 5 AND TypeName = 'poison'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Acid'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Garbodor' AND Generation = 5 AND TypeName = 'poison'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Infestation'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Dewgong' AND Generation = 1 AND TypeName = 'water'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Frost Breath'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Dewgong' AND Generation = 1 AND TypeName = 'water'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Iron Tail'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Umbreon' AND Generation = 2 AND TypeName = 'dark'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Snarl'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Umbreon' AND Generation = 2 AND TypeName = 'dark'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Feint Attack'));
+
+        INSERT INTO PokemonFastMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Vaporeon' AND Generation = 1 AND TypeName = 'water'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Water Gun'));
+
+    </pokemonfastmove>
+    <pokemonchargemove>
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Charizard' AND Generation = 1 AND TypeName = 'fire'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Blast Burn'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Charizard' AND Generation = 1 AND TypeName = 'fire'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Overheat'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Venusaur' AND Generation = 1 AND TypeName = 'grass'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Frenzy Plant'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Venusaur' AND Generation = 1 AND TypeName = 'grass'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Sludge Bomb'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Alakazam' AND Generation = 1 AND TypeName = 'psychic'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Psychic'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Alakazam' AND Generation = 1 AND TypeName = 'psychic'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Shadow Ball'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Electivire' AND Generation = 4 AND TypeName = 'electric'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Wild Charge'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Electivire' AND Generation = 4 AND TypeName = 'electric'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Thunder Punch'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Garbodor' AND Generation = 5 AND TypeName = 'poison'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Gunk Shot'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Garbodor' AND Generation = 5 AND TypeName = 'poison'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Body Slam'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Dewgong' AND Generation = 1 AND TypeName = 'water'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Blizzard'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Dewgong' AND Generation = 1 AND TypeName = 'water'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Aurora Beam'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Umbreon' AND Generation = 2 AND TypeName = 'dark'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Foul Play'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Umbreon' AND Generation = 2 AND TypeName = 'dark'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Last Resort'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Vaporeon' AND Generation = 1 AND TypeName = 'water'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Aqua Tail'));
+
+        INSERT INTO PokemonChargedMove (PokemonID, MoveID)
+        VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Vaporeon' AND Generation = 1 AND TypeName = 'water'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Last Resort'));
+
+    </pokemonchargemove>
+    <role>
+        INSERT INTO Role (RoleName) value ('User');
+
+        INSERT INTO Role (RoleName) value ('Admin');
+
+    </role>
+    <user>
+        INSERT INTO USER (username, userpassword)
+        values ('test1', 'test2');
+
+    </user>
+    <userrole>
+        INSERT INTO UserRole (RoleID, UserID)
+        values ((SELECT RoleID FROM Role WHERE RoleName = 'user'), (SELECT UserID FROM User WHERE UserName = 'test1' AND UserPassword = 'test2'));
+
+    </userrole>
+</data>
