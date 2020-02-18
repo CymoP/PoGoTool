@@ -10,30 +10,41 @@
           prefWidth="600.0">
 
     <Text text="Welcome"
-          GridPane.columnIndex="0" GridPane.rowIndex="0"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="0"
           GridPane.columnSpan="2"/>
 
     <Label text="User Name:"
-           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="1"/>
 
     <TextField fx:id="usernameField"
-               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="1"
+               onKeyPressed="#handleLoginButtonKeyPressed"/>
 
     <Label text="Password:"
-           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="2"/>
 
     <PasswordField fx:id="passwordField"
-                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="2"
+                   onKeyPressed="#handleLoginButtonKeyPressed"/>
 
     <HBox spacing="10" alignment="bottom_right"
           GridPane.columnIndex="0" GridPane.rowIndex="4">
-        <Button text="Login"
-                onAction="#handleLoginButtonAction"/>
+        <Button fx:id="loginButton"
+                text="Login"
+                onAction="#handleLoginButtonAction"
+                onKeyPressed="#handleLoginButtonKeyPressed"/>
     </HBox>
 
     <HBox spacing="10" alignment="bottom_right"
           GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Button text="Sign Up"
-                onAction="#handleSignUpButtonAction"/>
+        <Button fx:id="signUpButton"
+                text="Sign Up"
+                onAction="#handleSignUpButtonAction"
+                onKeyPressed="#handleSignUpButtonKeyPressed"/>
     </HBox>
 </GridPane>

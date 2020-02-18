@@ -2,8 +2,11 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import services.NavigationService;
 import services.UserService;
 
@@ -19,6 +22,12 @@ public class LoginController {
 
     @FXML
     private TextField usernameField;
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    public Button signUpButton;
 
     private UserService userService = new UserService();
 
@@ -40,7 +49,24 @@ public class LoginController {
     }
 
     @FXML
+    protected void handleLoginButtonKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            loginButton.fire();
+            event.consume();
+        }
+    }
+
+    @FXML
     protected void handleSignUpButtonAction() {
         NavigationService.gotoSignUp();
     }
+
+    @FXML
+    protected void handleSignUpButtonKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            signUpButton.fire();
+            event.consume();
+        }
+    }
+
 }

@@ -10,29 +10,44 @@
           prefWidth="600.0">
 
     <Text text="Signup"
-          GridPane.columnIndex="0" GridPane.rowIndex="0"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="0"
           GridPane.columnSpan="2"/>
 
     <Label text="User Name:"
-           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="1"/>
 
     <TextField fx:id="usernameField"
-               GridPane.columnIndex="1" GridPane.rowIndex="1" onKeyPressed="#verifyUserNameInputListener"/>
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="1"
+               onKeyPressed="#verifyUserNameInputListener"/>
 
     <Label text="Password:"
-           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="2"/>
 
     <PasswordField fx:id="passwordField"
-                   GridPane.columnIndex="1" GridPane.rowIndex="2" onKeyPressed="#passwordFieldOneListener"/>
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="2"
+                   onKeyPressed="#passwordFieldOneListener"/>
 
     <Label text="Re-type Password:"
-           GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+           GridPane.columnIndex="0"
+           GridPane.rowIndex="3"/>
 
     <PasswordField fx:id="rePasswordField"
-                   GridPane.columnIndex="1" GridPane.rowIndex="3" onKeyPressed="#passwordFieldTwoListener"/>
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="3"
+                   onKeyPressed="#passwordFieldTwoListener"/>
 
-    <HBox spacing="10" alignment="bottom_right"
-          GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Button text="Submit" fx:id="submitButton" onAction="#handleSignUpSubmitButtonAction"/>
+    <HBox spacing="10"
+          alignment="bottom_right"
+          GridPane.columnIndex="1"
+          GridPane.rowIndex="4">
+        <Button text="Submit"
+                fx:id="submitButton"
+                onAction="#handleSignUpSubmitButtonAction"
+        onKeyPressed="#handleSubmitButtonKeyPressed"/>
     </HBox>
 </GridPane>

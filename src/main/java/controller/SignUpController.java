@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import services.NavigationService;
 import services.UserService;
 
@@ -66,6 +68,14 @@ public class SignUpController {
     @FXML
     public void passwordFieldTwoListener() {
         verifyPasswordsMatch(rePasswordField, passwordField);
+    }
+
+    @FXML
+    protected void handleSubmitButtonKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            submitButton.fire();
+            event.consume();
+        }
     }
 
     private void verifyPasswordsMatch(PasswordField givenPasswordFieldOne, PasswordField givenPasswordFieldTwo) {
