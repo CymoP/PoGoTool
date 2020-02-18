@@ -33,9 +33,10 @@ public class TypeBuilder {
     private static final String TYPE_NAME_FAIRY = "fairy";
     private static BiHashMap<String, String, List<String>> typeMap;
 
-    private TypeBuilder(){}
+    private TypeBuilder() {
+    }
 
-    public static BiHashMap<String, String, List<String>> buildTypeMap(){
+    public static BiHashMap<String, String, List<String>> buildTypeMap() {
         typeMap = new BiHashMap<>();
 
         addTypeData(TYPE_NAME_NORMAL, buildNormalTypeResistanceList(), buildNormalTypeImmunityList(), buildNormalTypeWeaknessList());

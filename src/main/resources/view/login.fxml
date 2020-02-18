@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.Button?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.LoginController"
@@ -22,7 +17,7 @@
            GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
     <TextField fx:id="usernameField"
-            GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
     <Label text="Password:"
            GridPane.columnIndex="0" GridPane.rowIndex="2"/>
@@ -41,7 +36,4 @@
         <Button text="Sign Up"
                 onAction="#handleSignUpButtonAction"/>
     </HBox>
-
-
-
 </GridPane>

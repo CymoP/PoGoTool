@@ -33,7 +33,7 @@ public class UserService {
      * @param username the given Username
      * @param password the given Password
      * @return the given user in object format
-     * @throws SQLException
+     * @throws SQLException SQLException thrown
      */
     public boolean isExistingUser(String username, String password) throws SQLException {
         loggedInUser = userDA.getUserByUsernameAndPassword(username, password);

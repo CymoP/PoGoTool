@@ -11,8 +11,8 @@ public interface IPokemonDA {
      * Returns a pokemon based off it's pokemon name, generation and type
      *
      * @param pokemonName given pokemon name
-     * @param generation given generation
-     * @param type given type
+     * @param generation  given generation
+     * @param type        given type
      * @return pokemon object for the given pokemon name, generation and type
      * @throws SQLException
      */

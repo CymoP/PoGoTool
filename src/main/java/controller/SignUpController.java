@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import services.NavigationService;
@@ -21,6 +22,9 @@ public class SignUpController {
 
     @FXML
     private TextField usernameField;
+
+    @FXML
+    private Button submitButton;
 
     private UserService userService = new UserService();
 

@@ -22,7 +22,8 @@ public class LoginController {
 
     private UserService userService = new UserService();
 
-    public LoginController() {}
+    public LoginController() {
+    }
 
     @FXML
     protected void handleLoginButtonAction() throws SQLException {
@@ -39,6 +40,7 @@ public class LoginController {
     }
 
     @FXML
-    protected void handleSignUpButtonAction() {NavigationService.gotoSignup();
+    protected void handleSignUpButtonAction() {
+        NavigationService.gotoSignUp();
     }
 }

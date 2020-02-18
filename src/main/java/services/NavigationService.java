@@ -17,11 +17,10 @@ import java.util.logging.Logger;
 public class NavigationService {
 
     private static final String LOGIN_FXML_FILE_LOCATION = "../view/login.fxml";
-    private static final String SIGNUP_FXML_FILE_LOCATION = "../view/signup.fxml";
+    private static final String SIGN_UP_FXML_FILE_LOCATION = "../view/signup.fxml";
     private static final String DASHBOARD_FXML_FILE_LOCATION = "../view/dashboard.fxml";
     private static final String BATTLE_SIMULATOR_FXML_FILE_LOCATION = "../view/battlesimulator.fxml";
     private static final String BATTLE_SIMULATOR_REPORT_FXML_FILE_LOCATION = "../view/battlesimulatorreport.fxml";
-
     private static Stage reportStage;
 
     private NavigationService() {
@@ -41,9 +40,9 @@ public class NavigationService {
     /**
      * Navigate the user to the signup scene
      */
-    public static void gotoSignup() {
+    public static void gotoSignUp() {
         try {
-            replaceSceneContent(SIGNUP_FXML_FILE_LOCATION, 400, 400);
+            replaceSceneContent(SIGN_UP_FXML_FILE_LOCATION, 400, 400);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -74,7 +73,7 @@ public class NavigationService {
     /**
      * Opens the report window when using the battle simulator
      *
-     * @throws IOException
+     * @throws IOException IOException thrown
      */
     public static void gotoBattleReport() throws IOException {
         Parent root = FXMLLoader.load(ApplicationLoader.class.getResource(BATTLE_SIMULATOR_REPORT_FXML_FILE_LOCATION));
@@ -88,13 +87,11 @@ public class NavigationService {
         reportStage.show();
     }
 
-    private static Parent replaceSceneContent(String fxml, int width, int height) throws Exception {
-        Parent page = (Parent) FXMLLoader.load(ApplicationLoader.class.getResource(fxml), null, new JavaFXBuilderFactory());
+    private static void replaceSceneContent(String fxml, int width, int height) throws Exception {
+        Parent page = FXMLLoader.load(ApplicationLoader.class.getResource(fxml), null, new JavaFXBuilderFactory());
         Scene scene = new Scene(page, width, height);
 
         ApplicationLoader.getStage().setScene(scene);
         ApplicationLoader.getStage().sizeToScene();
-
-        return page;
     }
 }

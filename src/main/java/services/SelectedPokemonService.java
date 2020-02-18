@@ -12,7 +12,8 @@ public class SelectedPokemonService {
 
     private static Map<Double, Double> cpmMap = CPMBuilder.buildCPMMap();
 
-    private SelectedPokemonService(){}
+    private SelectedPokemonService() {
+    }
 
     /**
      * Returns the attack stat for the selected pokemon by taking into account base stats and IVs
@@ -20,7 +21,7 @@ public class SelectedPokemonService {
      * @param selectedPokemon given selected pokemon
      * @return derived attack stat
      */
-    public static double getAttackStat(SelectedPokemon selectedPokemon){
+    public static double getAttackStat(SelectedPokemon selectedPokemon) {
         int baseAttack = selectedPokemon.getBasePokemon().getBaseAttack();
         int ivAttack = selectedPokemon.getIvAttack();
         Double cpm = cpmMap.get(selectedPokemon.getLevel());
@@ -34,7 +35,7 @@ public class SelectedPokemonService {
      * @param selectedPokemon given selected pokemon
      * @return derived defense stat
      */
-    public static double getDefenseStat(SelectedPokemon selectedPokemon){
+    public static double getDefenseStat(SelectedPokemon selectedPokemon) {
         int baseDefense = selectedPokemon.getBasePokemon().getBaseDefense();
         int ivDefense = selectedPokemon.getIvDefense();
         Double cpm = cpmMap.get(selectedPokemon.getLevel());
@@ -48,7 +49,7 @@ public class SelectedPokemonService {
      * @param selectedPokemon given selected pokemon
      * @return derived stamina stat
      */
-    public static double getStaminaStat(SelectedPokemon selectedPokemon){
+    public static double getStaminaStat(SelectedPokemon selectedPokemon) {
         int baseStamina = selectedPokemon.getBasePokemon().getBaseStamina();
         int ivStamina = selectedPokemon.getIvStamina();
         Double cpm = cpmMap.get(selectedPokemon.getLevel());

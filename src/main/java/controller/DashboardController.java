@@ -8,7 +8,8 @@ public class DashboardController {
     /**
      * DashboardController is the class for controlling user interactions on the dashboard window to the model
      */
-    public DashboardController(){}
+    public DashboardController() {
+    }
 
     @FXML
     protected void handleBattleSimulatorComponentButtonAction() {

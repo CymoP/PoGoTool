@@ -105,7 +105,7 @@ public class Pokemon {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.getPokemonName();
     }
 }

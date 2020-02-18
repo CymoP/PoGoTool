@@ -50,7 +50,7 @@ public class ChargedMove {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.moveName;
     }
 }

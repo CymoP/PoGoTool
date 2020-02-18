@@ -1,8 +1,8 @@
 package data_access;
 
 import loader.ApplicationLoader;
-import utils.DatabaseSingleton;
 import model.User;
+import utils.DatabaseSingleton;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,7 +44,7 @@ public class UserDA implements IUserDA {
         createNewUserPrepareStatement.setString(2, password);
         Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, createNewUserByUsernameAndPasswordSQL());
 
-        if (createNewUserPrepareStatement.execute()){
+        if (createNewUserPrepareStatement.execute()) {
             return addRoleToNewUser(username, password);
         }
 

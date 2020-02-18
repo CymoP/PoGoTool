@@ -87,6 +87,7 @@ public class BattleSimulatorController implements Initializable {
     private ColourChooser colourChooser = ColourChooser.getInstance();
 
     private static final String POKEMON_IMAGES_FILE_PATH = "src/main/resources/images/";
+    private static final String COLOUR_BLACK_HEXCODE = "e1e1e1";
 
     public BattleSimulatorController() throws SQLException {
     }
@@ -254,7 +255,7 @@ public class BattleSimulatorController implements Initializable {
         if (fastMove != null) {
             colour = colourChooser.chooseColour(fastMove.getType().getTypeName());
         } else {
-            colour = "e1e1e1";
+            colour = COLOUR_BLACK_HEXCODE;
         }
         String style = "-fx-background-color: " + colour;
 
@@ -263,15 +264,15 @@ public class BattleSimulatorController implements Initializable {
 
     private void setChargedMoveComboBoxColourByType(ComboBox chargedMoveComboBox) {
         ChargedMove chargedMove = (ChargedMove) chargedMoveComboBox.getSelectionModel().getSelectedItem();
-        String colour;
+        String colourHexcode;
 
         if (chargedMove != null) {
-            colour = colourChooser.chooseColour(chargedMove.getType().getTypeName());
+            colourHexcode = colourChooser.chooseColour(chargedMove.getType().getTypeName());
         } else {
-            colour = "e1e1e1";
+            colourHexcode = COLOUR_BLACK_HEXCODE;
         }
 
-        String style = "-fx-background-color: " + colour;
+        String style = "-fx-background-color: " + colourHexcode;
 
         chargedMoveComboBox.setStyle(style);
     }
@@ -283,7 +284,7 @@ public class BattleSimulatorController implements Initializable {
         if (pokemon != null) {
             colour = colourChooser.chooseColour(pokemon.getPokemonType().getTypeName());
         } else {
-            colour = "e1e1e1";
+            colour = COLOUR_BLACK_HEXCODE;
         }
 
         String style = "-fx-background-color: " + colour;

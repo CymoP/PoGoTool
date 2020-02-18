@@ -61,7 +61,7 @@ public class FastMove {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.moveName;
     }
 }

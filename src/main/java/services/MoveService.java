@@ -15,7 +15,7 @@ public class MoveService {
     /**
      * Returns the fast move object for the given move name for a given pokemon
      *
-     * @param pokemon given pokemon
+     * @param pokemon  given pokemon
      * @param moveName given fast move name
      * @return fast move object
      */
@@ -33,7 +33,7 @@ public class MoveService {
     /**
      * Returns the charged move object for the given move name for a given pokemon
      *
-     * @param pokemon given pokemon
+     * @param pokemon  given pokemon
      * @param moveName given charged move name
      * @return charged move object
      */

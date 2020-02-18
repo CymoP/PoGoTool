@@ -4,12 +4,10 @@ import data_access.PokemonDA;
 import model.Pokemon;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * PokemonService is a service class for all Pokemon business logic
- *
  */
 public class PokemonService {
 
@@ -37,6 +35,11 @@ public class PokemonService {
         return new Pokemon();
     }
 
+    /**
+     * Returns the list of pokemon retrieved from the database
+     *
+     * @return the Pokemon list
+     */
     public List<Pokemon> getPokemonList() {
         return pokemonList;
     }
