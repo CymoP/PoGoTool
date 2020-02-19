@@ -226,10 +226,16 @@
         INSERT INTO USER (username, userpassword)
         values ('test1', 'test2');
 
+        INSERT INTO USER (username, userpassword)
+        values ('admin', 'admin');
+
     </user>
     <userrole>
         INSERT INTO UserRole (RoleID, UserID)
         values ((SELECT RoleID FROM Role WHERE RoleName = 'user'), (SELECT UserID FROM User WHERE UserName = 'test1' AND UserPassword = 'test2'));
+
+        INSERT INTO UserRole (RoleID, UserID)
+        values ((SELECT RoleID FROM Role WHERE RoleName = 'admin'), (SELECT UserID FROM User WHERE UserName = 'admin' AND UserPassword = 'admin'));
 
     </userrole>
 </data>
