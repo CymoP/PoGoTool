@@ -2,10 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="controller.DashboardController">
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.DashboardController">
 
     <top>
         <fx:include source="menubar.fxml"/>
@@ -13,14 +12,23 @@
 
     <center>
         <GridPane>
-            <Text text="Dashboard Example"
-                  GridPane.columnIndex="0" GridPane.rowIndex="0"
-                  GridPane.columnSpan="2"/>
-
-            <HBox spacing="10" alignment="bottom_right"
-                  GridPane.columnIndex="0" GridPane.rowIndex="4">
+            <HBox spacing="10"
+                  GridPane.columnIndex="0"
+                  GridPane.rowIndex="0">
                 <Button text="Battle Simulator"
                         onAction="#handleBattleSimulatorComponentButtonAction"/>
+            </HBox>
+            <HBox spacing="10"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="0">
+                <Button text="User Maintenance"
+                        onAction="#handleUserMaintenanceComponentButtonAction"/>
+            </HBox>
+            <HBox spacing="10"
+                  GridPane.columnIndex="2"
+                  GridPane.rowIndex="0">
+                <Button text="Data Maintenance"
+                        onAction="#handleDataMaintenanceComponentButtonAction"/>
             </HBox>
         </GridPane>
     </center>

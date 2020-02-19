@@ -21,6 +21,8 @@ public class NavigationService {
     private static final String DASHBOARD_FXML_FILE_LOCATION = "../view/dashboard.fxml";
     private static final String BATTLE_SIMULATOR_FXML_FILE_LOCATION = "../view/battlesimulator.fxml";
     private static final String BATTLE_SIMULATOR_REPORT_FXML_FILE_LOCATION = "../view/battlesimulatorreport.fxml";
+    private static final String USER_MAINTENANCE_FXML_FILE_LOCATION = "../view/usermaintenance.fxml";
+    private static final String DATA_MAINTENANCE_FXML_FILE_LOCATION = "../view/datamaintenance.fxml";
     private static Stage reportStage;
 
     private NavigationService() {
@@ -54,6 +56,22 @@ public class NavigationService {
     public static void gotoLogin() {
         try {
             replaceSceneContent(LOGIN_FXML_FILE_LOCATION, 300, 300);
+        } catch (Exception ex) {
+            Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void gotoDataMaintenance() {
+        try {
+            replaceSceneContent(DATA_MAINTENANCE_FXML_FILE_LOCATION, 1200, 800);
+        } catch (Exception ex) {
+            Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void gotoUserMaintenance() {
+        try {
+            replaceSceneContent(USER_MAINTENANCE_FXML_FILE_LOCATION, 1200, 800);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }

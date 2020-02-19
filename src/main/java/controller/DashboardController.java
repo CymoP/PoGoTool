@@ -12,7 +12,17 @@ public class DashboardController {
     }
 
     @FXML
-    protected void handleBattleSimulatorComponentButtonAction() {
+    public void handleBattleSimulatorComponentButtonAction() {
         NavigationService.gotoBattleSimulator();
+    }
+
+    @FXML
+    public void handleUserMaintenanceComponentButtonAction() {
+        NavigationService.gotoUserMaintenance();
+    }
+
+    @FXML
+    public void handleDataMaintenanceComponentButtonAction() {
+        NavigationService.gotoDataMaintenance();
     }
 }
