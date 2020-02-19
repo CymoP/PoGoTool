@@ -9,7 +9,8 @@
             prefHeight="800.0" prefWidth="600.0">
 
     <TextArea fx:id="reportText" text="Default"
-              GridPane.columnIndex="0" GridPane.rowIndex="0"
+              GridPane.columnIndex="0"
+              GridPane.rowIndex="0"
               GridPane.columnSpan="2"
               prefWidth="600"
               prefHeight="800"

@@ -8,15 +8,33 @@
           fx:controller="controller.MenuBarController"
           prefHeight="50.0" prefWidth="1200.0">
 
-    <HBox GridPane.columnIndex="0" GridPane.rowIndex="0" prefHeight="50" prefWidth="1100">
-        <TextField text="placeholder1" prefWidth="100" prefHeight="50" editable="false"/>
+    <HBox GridPane.columnIndex="0"
+          GridPane.rowIndex="0"
+          prefHeight="50"
+          prefWidth="1100">
+        <TextField text="placeholder1"
+                   prefWidth="100"
+                   prefHeight="50"
+                   editable="false"/>
 
-        <TextField text="placeholder2" prefWidth="100" prefHeight="50" editable="false"/>
+        <TextField text="placeholder2"
+                   prefWidth="100"
+                   prefHeight="50"
+                   editable="false"/>
 
-        <TextField text="placeholder3" prefWidth="100" prefHeight="50" editable="false"/>
+        <TextField text="placeholder3"
+                   prefWidth="100"
+                   prefHeight="50"
+                   editable="false"/>
     </HBox>
 
-    <HBox GridPane.columnIndex="1" GridPane.rowIndex="0" prefHeight="50" prefWidth="100">
-        <Button text="Back" prefWidth="100" prefHeight="50" onAction="#handleReturnToDashboard"/>
+    <HBox GridPane.columnIndex="1"
+          GridPane.rowIndex="0"
+          prefHeight="50"
+          prefWidth="100">
+        <Button text="Back"
+                prefWidth="100"
+                prefHeight="50"
+                onAction="#handleReturnToDashboard"/>
     </HBox>
 </GridPane>

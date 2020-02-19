@@ -15,12 +15,17 @@
 
     <center>
         <GridPane alignment="TOP_CENTER">
-            <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" prefWidth="200">
-                <HBox prefHeight="200" prefWidth="200">
+            <VBox GridPane.columnIndex="0"
+                  GridPane.rowIndex="0"
+                  prefWidth="200">
+                <HBox prefHeight="200"
+                      prefWidth="200">
                     <ImageView fx:id="pokemonOneImageView"/>
                 </HBox>
 
-                <ComboBox fx:id="pokemonOnePokemonListComboBox" promptText="Select" prefWidth="200"
+                <ComboBox fx:id="pokemonOnePokemonListComboBox"
+                          promptText="Select"
+                          prefWidth="200"
                           onAction="#handleLoadPokemonOneData">
                     <items>
                         <FXCollections fx:factory="observableArrayList"/>
@@ -31,20 +36,36 @@
 
                 <VBox>
                     <HBox>
-                        <TextField fx:id="levelPokemonOne" style="-fx-border-color: black" text="40" prefWidth="50"
-                                   onKeyPressed="#levelPokemonOneFieldListener" alignment="CENTER">
+                        <TextField fx:id="levelPokemonOne"
+                                   style="-fx-border-color: black"
+                                   text="40"
+                                   prefWidth="50"
+                                   onKeyPressed="#levelPokemonOneFieldListener"
+                                   alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivAttackPokemonOne" style="-fx-border-color: black" text="15" prefWidth="50"
-                                   onKeyPressed="#ivAttackPokemonOneListener" alignment="CENTER">
+                        <TextField fx:id="ivAttackPokemonOne"
+                                   style="-fx-border-color: black"
+                                   text="15"
+                                   prefWidth="50"
+                                   onKeyPressed="#ivAttackPokemonOneListener"
+                                   alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivDefensePokemonOne" style="-fx-border-color: black" text="15" prefWidth="50"
-                                   onKeyPressed="#ivDefensePokemonOneListener" alignment="CENTER">
+                        <TextField fx:id="ivDefensePokemonOne"
+                                   style="-fx-border-color: black"
+                                   text="15"
+                                   prefWidth="50"
+                                   onKeyPressed="#ivDefensePokemonOneListener"
+                                   alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivStaminaPokemonOne" style="-fx-border-color: black" text="15" prefWidth="50"
-                                   onKeyPressed="#ivStaminaPokemonOneListener" alignment="CENTER">
+                        <TextField fx:id="ivStaminaPokemonOne"
+                                   style="-fx-border-color: black"
+                                   text="15"
+                                   prefWidth="50"
+                                   onKeyPressed="#ivStaminaPokemonOneListener"
+                                   alignment="CENTER">
 
                         </TextField>
                     </HBox>
@@ -52,7 +73,9 @@
 
                 <Text text="Fast Move Selection"/>
 
-                <ComboBox fx:id="pokemonOneFastMoveListComboBox" promptText="Select" prefWidth="200"
+                <ComboBox fx:id="pokemonOneFastMoveListComboBox"
+                          promptText="Select"
+                          prefWidth="200"
                           onAction="#handlePokemonOneFastMoveComboBoxColor">
                     <items>
                         <FXCollections fx:factory="observableArrayList"/>
@@ -61,7 +84,9 @@
 
                 <Text text="Charge Move Selection"/>
 
-                <ComboBox fx:id="pokemonOneChargedMoveListComboBox" promptText="Select" prefWidth="200"
+                <ComboBox fx:id="pokemonOneChargedMoveListComboBox"
+                          promptText="Select"
+                          prefWidth="200"
                           onAction="#handlePokemonOneChargedMoveComboBoxColor">
                     <items>
                         <FXCollections fx:factory="observableArrayList"/>
@@ -69,19 +94,28 @@
                 </ComboBox>
             </VBox>
 
-            <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="BOTTOM_CENTER">
-                <Button fx:id="simulateButton" text="Simulate"
+            <VBox GridPane.columnIndex="1"
+                  GridPane.rowIndex="1"
+                  alignment="BOTTOM_CENTER">
+                <Button fx:id="simulateButton"
+                        text="Simulate"
                         onAction="#handleSimulateButtonAction"/>
             </VBox>
 
-            <VBox GridPane.columnIndex="2" GridPane.rowIndex="0" prefWidth="200">
-                <HBox prefHeight="200" prefWidth="200">
+            <VBox GridPane.columnIndex="2"
+                  GridPane.rowIndex="0"
+                  prefWidth="200">
+                <HBox prefHeight="200"
+                      prefWidth="200">
                     <ImageView fx:id="pokemonTwoImageView"/>
                 </HBox>
 
-                <ComboBox fx:id="pokemonTwoPokemonListComboBox" GridPane.columnIndex="2" GridPane.rowIndex="1"
+                <ComboBox fx:id="pokemonTwoPokemonListComboBox"
+                          GridPane.columnIndex="2"
+                          GridPane.rowIndex="1"
                           promptText="Select"
-                          prefWidth="200" onAction="#handleLoadPokemonTwoData">
+                          prefWidth="200"
+                          onAction="#handleLoadPokemonTwoData">
                     <items>
                         <FXCollections fx:factory="observableArrayList"/>
                     </items>
@@ -91,20 +125,35 @@
 
                 <VBox>
                     <HBox>
-                        <TextField fx:id="levelPokemonTwo" style="-fx-border-color: black" text="40" prefWidth="50"
-                                   onKeyPressed="#levelPokemonTwoFieldListener" alignment="CENTER">
+                        <TextField fx:id="levelPokemonTwo"
+                                   style="-fx-border-color: black"
+                                   text="40"
+                                   prefWidth="50"
+                                   onKeyPressed="#levelPokemonTwoFieldListener"
+                                   alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivAttackPokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50"
-                                   onKeyPressed="#ivAttackPokemonTwoListener" alignment="CENTER">
+                        <TextField fx:id="ivAttackPokemonTwo"
+                                   style="-fx-border-color: black"
+                                   text="15"
+                                   prefWidth="50"
+                                   onKeyPressed="#ivAttackPokemonTwoListener"
+                                   alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivDefensePokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50"
-                                   onKeyPressed="#ivDefensePokemonTwoListener" alignment="CENTER">
+                        <TextField fx:id="ivDefensePokemonTwo"
+                                   style="-fx-border-color: black"
+                                   text="15"
+                                   prefWidth="50"
+                                   onKeyPressed="#ivDefensePokemonTwoListener"
+                                   alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivStaminaPokemonTwo" style="-fx-border-color: black" text="15" prefWidth="50"
-                                   onKeyPressed="#ivStaminaPokemonTwoListener" alignment="CENTER">
+                        <TextField fx:id="ivStaminaPokemonTwo"
+                                   style="-fx-border-color: black"
+                                   text="15" prefWidth="50"
+                                   onKeyPressed="#ivStaminaPokemonTwoListener"
+                                   alignment="CENTER">
 
                         </TextField>
                     </HBox>
@@ -112,7 +161,9 @@
 
                 <Text text="Fast Move Selection"/>
 
-                <ComboBox fx:id="pokemonTwoFastMoveListComboBox" promptText="Select" prefWidth="200"
+                <ComboBox fx:id="pokemonTwoFastMoveListComboBox"
+                          promptText="Select"
+                          prefWidth="200"
                           onAction="#handlePokemonTwoFastMoveComboBoxColor">
                     <items>
                         <FXCollections fx:factory="observableArrayList"/>
@@ -121,7 +172,9 @@
 
                 <Text text="Charge Move Selection"/>
 
-                <ComboBox fx:id="pokemonTwoChargedMoveListComboBox" promptText="Select" prefWidth="200"
+                <ComboBox fx:id="pokemonTwoChargedMoveListComboBox"
+                          promptText="Select"
+                          prefWidth="200"
                           onAction="#handlePokemonTwoChargedMoveComboBoxColor">
                     <items>
                         <FXCollections fx:factory="observableArrayList"/>
