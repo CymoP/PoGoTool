@@ -84,4 +84,11 @@ public class UserService {
     public boolean checkLoggedInUserIsAdmin() {
         return loggedInUser.getRole().equals("Admin");
     }
+
+    /**
+     * Sets loggedInUser to null to destroy previously logged in users information
+     */
+    public void logout() {
+        loggedInUser = null;
+    }
 }
