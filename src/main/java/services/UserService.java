@@ -12,8 +12,22 @@ public class UserService {
 
     private UserDA userDA = new UserDA();
     private User loggedInUser;
+    private static UserService instance = null;
 
-    public UserService() {
+    private UserService() {
+    }
+
+    /**
+     * Singleton implementation - If instance exists use that, if not create one
+     *
+     * @return User service instance
+     */
+    public static UserService getInstance() {
+        if (instance == null) {
+            instance = new UserService();
+        }
+
+        return instance;
     }
 
     /**
@@ -60,5 +74,14 @@ public class UserService {
      */
     public boolean createNewUser(String username, String password) throws SQLException {
         return userDA.createNewUserByUsernameAndPassword(username, password);
+    }
+
+    /**
+     * Checks that the logged in user is an admin
+     *
+     * @return true|false whether logged in user is an admin
+     */
+    public boolean checkLoggedInUserIsAdmin() {
+        return loggedInUser.getRole().equals("Admin");
     }
 }

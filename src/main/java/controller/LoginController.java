@@ -29,7 +29,7 @@ public class LoginController {
     @FXML
     public Button signUpButton;
 
-    private UserService userService = new UserService();
+    private UserService userService = UserService.getInstance();
 
     public LoginController() {
     }

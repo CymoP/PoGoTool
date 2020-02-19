@@ -23,7 +23,7 @@ public class TypeService {
     /**
      * Singleton implementation - If instance exists use that, if not create one
      *
-     * @return Database connection instance
+     * @return Type service instance
      */
     public static TypeService getInstance() {
         if (instance == null) {

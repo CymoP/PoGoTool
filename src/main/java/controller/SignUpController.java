@@ -28,7 +28,7 @@ public class SignUpController {
     @FXML
     private Button submitButton;
 
-    private UserService userService = new UserService();
+    private UserService userService = UserService.getInstance();
 
     @FXML
     protected void handleSignUpSubmitButtonAction() throws SQLException {

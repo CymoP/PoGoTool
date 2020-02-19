@@ -18,13 +18,15 @@
                 <Button text="Battle Simulator"
                         onAction="#handleBattleSimulatorComponentButtonAction"/>
             </HBox>
-            <HBox spacing="10"
+            <HBox fx:id="userMaintenanceButtonHBox"
+                  spacing="10"
                   GridPane.columnIndex="1"
                   GridPane.rowIndex="0">
                 <Button text="User Maintenance"
                         onAction="#handleUserMaintenanceComponentButtonAction"/>
             </HBox>
-            <HBox spacing="10"
+            <HBox fx:id="dataMaintenanceButtonHBox"
+                    spacing="10"
                   GridPane.columnIndex="2"
                   GridPane.rowIndex="0">
                 <Button text="Data Maintenance"
