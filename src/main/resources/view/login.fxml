@@ -6,8 +6,7 @@
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.LoginController"
-          prefHeight="400.0"
-          prefWidth="600.0">
+          stylesheets="@login.css">
 
     <Text text="Welcome"
           GridPane.columnIndex="0"
