@@ -33,6 +33,7 @@ public class NavigationService {
      */
     public static void gotoDashboard() {
         try {
+            ifExistsCloseReportStage();
             replaceSceneContent(DASHBOARD_FXML_FILE_LOCATION, 1200, 800);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,6 +56,7 @@ public class NavigationService {
      */
     public static void gotoLogin() {
         try {
+            ifExistsCloseReportStage();
             replaceSceneContent(LOGIN_FXML_FILE_LOCATION, 300, 300);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
@@ -103,6 +105,12 @@ public class NavigationService {
 
         reportStage.setScene(scene);
         reportStage.show();
+    }
+
+    private static void ifExistsCloseReportStage() {
+        if(reportStage != null){
+            reportStage.close();
+        }
     }
 
     private static void replaceSceneContent(String fxml, int width, int height) throws Exception {
