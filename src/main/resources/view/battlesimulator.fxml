@@ -183,4 +183,10 @@
             </VBox>
         </GridPane>
     </center>
+
+    <bottom>
+        <HBox prefWidth="800" prefHeight="100" alignment="CENTER">
+            <Text fx:id="winnerText" text="Default Text" style="-fx-font-size: 20; -fx-font-style: arial"/>
+        </HBox>
+    </bottom>
 </BorderPane>

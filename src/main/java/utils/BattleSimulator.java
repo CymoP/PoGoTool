@@ -76,7 +76,7 @@ public class BattleSimulator {
 
                 //break if opponent one has won
                 if (!(opponentTwoStamina > 0)) {
-                    battleSimulatorReport.addPokemonWinner(currentTurnCounter, 1);
+                    battleSimulatorReport.addPokemonWinner(currentTurnCounter, opponentOne);
                     battleSimulatorReport.setOutput();
 
                     return 0;
@@ -102,7 +102,7 @@ public class BattleSimulator {
 
                 //break if opponent two has won
                 if (!(opponentOneStamina > 0)) {
-                    battleSimulatorReport.addPokemonWinner(currentTurnCounter, 2);
+                    battleSimulatorReport.addPokemonWinner(currentTurnCounter, opponentTwo);
                     battleSimulatorReport.setOutput();
 
                     return 0;

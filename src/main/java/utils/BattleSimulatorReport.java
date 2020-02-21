@@ -112,13 +112,22 @@ public class BattleSimulatorReport {
      * Adds the winner of the simulation to the log
      *
      * @param currentTurnCounter Current turn context within the battle simulation
-     * @param opponentNumber     Which pokemon is being logged
+     * @param winner             The pokemon which won
      */
-    public void addPokemonWinner(int currentTurnCounter, int opponentNumber) {
-        String output = "Winner - Opponent " + opponentNumber +
+    public void addPokemonWinner(int currentTurnCounter, SelectedPokemon winner) {
+        String output = "Winner - " + winner.getBasePokemon().getPokemonName() +
                 " has won on turn " + currentTurnCounter;
 
         battleSimulatorReport.put(++logCounter, output);
+    }
+
+    /**
+     * Gets the winner for a simulation by finding the last entry
+     *
+     * @return the final entry to the battle report which denotes the winner
+     */
+    public String getWinner(){
+        return battleSimulatorReport.get(battleSimulatorReport.size() - 1);
     }
 
     public String getOutput() {

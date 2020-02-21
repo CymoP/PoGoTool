@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import model.ChargedMove;
 import model.FastMove;
 import model.Pokemon;
@@ -17,6 +18,7 @@ import services.MoveService;
 import services.NavigationService;
 import services.PokemonService;
 import utils.BattleSimulator;
+import utils.BattleSimulatorReport;
 import utils.ColourChooser;
 
 import java.io.File;
@@ -64,6 +66,9 @@ public class BattleSimulatorController implements Initializable {
     public Button simulateButton;
 
     @FXML
+    public Text winnerText;
+
+    @FXML
     private ComboBox<String> pokemonOnePokemonListComboBox;
 
     @FXML
@@ -85,6 +90,7 @@ public class BattleSimulatorController implements Initializable {
     private BattleSimulator battleSimulator = new BattleSimulator();
     private MoveService moveService = new MoveService();
     private ColourChooser colourChooser = ColourChooser.getInstance();
+    private BattleSimulatorReport battleSimulatorReport = BattleSimulatorReport.getInstance();
 
     private static final String POKEMON_IMAGES_FILE_PATH = "src/main/resources/images/";
     private static final String COLOUR_BLACK_HEXCODE = "e1e1e1";
@@ -103,6 +109,7 @@ public class BattleSimulatorController implements Initializable {
         SelectedPokemon opponentTwo = buildSelectedPokemon(pokemonTwoPokemonListComboBox, levelPokemonTwo, ivAttackPokemonTwo, ivDefensePokemonTwo, ivStaminaPokemonTwo, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
 
         battleSimulator.simulatorAlgorithm(opponentOne, opponentTwo);
+        winnerText.setText(battleSimulatorReport.getWinner());
 
         NavigationService.gotoBattleReport();
     }
