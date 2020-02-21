@@ -63,6 +63,9 @@ public class NavigationService {
         }
     }
 
+    /**
+     * Navigate the user to the data maintenance scene
+     */
     public static void gotoDataMaintenance() {
         try {
             replaceSceneContent(DATA_MAINTENANCE_FXML_FILE_LOCATION, 1200, 800);
@@ -71,6 +74,9 @@ public class NavigationService {
         }
     }
 
+    /**
+     * Navigate the user to the user maintenance scene
+     */
     public static void gotoUserMaintenance() {
         try {
             replaceSceneContent(USER_MAINTENANCE_FXML_FILE_LOCATION, 1200, 800);
