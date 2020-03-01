@@ -49,6 +49,7 @@
                                    text="15"
                                    prefWidth="50"
                                    onKeyPressed="#ivAttackPokemonOneListener"
+                                   onKeyReleased="#pokemonOneAttackStatListener"
                                    alignment="CENTER">
 
                         </TextField>
@@ -57,6 +58,7 @@
                                    text="15"
                                    prefWidth="50"
                                    onKeyPressed="#ivDefensePokemonOneListener"
+                                   onKeyReleased="#pokemonOneDefenseStatListener"
                                    alignment="CENTER">
 
                         </TextField>
@@ -65,6 +67,7 @@
                                    text="15"
                                    prefWidth="50"
                                    onKeyPressed="#ivStaminaPokemonOneListener"
+                                   onKeyReleased="#pokemonOneStaminaStatListener"
                                    alignment="CENTER">
 
                         </TextField>
@@ -95,6 +98,41 @@
             </VBox>
 
             <VBox GridPane.columnIndex="1"
+                  GridPane.rowIndex="0"
+                  prefWidth="200"
+                  prefHeight="200"
+                  style="-fx-border-color: black; -fx-border-width: 3">
+
+                <Label>
+                    Pokemon Details
+                </Label>
+
+                <Label>
+                    Combat Power (CP)
+                </Label>
+
+                <Text fx:id="pokemonOneCPText" />
+
+                <Label>
+                    Attack Stat
+                </Label>
+
+                <Text fx:id="pokemonOneAttackStatText"/>
+
+                <Label>
+                    Defense Stat
+                </Label>
+
+                <Text fx:id="pokemonOneDefenseStatText"/>
+
+                <Label>
+                    Stamina Stat
+                </Label>
+
+                <Text fx:id="pokemonOneStaminaStatText"/>
+            </VBox>
+
+            <VBox GridPane.columnIndex="2"
                   GridPane.rowIndex="1"
                   alignment="BOTTOM_CENTER">
                 <Button fx:id="simulateButton"
@@ -102,7 +140,7 @@
                         onAction="#handleSimulateButtonAction"/>
             </VBox>
 
-            <VBox GridPane.columnIndex="2"
+            <VBox GridPane.columnIndex="3"
                   GridPane.rowIndex="0"
                   prefWidth="200">
                 <HBox prefHeight="200"
@@ -138,6 +176,7 @@
                                    text="15"
                                    prefWidth="50"
                                    onKeyPressed="#ivAttackPokemonTwoListener"
+                                   onKeyReleased="#pokemonTwoAttackStatListener"
                                    alignment="CENTER">
 
                         </TextField>
@@ -146,6 +185,7 @@
                                    text="15"
                                    prefWidth="50"
                                    onKeyPressed="#ivDefensePokemonTwoListener"
+                                   onKeyReleased="#pokemonTwoDefenseStatListener"
                                    alignment="CENTER">
 
                         </TextField>
@@ -153,6 +193,7 @@
                                    style="-fx-border-color: black"
                                    text="15" prefWidth="50"
                                    onKeyPressed="#ivStaminaPokemonTwoListener"
+                                   onKeyReleased="#pokemonTwoStaminaStatListener"
                                    alignment="CENTER">
 
                         </TextField>
@@ -180,6 +221,41 @@
                         <FXCollections fx:factory="observableArrayList"/>
                     </items>
                 </ComboBox>
+            </VBox>
+
+            <VBox GridPane.columnIndex="4"
+                  GridPane.rowIndex="0"
+                  prefWidth="200"
+                  prefHeight="200"
+                  style="-fx-border-color: black; -fx-border-width: 3">
+
+                <Label>
+                    Pokemon Details
+                </Label>
+
+                <Label>
+                    Combat Power (CP)
+                </Label>
+
+                <Text fx:id="pokemonTwoCPText" />
+
+                <Label>
+                    Attack Stat
+                </Label>
+
+                <Text fx:id="pokemonTwoAttackStatText"/>
+
+                <Label>
+                    Defense Stat
+                </Label>
+
+                <Text fx:id="pokemonTwoDefenseStatText"/>
+
+                <Label>
+                    Stamina Stat
+                </Label>
+
+                <Text fx:id="pokemonTwoStaminaStatText"/>
             </VBox>
         </GridPane>
     </center>

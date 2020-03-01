@@ -13,6 +13,14 @@ public class SelectedPokemon {
     private FastMove selectedFastMove;
     private ChargedMove selectedChargedMove;
 
+    public SelectedPokemon(Pokemon basePokemon, Double level, int ivAttack, int ivDefense, int ivStamina) {
+        this.basePokemon = basePokemon;
+        this.level = level;
+        this.ivAttack = ivAttack;
+        this.ivDefense = ivDefense;
+        this.ivStamina = ivStamina;
+    }
+
     public SelectedPokemon(Pokemon basePokemon, Double level, int ivAttack, int ivDefense, int ivStamina, FastMove selectedFastMove, ChargedMove selectedChargedMove) {
         this.basePokemon = basePokemon;
         this.level = level;

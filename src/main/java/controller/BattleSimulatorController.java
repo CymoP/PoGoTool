@@ -17,6 +17,7 @@ import model.SelectedPokemon;
 import services.MoveService;
 import services.NavigationService;
 import services.PokemonService;
+import services.SelectedPokemonService;
 import utils.BattleSimulator;
 import utils.BattleSimulatorReport;
 import utils.ColourChooser;
@@ -69,6 +70,30 @@ public class BattleSimulatorController implements Initializable {
     public Text winnerText;
 
     @FXML
+    public Text pokemonOneCPText;
+
+    @FXML
+    public Text pokemonOneAttackStatText;
+
+    @FXML
+    public Text pokemonOneDefenseStatText;
+
+    @FXML
+    public Text pokemonOneStaminaStatText;
+
+    @FXML
+    public Text pokemonTwoCPText;
+
+    @FXML
+    public Text pokemonTwoAttackStatText;
+
+    @FXML
+    public Text pokemonTwoDefenseStatText;
+
+    @FXML
+    public Text pokemonTwoStaminaStatText;
+
+    @FXML
     private ComboBox<String> pokemonOnePokemonListComboBox;
 
     @FXML
@@ -93,7 +118,7 @@ public class BattleSimulatorController implements Initializable {
     private BattleSimulatorReport battleSimulatorReport = BattleSimulatorReport.getInstance();
 
     private static final String POKEMON_IMAGES_FILE_PATH = "src/main/resources/images/";
-    private static final String COLOUR_BLACK_HEXCODE = "e1e1e1";
+    private static final String COLOUR_BLACK_HEXCODE = "#e1e1e1";
 
     public BattleSimulatorController() throws SQLException {
     }
@@ -119,6 +144,7 @@ public class BattleSimulatorController implements Initializable {
         loadPokemonImage(pokemonOnePokemonListComboBox, pokemonOneImageView);
         setPokemonComboBoxColourByType(pokemonOnePokemonListComboBox);
         autoSelectFirstMovesetInList(pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
+        setDefaultPokemonSummaryValues(pokemonOnePokemonListComboBox, levelPokemonOne, ivAttackPokemonOne, ivDefensePokemonOne, ivStaminaPokemonOne, pokemonOneAttackStatText, pokemonOneDefenseStatText, pokemonOneStaminaStatText);
     }
 
     public void handleLoadPokemonTwoData() {
@@ -126,6 +152,7 @@ public class BattleSimulatorController implements Initializable {
         loadPokemonImage(pokemonTwoPokemonListComboBox, pokemonTwoImageView);
         setPokemonComboBoxColourByType(pokemonTwoPokemonListComboBox);
         autoSelectFirstMovesetInList(pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
+        setDefaultPokemonSummaryValues(pokemonTwoPokemonListComboBox, levelPokemonTwo, ivAttackPokemonTwo, ivDefensePokemonTwo, ivStaminaPokemonTwo, pokemonTwoAttackStatText, pokemonTwoDefenseStatText, pokemonTwoStaminaStatText);
     }
 
     public void handlePokemonOneFastMoveComboBoxColor() {
@@ -176,6 +203,36 @@ public class BattleSimulatorController implements Initializable {
         verifyIVTextFieldInput(ivStaminaPokemonTwo);
     }
 
+    public void pokemonOneAttackStatListener() {
+        String attackText = String.valueOf(SelectedPokemonService.getAttackStat(buildSelectedPokemon(pokemonOnePokemonListComboBox, levelPokemonOne, ivAttackPokemonOne, ivDefensePokemonOne, ivStaminaPokemonOne)));
+        pokemonOneAttackStatText.setText(attackText);
+    }
+
+    public void pokemonOneDefenseStatListener() {
+        String defenseText = String.valueOf(SelectedPokemonService.getDefenseStat(buildSelectedPokemon(pokemonOnePokemonListComboBox, levelPokemonOne, ivAttackPokemonOne, ivDefensePokemonOne, ivStaminaPokemonOne)));
+        pokemonOneDefenseStatText.setText(defenseText);
+    }
+
+    public void pokemonOneStaminaStatListener() {
+        String staminaText = String.valueOf(SelectedPokemonService.getStaminaStat(buildSelectedPokemon(pokemonOnePokemonListComboBox, levelPokemonOne, ivAttackPokemonOne, ivDefensePokemonOne, ivStaminaPokemonOne)));
+        pokemonOneStaminaStatText.setText(staminaText);
+    }
+
+    public void pokemonTwoAttackStatListener() {
+        String attackText = String.valueOf(SelectedPokemonService.getAttackStat(buildSelectedPokemon(pokemonTwoPokemonListComboBox, levelPokemonTwo, ivAttackPokemonTwo, ivDefensePokemonTwo, ivStaminaPokemonTwo)));
+        pokemonTwoAttackStatText.setText(attackText);
+    }
+
+    public void pokemonTwoDefenseStatListener() {
+        String defenseText = String.valueOf(SelectedPokemonService.getDefenseStat(buildSelectedPokemon(pokemonTwoPokemonListComboBox, levelPokemonTwo, ivAttackPokemonTwo, ivDefensePokemonTwo, ivStaminaPokemonTwo)));
+        pokemonTwoDefenseStatText.setText(defenseText);
+    }
+
+    public void pokemonTwoStaminaStatListener() {
+        String staminaText = String.valueOf(SelectedPokemonService.getStaminaStat(buildSelectedPokemon(pokemonTwoPokemonListComboBox, levelPokemonTwo, ivAttackPokemonTwo, ivDefensePokemonTwo, ivStaminaPokemonTwo)));
+        pokemonTwoStaminaStatText.setText(staminaText);
+    }
+
     private void loadPokemonImage(ComboBox pokemonListComboBox, ImageView pokemonImageView) {
         Pokemon pokemon = (Pokemon) pokemonListComboBox.getSelectionModel().getSelectedItem();
         String pokemonName = pokemon.getPokemonName().toLowerCase();
@@ -183,6 +240,17 @@ public class BattleSimulatorController implements Initializable {
         File file = new File(POKEMON_IMAGES_FILE_PATH + pokemonName + ".png");
         Image image = new Image(file.toURI().toString());
         pokemonImageView.setImage(image);
+    }
+
+    private SelectedPokemon buildSelectedPokemon(ComboBox pokemonNameListComboBox, TextField levelPokemonTextField, TextField ivAttackTextField, TextField ivDefenseTextField, TextField ivStaminaTextField) {
+        Pokemon pokemon = (Pokemon) pokemonNameListComboBox.getSelectionModel().getSelectedItem();
+        Pokemon selectedPokemon = pokemonService.getPokemonByName(pokemon.getPokemonName());
+        Double selectPokemonLevel = Double.parseDouble(levelPokemonTextField.getText());
+        int selectedPokemonIVAttack = Integer.parseInt(ivAttackTextField.getText());
+        int selectedPokemonIVDefense = Integer.parseInt(ivDefenseTextField.getText());
+        int selectedPokemonIVStamina = Integer.parseInt(ivStaminaTextField.getText());
+
+        return new SelectedPokemon(selectedPokemon, selectPokemonLevel, selectedPokemonIVAttack, selectedPokemonIVDefense, selectedPokemonIVStamina);
     }
 
     private SelectedPokemon buildSelectedPokemon(ComboBox pokemonNameListComboBox, TextField levelPokemonTextField, TextField ivAttackTextField, TextField ivDefenseTextField, TextField ivStaminaTextField, ComboBox pokemonFastMoveListComboBox, ComboBox pokemonChargedMoveListComboBox) {
@@ -221,8 +289,7 @@ public class BattleSimulatorController implements Initializable {
                     ivTextField.setStyle(" -fx-border-color: black;");
                 }
             } catch (NumberFormatException e) {
-                ivTextField.setStyle("-fx-border-style: solid; -fx-border-width: 1px; -fx-border-color: red;");
-                // error message
+                ivTextField.setText("0");
             }
         });
     }
@@ -239,8 +306,7 @@ public class BattleSimulatorController implements Initializable {
                     levelTextField.setStyle(" -fx-border-color: black;");
                 }
             } catch (NumberFormatException e) {
-                levelTextField.setStyle("-fx-border-style: solid; -fx-border-width: 1px; -fx-border-color: red;");
-                // error message
+                levelTextField.setText("1");
             }
         });
     }
@@ -304,5 +370,14 @@ public class BattleSimulatorController implements Initializable {
     private void autoSelectFirstMovesetInList(ComboBox pokemonFastMoveListComboBox, ComboBox pokemonChargedMoveListComboBox) {
         pokemonFastMoveListComboBox.getSelectionModel().selectFirst();
         pokemonChargedMoveListComboBox.getSelectionModel().selectFirst();
+    }
+
+    private void setDefaultPokemonSummaryValues(ComboBox<String> pokemonListComboBox, TextField pokemonLevelTextField, TextField pokemonAttackIVTextField, TextField pokemonDefenseIVTextField, TextField pokemonStaminaIVTextField, Text pokemonAttackStatText, Text pokemonDefenseStatText, Text pokemonStaminaStatText) {
+        String attackText = String.valueOf(SelectedPokemonService.getAttackStat(buildSelectedPokemon(pokemonListComboBox, pokemonLevelTextField, pokemonAttackIVTextField, pokemonDefenseIVTextField, pokemonStaminaIVTextField)));
+        pokemonAttackStatText.setText(attackText);
+        String defenseText = String.valueOf(SelectedPokemonService.getDefenseStat(buildSelectedPokemon(pokemonListComboBox, pokemonLevelTextField, pokemonAttackIVTextField, pokemonDefenseIVTextField, pokemonStaminaIVTextField)));
+        pokemonDefenseStatText.setText(defenseText);
+        String staminaText = String.valueOf(SelectedPokemonService.getStaminaStat(buildSelectedPokemon(pokemonListComboBox, pokemonLevelTextField, pokemonAttackIVTextField, pokemonDefenseIVTextField, pokemonStaminaIVTextField)));
+        pokemonStaminaStatText.setText(staminaText);
     }
 }
