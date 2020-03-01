@@ -6,7 +6,9 @@
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.MenuBarController"
-          prefHeight="50.0" prefWidth="1200.0">
+          stylesheets="@menubar.css"
+          prefHeight="50.0"
+          prefWidth="1200.0">
 
     <HBox GridPane.columnIndex="0"
           GridPane.rowIndex="0"
