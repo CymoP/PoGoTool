@@ -36,7 +36,7 @@
 
                 <VBox>
                     <HBox>
-                        <TextField fx:id="levelPokemonOne"
+                        <TextField fx:id="pokemonOneLevelTextField"
                                    style="-fx-border-color: black"
                                    text="40"
                                    prefWidth="50"
@@ -44,7 +44,7 @@
                                    alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivAttackPokemonOne"
+                        <TextField fx:id="pokemonOneAttackIVTextField"
                                    style="-fx-border-color: black"
                                    text="15"
                                    prefWidth="50"
@@ -53,7 +53,7 @@
                                    alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivDefensePokemonOne"
+                        <TextField fx:id="pokemonOneDefenseIVTextField"
                                    style="-fx-border-color: black"
                                    text="15"
                                    prefWidth="50"
@@ -62,7 +62,7 @@
                                    alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivStaminaPokemonOne"
+                        <TextField fx:id="pokemonOneStaminaIVTextField"
                                    style="-fx-border-color: black"
                                    text="15"
                                    prefWidth="50"
@@ -163,7 +163,7 @@
 
                 <VBox>
                     <HBox>
-                        <TextField fx:id="levelPokemonTwo"
+                        <TextField fx:id="pokemonTwoLevelTextField"
                                    style="-fx-border-color: black"
                                    text="40"
                                    prefWidth="50"
@@ -171,7 +171,7 @@
                                    alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivAttackPokemonTwo"
+                        <TextField fx:id="pokemonTwoAttackIVTextField"
                                    style="-fx-border-color: black"
                                    text="15"
                                    prefWidth="50"
@@ -180,7 +180,7 @@
                                    alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivDefensePokemonTwo"
+                        <TextField fx:id="pokemonTwoDefenseIVTextField"
                                    style="-fx-border-color: black"
                                    text="15"
                                    prefWidth="50"
@@ -189,7 +189,7 @@
                                    alignment="CENTER">
 
                         </TextField>
-                        <TextField fx:id="ivStaminaPokemonTwo"
+                        <TextField fx:id="pokemonTwoStaminaIVTextField"
                                    style="-fx-border-color: black"
                                    text="15" prefWidth="50"
                                    onKeyPressed="#ivStaminaPokemonTwoListener"
