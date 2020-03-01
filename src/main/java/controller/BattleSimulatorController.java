@@ -118,12 +118,14 @@ public class BattleSimulatorController implements Initializable {
         loadPokemonMoveSetData(pokemonOnePokemonListComboBox, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
         loadPokemonImage(pokemonOnePokemonListComboBox, pokemonOneImageView);
         setPokemonComboBoxColourByType(pokemonOnePokemonListComboBox);
+        autoSelectFirstMovesetInList(pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
     }
 
     public void handleLoadPokemonTwoData() {
         loadPokemonMoveSetData(pokemonTwoPokemonListComboBox, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
         loadPokemonImage(pokemonTwoPokemonListComboBox, pokemonTwoImageView);
         setPokemonComboBoxColourByType(pokemonTwoPokemonListComboBox);
+        autoSelectFirstMovesetInList(pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
     }
 
     public void handlePokemonOneFastMoveComboBoxColor() {
@@ -297,5 +299,10 @@ public class BattleSimulatorController implements Initializable {
         String style = "-fx-background-color: " + colour;
 
         pokemonComboBox.setStyle(style);
+    }
+
+    private void autoSelectFirstMovesetInList(ComboBox pokemonFastMoveListComboBox, ComboBox pokemonChargedMoveListComboBox) {
+        pokemonFastMoveListComboBox.getSelectionModel().selectFirst();
+        pokemonChargedMoveListComboBox.getSelectionModel().selectFirst();
     }
 }
