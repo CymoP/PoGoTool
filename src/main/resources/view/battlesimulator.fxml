@@ -186,7 +186,9 @@
 
     <bottom>
         <HBox prefWidth="800" prefHeight="100" alignment="CENTER">
-            <Text fx:id="winnerText" style="-fx-font-size: 20; -fx-font-style: arial"/>
+            <Text fx:id="winnerText">
+                <style>-fx-font-size: 20; -fx-font-style: arial</style>
+            </Text>
         </HBox>
     </bottom>
 </BorderPane>
