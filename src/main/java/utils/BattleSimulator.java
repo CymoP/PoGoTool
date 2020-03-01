@@ -43,14 +43,14 @@ public class BattleSimulator {
         int opponentOneChargedMoveEnergyCost = opponentOneChargedMove.getEnergyPvP();
         int opponentOneFastMoveEnergyGain = opponentOneFastMove.getEnergyPvP();
         int opponentOneFastMoveDuration = opponentOneFastMove.getDuration();
-        double opponentOneStamina = SelectedPokemonService.getStaminaStat(opponentOne);
+        double opponentOneStamina = Math.floor(SelectedPokemonService.getStaminaStat(opponentOne));
 
         FastMove opponentTwoFastMove = opponentTwo.getSelectedFastMove();
         ChargedMove opponentTwoChargedMove = opponentTwo.getSelectedChargedMove();
         int opponentTwoChargedMoveEnergyCost = opponentTwoChargedMove.getEnergyPvP();
         int opponentTwoFastMoveEnergyGain = opponentTwoFastMove.getEnergyPvP();
         int opponentTwoFastMoveDuration = opponentTwoFastMove.getDuration();
-        double opponentTwoStamina = SelectedPokemonService.getStaminaStat(opponentTwo);
+        double opponentTwoStamina = Math.floor(SelectedPokemonService.getStaminaStat(opponentTwo));
 
         battleSimulatorReport.addPokemonDetailsToLog(opponentOne, opponentTwo);
 

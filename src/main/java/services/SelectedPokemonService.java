@@ -16,6 +16,24 @@ public class SelectedPokemonService {
     }
 
     /**
+     * Calculates the combat power (CP) value for a given pokemon
+     *
+     * @param selectedPokemon given Selected Pokemon
+     * @return CP value for the selected pokemon
+     */
+    public static int getCombatPower(SelectedPokemon selectedPokemon){
+        double attackStatValue = SelectedPokemonService.getAttackStat(selectedPokemon);
+        double defenseStatValue = SelectedPokemonService.getDefenseStat(selectedPokemon);
+        double staminaStatValue = SelectedPokemonService.getStaminaStat(selectedPokemon);
+
+        double defenseMultiplier = Math.pow(defenseStatValue, 0.5);
+        double staminaMultiplier = Math.pow(staminaStatValue, 0.5);
+        double totalStats = attackStatValue * defenseMultiplier * staminaMultiplier;
+
+        return (int) Math.floor(totalStats / 10);
+    }
+
+    /**
      * Returns the attack stat for the selected pokemon by taking into account base stats and IVs
      *
      * @param selectedPokemon given selected pokemon

@@ -41,6 +41,7 @@
                                    text="40"
                                    prefWidth="50"
                                    onKeyPressed="#levelPokemonOneFieldListener"
+                                   onKeyReleased="#pokemonOneLevelListener"
                                    alignment="CENTER">
 
                         </TextField>
@@ -168,6 +169,7 @@
                                    text="40"
                                    prefWidth="50"
                                    onKeyPressed="#levelPokemonTwoFieldListener"
+                                   onKeyReleased="#pokemonTwoLevelListener"
                                    alignment="CENTER">
 
                         </TextField>
