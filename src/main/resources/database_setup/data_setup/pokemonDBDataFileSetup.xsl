@@ -6,10 +6,8 @@
         <xsl:result-document href="{*/name()}.sql" method="text">
             <xsl:copy-of select="node()"/>
         </xsl:result-document>
-    </xsl:template>
 
-    <xsl:template match="data">
-        <xsl:for-each select="./*">
+        <xsl:for-each select="data/*">
             <xsl:result-document href="{name()}.sql" method="text">
                 <xsl:copy-of select="node()"/>
             </xsl:result-document>
