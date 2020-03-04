@@ -32,7 +32,8 @@
                     </items>
                 </ComboBox>
 
-                <Text text="Level and IVs"/>
+                <Label text="Level and IVs"
+                       style="-fx-font-weight: bold;"/>
 
                 <VBox>
                     <HBox>
@@ -75,7 +76,8 @@
                     </HBox>
                 </VBox>
 
-                <Text text="Fast Move Selection"/>
+                <Label text="Fast Move Selection"
+                       style="-fx-font-weight: bold;"/>
 
                 <ComboBox fx:id="pokemonOneFastMoveListComboBox"
                           promptText="Select"
@@ -86,7 +88,8 @@
                     </items>
                 </ComboBox>
 
-                <Text text="Charge Move Selection"/>
+                <Label text="Charge Move Selection"
+                       style="-fx-font-weight: bold;"/>
 
                 <ComboBox fx:id="pokemonOneChargedMoveListComboBox"
                           promptText="Select"
@@ -101,36 +104,61 @@
             <VBox GridPane.columnIndex="1"
                   GridPane.rowIndex="0"
                   prefWidth="200"
-                  prefHeight="200"
-                  style="-fx-border-color: black; -fx-border-width: 3">
+                  prefHeight="200">
+                <TitledPane text="Pokemon Details"
+                            alignment="CENTER"
+                            expanded="false">
+                    <VBox>
+                        <Label text="Combat Power (CP)"
+                               style="-fx-font-weight: bold;"/>
 
-                <Label>
-                    Pokemon Details
-                </Label>
+                        <Text fx:id="pokemonOneCPText"/>
 
-                <Label>
-                    Combat Power (CP)
-                </Label>
+                        <Label text="Attack Stat"
+                               style="-fx-font-weight: bold;"/>
 
-                <Text fx:id="pokemonOneCPText" />
+                        <Text fx:id="pokemonOneAttackStatText"/>
 
-                <Label>
-                    Attack Stat
-                </Label>
+                        <Label text="Defense Stat"
+                               style="-fx-font-weight: bold;"/>
 
-                <Text fx:id="pokemonOneAttackStatText"/>
+                        <Text fx:id="pokemonOneDefenseStatText"/>
 
-                <Label>
-                    Defense Stat
-                </Label>
+                        <Label text="Stamina Stat"
+                               style="-fx-font-weight: bold;"/>
 
-                <Text fx:id="pokemonOneDefenseStatText"/>
+                        <Text fx:id="pokemonOneStaminaStatText"/>
+                    </VBox>
+                </TitledPane>
 
-                <Label>
-                    Stamina Stat
-                </Label>
-
-                <Text fx:id="pokemonOneStaminaStatText"/>
+                <TitledPane text="Mode Selection"
+                            alignment="CENTER"
+                            expanded="false">
+                    <VBox>
+                        <Label text="Shields"
+                               style="-fx-font-weight: bold;"/>
+                        <HBox>
+                            <RadioButton text="0"
+                                         prefWidth="40">
+                                <toggleGroup>
+                                    <ToggleGroup fx:id="mode1"/>
+                                </toggleGroup>
+                            </RadioButton>
+                            <RadioButton text="1"
+                                         prefWidth="40">
+                                <toggleGroup>
+                                    <fx:reference source="mode1"/>
+                                </toggleGroup>
+                            </RadioButton>
+                            <RadioButton text="2"
+                                         prefWidth="40">
+                                <toggleGroup>
+                                    <fx:reference source="mode1"/>
+                                </toggleGroup>
+                            </RadioButton>
+                        </HBox>
+                    </VBox>
+                </TitledPane>
             </VBox>
 
             <VBox GridPane.columnIndex="2"
@@ -160,7 +188,8 @@
                     </items>
                 </ComboBox>
 
-                <Text text="Level and IVs"/>
+                <Label text="Level and IVs"
+                       style="-fx-font-weight: bold;"/>
 
                 <VBox>
                     <HBox>
@@ -202,7 +231,8 @@
                     </HBox>
                 </VBox>
 
-                <Text text="Fast Move Selection"/>
+                <Label text="Fast Move Selection"
+                       style="-fx-font-weight: bold;"/>
 
                 <ComboBox fx:id="pokemonTwoFastMoveListComboBox"
                           promptText="Select"
@@ -213,7 +243,8 @@
                     </items>
                 </ComboBox>
 
-                <Text text="Charge Move Selection"/>
+                <Label text="Charge Move Selection"
+                       style="-fx-font-weight: bold;"/>
 
                 <ComboBox fx:id="pokemonTwoChargedMoveListComboBox"
                           promptText="Select"
@@ -228,36 +259,67 @@
             <VBox GridPane.columnIndex="4"
                   GridPane.rowIndex="0"
                   prefWidth="200"
-                  prefHeight="200"
-                  style="-fx-border-color: black; -fx-border-width: 3">
+                  prefHeight="200">
+                <TitledPane text="Pokemon Details"
+                            alignment="CENTER"
+                            expanded="false">
+                    <VBox>
+                        <Label style="-fx-font-weight: bold;">
+                            Combat Power (CP)
+                        </Label>
 
-                <Label>
-                    Pokemon Details
-                </Label>
+                        <Text fx:id="pokemonTwoCPText"/>
 
-                <Label>
-                    Combat Power (CP)
-                </Label>
+                        <Label style="-fx-font-weight: bold;">
+                            Attack Stat
+                        </Label>
 
-                <Text fx:id="pokemonTwoCPText" />
+                        <Text fx:id="pokemonTwoAttackStatText"/>
 
-                <Label>
-                    Attack Stat
-                </Label>
+                        <Label style="-fx-font-weight: bold;">
+                            Defense Stat
+                        </Label>
 
-                <Text fx:id="pokemonTwoAttackStatText"/>
+                        <Text fx:id="pokemonTwoDefenseStatText"/>
 
-                <Label>
-                    Defense Stat
-                </Label>
+                        <Label style="-fx-font-weight: bold;">
+                            Stamina Stat
+                        </Label>
 
-                <Text fx:id="pokemonTwoDefenseStatText"/>
+                        <Text fx:id="pokemonTwoStaminaStatText"/>
+                    </VBox>
+                </TitledPane>
 
-                <Label>
-                    Stamina Stat
-                </Label>
+                <TitledPane text="Mode Selection"
+                            alignment="CENTER"
+                            expanded="false">
+                    <VBox>
+                        <Label style="-fx-font-weight: bold;">
+                            Shields
+                        </Label>
 
-                <Text fx:id="pokemonTwoStaminaStatText"/>
+                        <HBox>
+                            <RadioButton text="0"
+                                         prefWidth="40">
+                                <toggleGroup>
+                                    <ToggleGroup fx:id="mode2"/>
+                                </toggleGroup>
+                            </RadioButton>
+                            <RadioButton text="1"
+                                         prefWidth="40">
+                                <toggleGroup>
+                                    <fx:reference source="mode2"/>
+                                </toggleGroup>
+                            </RadioButton>
+                            <RadioButton text="2"
+                                         prefWidth="40">
+                                <toggleGroup>
+                                    <fx:reference source="mode2"/>
+                                </toggleGroup>
+                            </RadioButton>
+                        </HBox>
+                    </VBox>
+                </TitledPane>
             </VBox>
         </GridPane>
     </center>

@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -86,6 +87,12 @@ public class BattleSimulatorController implements Initializable {
 
     @FXML
     public Text pokemonTwoStaminaStatText;
+
+    @FXML
+    public ToggleGroup mode1;
+
+    @FXML
+    public ToggleGroup mode2;
 
     @FXML
     private ComboBox<String> pokemonOnePokemonListComboBox;
