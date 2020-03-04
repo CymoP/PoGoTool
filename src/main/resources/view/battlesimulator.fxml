@@ -139,21 +139,22 @@
                                style="-fx-font-weight: bold;"/>
                         <HBox>
                             <RadioButton text="0"
-                                         prefWidth="40">
+                                         prefWidth="40"
+                                         selected="true">
                                 <toggleGroup>
-                                    <ToggleGroup fx:id="mode1"/>
+                                    <ToggleGroup fx:id="pokemonOneShields"/>
                                 </toggleGroup>
                             </RadioButton>
                             <RadioButton text="1"
                                          prefWidth="40">
                                 <toggleGroup>
-                                    <fx:reference source="mode1"/>
+                                    <fx:reference source="pokemonOneShields"/>
                                 </toggleGroup>
                             </RadioButton>
                             <RadioButton text="2"
                                          prefWidth="40">
                                 <toggleGroup>
-                                    <fx:reference source="mode1"/>
+                                    <fx:reference source="pokemonOneShields"/>
                                 </toggleGroup>
                             </RadioButton>
                         </HBox>
@@ -300,21 +301,22 @@
 
                         <HBox>
                             <RadioButton text="0"
-                                         prefWidth="40">
+                                         prefWidth="40"
+                                         selected="true">
                                 <toggleGroup>
-                                    <ToggleGroup fx:id="mode2"/>
+                                    <ToggleGroup fx:id="pokemonTwoShields"/>
                                 </toggleGroup>
                             </RadioButton>
                             <RadioButton text="1"
                                          prefWidth="40">
                                 <toggleGroup>
-                                    <fx:reference source="mode2"/>
+                                    <fx:reference source="pokemonTwoShields"/>
                                 </toggleGroup>
                             </RadioButton>
                             <RadioButton text="2"
                                          prefWidth="40">
                                 <toggleGroup>
-                                    <fx:reference source="mode2"/>
+                                    <fx:reference source="pokemonTwoShields"/>
                                 </toggleGroup>
                             </RadioButton>
                         </HBox>

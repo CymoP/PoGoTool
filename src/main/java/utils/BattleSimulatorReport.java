@@ -109,6 +109,20 @@ public class BattleSimulatorReport {
     }
 
     /**
+     * Adds pokemon used a shield to block a charge move to the log
+     *
+     * @param currentTurnCounter Current turn context within the battle simulation
+     * @param attackingPokemon   the attacking pokemon
+     * @param defendingPokemon   the defending pokemon
+     */
+    public void addPokemonUsedShield(int currentTurnCounter, SelectedPokemon attackingPokemon, SelectedPokemon defendingPokemon) {
+        String output = "Turn Context = " + currentTurnCounter + " | " +
+                defendingPokemon.getBasePokemon().getPokemonName() + " blocked " + attackingPokemon.getSelectedChargedMove().getMoveName() + " using a shield";
+
+        battleSimulatorReport.put(++logCounter, output);
+    }
+
+    /**
      * Adds the winner of the simulation to the log
      *
      * @param currentTurnCounter Current turn context within the battle simulation
@@ -126,10 +140,15 @@ public class BattleSimulatorReport {
      *
      * @return the final entry to the battle report which denotes the winner
      */
-    public String getWinner(){
+    public String getWinner() {
         return battleSimulatorReport.get(battleSimulatorReport.size() - 1);
     }
 
+    /**
+     * Returns the log for the battle simulation
+     *
+     * @return the log for the battle simulation
+     */
     public String getOutput() {
         return output;
     }

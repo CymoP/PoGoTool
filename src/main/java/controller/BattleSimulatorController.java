@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -89,10 +86,10 @@ public class BattleSimulatorController implements Initializable {
     public Text pokemonTwoStaminaStatText;
 
     @FXML
-    public ToggleGroup mode1;
+    public ToggleGroup pokemonOneShields;
 
     @FXML
-    public ToggleGroup mode2;
+    public ToggleGroup pokemonTwoShields;
 
     @FXML
     private ComboBox<String> pokemonOnePokemonListComboBox;
@@ -137,8 +134,8 @@ public class BattleSimulatorController implements Initializable {
 
     @FXML
     protected void handleSimulateButtonAction() throws IOException {
-        SelectedPokemon opponentOne = buildSelectedPokemon(pokemonOnePokemonListComboBox, pokemonOneLevelTextField, pokemonOneAttackIVTextField, pokemonOneDefenseIVTextField, pokemonOneStaminaIVTextField, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
-        SelectedPokemon opponentTwo = buildSelectedPokemon(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
+        SelectedPokemon opponentOne = buildSelectedPokemon(pokemonOnePokemonListComboBox, pokemonOneLevelTextField, pokemonOneAttackIVTextField, pokemonOneDefenseIVTextField, pokemonOneStaminaIVTextField, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox, pokemonOneShields);
+        SelectedPokemon opponentTwo = buildSelectedPokemon(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox, pokemonTwoShields);
 
         battleSimulator.simulatorAlgorithm(opponentOne, opponentTwo);
         winnerText.setText(battleSimulatorReport.getWinner());
@@ -269,7 +266,7 @@ public class BattleSimulatorController implements Initializable {
         return new SelectedPokemon(selectedPokemon, selectPokemonLevel, selectedPokemonIVAttack, selectedPokemonIVDefense, selectedPokemonIVStamina);
     }
 
-    private SelectedPokemon buildSelectedPokemon(ComboBox pokemonNameListComboBox, TextField levelPokemonTextField, TextField ivAttackTextField, TextField ivDefenseTextField, TextField ivStaminaTextField, ComboBox pokemonFastMoveListComboBox, ComboBox pokemonChargedMoveListComboBox) {
+    private SelectedPokemon buildSelectedPokemon(ComboBox pokemonNameListComboBox, TextField levelPokemonTextField, TextField ivAttackTextField, TextField ivDefenseTextField, TextField ivStaminaTextField, ComboBox pokemonFastMoveListComboBox, ComboBox pokemonChargedMoveListComboBox, ToggleGroup pokemonShields) {
         Pokemon pokemon = (Pokemon) pokemonNameListComboBox.getSelectionModel().getSelectedItem();
         Pokemon selectedPokemon = pokemonService.getPokemonByName(pokemon.getPokemonName());
         Double selectPokemonLevel = Double.parseDouble(levelPokemonTextField.getText());
@@ -280,8 +277,10 @@ public class BattleSimulatorController implements Initializable {
         FastMove selectedPokemonFastMove = moveService.getFastMoveDetailsByName(selectedPokemon, fastMoveName);
         String chargedMoveName = pokemonChargedMoveListComboBox.getSelectionModel().getSelectedItem().toString();
         ChargedMove selectedPokemonChargedMove = moveService.getChargedMoveDetailsByName(selectedPokemon, chargedMoveName);
+        RadioButton selectedButton = (RadioButton) pokemonShields.getSelectedToggle();
+        int shieldCount = Integer.parseInt(selectedButton.getText());
 
-        return new SelectedPokemon(selectedPokemon, selectPokemonLevel, selectedPokemonIVAttack, selectedPokemonIVDefense, selectedPokemonIVStamina, selectedPokemonFastMove, selectedPokemonChargedMove);
+        return new SelectedPokemon(selectedPokemon, selectPokemonLevel, selectedPokemonIVAttack, selectedPokemonIVDefense, selectedPokemonIVStamina, selectedPokemonFastMove, selectedPokemonChargedMove, shieldCount);
     }
 
     private void setPokemonNameData() {

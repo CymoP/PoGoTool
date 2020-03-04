@@ -43,6 +43,7 @@ public class BattleSimulator {
         int opponentOneChargedMoveEnergyCost = opponentOneChargedMove.getEnergyPvP();
         int opponentOneFastMoveEnergyGain = opponentOneFastMove.getEnergyPvP();
         int opponentOneFastMoveDuration = opponentOneFastMove.getDuration();
+        int opponentOneShields = opponentOne.getShieldCount();
         double opponentOneStamina = Math.floor(SelectedPokemonService.getStaminaStat(opponentOne));
 
         FastMove opponentTwoFastMove = opponentTwo.getSelectedFastMove();
@@ -50,6 +51,7 @@ public class BattleSimulator {
         int opponentTwoChargedMoveEnergyCost = opponentTwoChargedMove.getEnergyPvP();
         int opponentTwoFastMoveEnergyGain = opponentTwoFastMove.getEnergyPvP();
         int opponentTwoFastMoveDuration = opponentTwoFastMove.getDuration();
+        int opponentTwoShields = opponentTwo.getShieldCount();
         double opponentTwoStamina = Math.floor(SelectedPokemonService.getStaminaStat(opponentTwo));
 
         battleSimulatorReport.addPokemonDetailsToLog(opponentOne, opponentTwo);
@@ -58,12 +60,18 @@ public class BattleSimulator {
             while (!chargeMoveIntermissionState) {
                 if (checkActionAvailable(currentTurnCounter, opponentOneTurnCounter)) {
                     if (checkChargedMoveAvailable(opponentOneEnergy, opponentOneChargedMoveEnergyCost)) {
-                        opponentTwoStamina -= calculateChargeMoveDamage(opponentOne, opponentTwo);
                         opponentOneEnergy -= opponentOneChargedMoveEnergyCost;
                         opponentOneTurnCounter += CHARGE_UP_DURATION;
                         opponentTwoTurnCounter = opponentOneTurnCounter;
                         chargeMoveIntermissionState = true;
-                        battleSimulatorReport.addPokemonUsedChargedMove(currentTurnCounter, opponentOne, opponentTwo, opponentTwoStamina);
+
+                        if (checkShieldAvailable(opponentTwoShields)) {
+                            opponentTwoShields -= 1;
+                            battleSimulatorReport.addPokemonUsedShield(currentTurnCounter, opponentOne, opponentTwo);
+                        } else {
+                            opponentTwoStamina -= calculateChargeMoveDamage(opponentOne, opponentTwo);
+                            battleSimulatorReport.addPokemonUsedChargedMove(currentTurnCounter, opponentOne, opponentTwo, opponentTwoStamina);
+                        }
                     } else {
                         opponentTwoStamina -= calculateFastMoveDamage(opponentOne, opponentTwo);
                         opponentOneEnergy += opponentOneFastMoveEnergyGain;
@@ -84,12 +92,18 @@ public class BattleSimulator {
 
                 if (checkActionAvailable(currentTurnCounter, opponentTwoTurnCounter)) {
                     if (checkChargedMoveAvailable(opponentTwoEnergy, opponentTwoChargedMoveEnergyCost)) {
-                        opponentOneStamina -= calculateChargeMoveDamage(opponentTwo, opponentOne);
                         opponentTwoEnergy -= opponentTwoChargedMoveEnergyCost;
                         opponentTwoTurnCounter += CHARGE_UP_DURATION;
                         opponentOneTurnCounter = opponentTwoTurnCounter;
                         chargeMoveIntermissionState = true;
-                        battleSimulatorReport.addPokemonUsedChargedMove(currentTurnCounter, opponentTwo, opponentOne, opponentOneStamina);
+
+                        if (checkShieldAvailable(opponentOneShields)) {
+                            opponentOneShields -= 1;
+                            battleSimulatorReport.addPokemonUsedShield(currentTurnCounter, opponentTwo, opponentOne);
+                        } else {
+                            opponentOneStamina -= calculateChargeMoveDamage(opponentTwo, opponentOne);
+                            battleSimulatorReport.addPokemonUsedChargedMove(currentTurnCounter, opponentTwo, opponentOne, opponentOneStamina);
+                        }
                     } else {
                         opponentOneStamina -= calculateFastMoveDamage(opponentTwo, opponentOne);
                         opponentTwoEnergy += opponentTwoFastMoveEnergyGain;
@@ -123,6 +137,10 @@ public class BattleSimulator {
             }
         }
         return 0;
+    }
+
+    private boolean checkShieldAvailable(int opponentOneShields) {
+        return opponentOneShields > 0;
     }
 
     private boolean checkActionAvailable(int currentTurnCounter, int pokemonContextTurnCounter) {

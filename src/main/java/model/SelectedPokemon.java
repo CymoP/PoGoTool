@@ -10,6 +10,7 @@ public class SelectedPokemon {
     private int ivAttack;
     private int ivDefense;
     private int ivStamina;
+    private int shieldCount;
     private FastMove selectedFastMove;
     private ChargedMove selectedChargedMove;
 
@@ -21,7 +22,7 @@ public class SelectedPokemon {
         this.ivStamina = ivStamina;
     }
 
-    public SelectedPokemon(Pokemon basePokemon, Double level, int ivAttack, int ivDefense, int ivStamina, FastMove selectedFastMove, ChargedMove selectedChargedMove) {
+    public SelectedPokemon(Pokemon basePokemon, Double level, int ivAttack, int ivDefense, int ivStamina, FastMove selectedFastMove, ChargedMove selectedChargedMove, int shieldCount) {
         this.basePokemon = basePokemon;
         this.level = level;
         this.ivAttack = ivAttack;
@@ -29,6 +30,7 @@ public class SelectedPokemon {
         this.ivStamina = ivStamina;
         this.selectedFastMove = selectedFastMove;
         this.selectedChargedMove = selectedChargedMove;
+        this.shieldCount = shieldCount;
     }
 
     public Pokemon getBasePokemon() {
@@ -85,5 +87,13 @@ public class SelectedPokemon {
 
     public void setSelectedChargedMove(ChargedMove selectedChargedMove) {
         this.selectedChargedMove = selectedChargedMove;
+    }
+
+    public int getShieldCount() {
+        return shieldCount;
+    }
+
+    public void setShieldCount(int shieldCount) {
+        this.shieldCount = shieldCount;
     }
 }
