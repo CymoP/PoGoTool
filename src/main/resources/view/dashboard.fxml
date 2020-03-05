@@ -27,7 +27,7 @@
                         onAction="#handleUserMaintenanceComponentButtonAction"/>
             </HBox>
             <HBox fx:id="dataMaintenanceButtonHBox"
-                    spacing="10"
+                  spacing="10"
                   GridPane.columnIndex="2"
                   GridPane.rowIndex="0">
                 <Button text="Data Maintenance"

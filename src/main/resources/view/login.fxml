@@ -31,16 +31,20 @@
                    GridPane.rowIndex="2"
                    onKeyPressed="#handleLoginButtonKeyPressed"/>
 
-    <HBox spacing="10" alignment="bottom_right"
-          GridPane.columnIndex="0" GridPane.rowIndex="4">
+    <HBox spacing="10"
+          alignment="bottom_right"
+          GridPane.columnIndex="0"
+          GridPane.rowIndex="4">
         <Button fx:id="loginButton"
                 text="Login"
                 onAction="#handleLoginButtonAction"
                 onKeyPressed="#handleLoginButtonKeyPressed"/>
     </HBox>
 
-    <HBox spacing="10" alignment="bottom_right"
-          GridPane.columnIndex="1" GridPane.rowIndex="4">
+    <HBox spacing="10"
+          alignment="bottom_right"
+          GridPane.columnIndex="1"
+          GridPane.rowIndex="4">
         <Button fx:id="signUpButton"
                 text="Sign Up"
                 onAction="#handleSignUpButtonAction"
