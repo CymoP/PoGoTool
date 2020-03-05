@@ -11,7 +11,6 @@ public class FastMove {
     private Integer energyPvP;
     private Integer duration;
 
-
     public FastMove(String moveName, Type type, Integer damagePvP, Integer energyPvP, Integer duration) {
         this.type = type;
         this.moveName = moveName;

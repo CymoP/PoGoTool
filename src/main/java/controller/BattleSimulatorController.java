@@ -143,6 +143,10 @@ public class BattleSimulatorController implements Initializable {
         NavigationService.gotoBattleReport();
     }
 
+    /**
+     * Loads all the base data regarding the selected pokemon in position 1
+     */
+    @FXML
     public void handleLoadPokemonOneData() {
         loadPokemonMoveSetData(pokemonOnePokemonListComboBox, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox);
         loadPokemonImage(pokemonOnePokemonListComboBox, pokemonOneImageView);
@@ -151,6 +155,10 @@ public class BattleSimulatorController implements Initializable {
         setDefaultPokemonSummaryValues(pokemonOnePokemonListComboBox, pokemonOneLevelTextField, pokemonOneAttackIVTextField, pokemonOneDefenseIVTextField, pokemonOneStaminaIVTextField, pokemonOneAttackStatText, pokemonOneDefenseStatText, pokemonOneStaminaStatText, pokemonOneCPText);
     }
 
+    /**
+     * Loads all the base data regarding the selected pokemon in position 2
+     */
+    @FXML
     public void handleLoadPokemonTwoData() {
         loadPokemonMoveSetData(pokemonTwoPokemonListComboBox, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox);
         loadPokemonImage(pokemonTwoPokemonListComboBox, pokemonTwoImageView);
@@ -159,89 +167,168 @@ public class BattleSimulatorController implements Initializable {
         setDefaultPokemonSummaryValues(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoAttackStatText, pokemonTwoDefenseStatText, pokemonTwoStaminaStatText, pokemonTwoCPText);
     }
 
+    /**
+     * Changes the colour of the fast move combobox for position 1
+     */
+    @FXML
     public void handlePokemonOneFastMoveComboBoxColor() {
         setFastMoveComboBoxColourByType(pokemonOneFastMoveListComboBox);
     }
 
+    /**
+     * Changes the colour of the charged move combobox for position 1
+     */
+    @FXML
     public void handlePokemonOneChargedMoveComboBoxColor() {
         setChargedMoveComboBoxColourByType(pokemonOneChargedMoveListComboBox);
     }
 
+    /**
+     * Changes the colour of the fast move combobox for position 2
+     */
+    @FXML
     public void handlePokemonTwoFastMoveComboBoxColor() {
         setFastMoveComboBoxColourByType(pokemonTwoFastMoveListComboBox);
     }
 
+    /**
+     * Changes the colour of the charged move combobox for position 2
+     */
+    @FXML
     public void handlePokemonTwoChargedMoveComboBoxColor() {
         setChargedMoveComboBoxColourByType(pokemonTwoChargedMoveListComboBox);
     }
 
+    /**
+     * Listener for the level input field for position 1
+     */
+    @FXML
     public void levelPokemonOneFieldListener() {
         verifyLevelTextFieldInput(pokemonOneLevelTextField);
     }
 
+    /**
+     * Listener for the level input field for position 2
+     */
+    @FXML
     public void levelPokemonTwoFieldListener() {
         verifyLevelTextFieldInput(pokemonTwoLevelTextField);
     }
 
+    /**
+     * Listener for the attack IV input field for position 1
+     */
+    @FXML
     public void ivAttackPokemonOneListener() {
         verifyIVTextFieldInput(pokemonOneAttackIVTextField);
     }
 
+    /**
+     * Listener for the defense IV input field for position 1
+     */
+    @FXML
     public void ivDefensePokemonOneListener() {
         verifyIVTextFieldInput(pokemonOneDefenseIVTextField);
     }
 
+    /**
+     * Listener for the stamina IV input field for position 1
+     */
+    @FXML
     public void ivStaminaPokemonOneListener() {
         verifyIVTextFieldInput(pokemonOneStaminaIVTextField);
     }
 
+    /**
+     * Listener for the attack IV input field for position 2
+     */
+    @FXML
     public void ivAttackPokemonTwoListener() {
         verifyIVTextFieldInput(pokemonTwoAttackIVTextField);
     }
 
+    /**
+     * Listener for the defense IV input field for position 2
+     */
+    @FXML
     public void ivDefensePokemonTwoListener() {
         verifyIVTextFieldInput(pokemonTwoDefenseIVTextField);
     }
 
+    /**
+     * Listener for the stamina IV input field for position 2
+     */
+    @FXML
     public void ivStaminaPokemonTwoListener() {
         verifyIVTextFieldInput(pokemonTwoStaminaIVTextField);
     }
 
+    /**
+     * Listener for the pokemon attack stat in the pokemon details titlepane for position 1
+     */
+    @FXML
     public void pokemonOneAttackStatListener() {
         updateAttackText(pokemonOnePokemonListComboBox, pokemonOneLevelTextField, pokemonOneAttackIVTextField, pokemonOneDefenseIVTextField, pokemonOneStaminaIVTextField, pokemonOneAttackStatText);
-
         updateCPText(pokemonOnePokemonListComboBox, pokemonOneLevelTextField, pokemonOneAttackIVTextField, pokemonOneDefenseIVTextField, pokemonOneStaminaIVTextField, pokemonOneCPText);
     }
 
+    /**
+     * Listener for the pokemon defense stat in the pokemon details titlepane for position 1
+     */
+    @FXML
     public void pokemonOneDefenseStatListener() {
         updateDefenseText(pokemonOnePokemonListComboBox, pokemonOneLevelTextField, pokemonOneAttackIVTextField, pokemonOneDefenseIVTextField, pokemonOneStaminaIVTextField, pokemonOneDefenseStatText);
         updateCPText(pokemonOnePokemonListComboBox, pokemonOneLevelTextField, pokemonOneAttackIVTextField, pokemonOneDefenseIVTextField, pokemonOneStaminaIVTextField, pokemonOneCPText);
     }
 
+    /**
+     * Listener for the pokemon stamina stat in the pokemon details titlepane for position 1
+     */
+    @FXML
     public void pokemonOneStaminaStatListener() {
         updateStaminaText(pokemonOnePokemonListComboBox, pokemonOneLevelTextField, pokemonOneAttackIVTextField, pokemonOneDefenseIVTextField, pokemonOneStaminaIVTextField, pokemonOneStaminaStatText);
         updateCPText(pokemonOnePokemonListComboBox, pokemonOneLevelTextField, pokemonOneAttackIVTextField, pokemonOneDefenseIVTextField, pokemonOneStaminaIVTextField, pokemonOneCPText);
     }
 
+    /**
+     * Listener for the pokemon attack stat in the pokemon details titlepane for position 2
+     */
+    @FXML
     public void pokemonTwoAttackStatListener() {
         updateAttackText(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoAttackStatText);
         updateCPText(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoCPText);
     }
 
+    /**
+     * Listener for the pokemon defense stat in the pokemon details titlepane for position 2
+     */
+    @FXML
     public void pokemonTwoDefenseStatListener() {
         updateDefenseText(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoDefenseStatText);
         updateCPText(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoCPText);
     }
 
+    /**
+     * Listener for the pokemon stamina stat in the pokemon details titlepane for position 2
+     */
+    @FXML
     public void pokemonTwoStaminaStatListener() {
         updateStaminaText(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoStaminaStatText);
         updateCPText(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoCPText);
     }
 
+    /**
+     * Listener for the pokemon cp field in the pokemon details titlepane for position 1
+     */
+    @FXML
     public void pokemonOneLevelListener() {
         updateCPText(pokemonOnePokemonListComboBox, pokemonOneLevelTextField, pokemonOneAttackIVTextField, pokemonOneDefenseIVTextField, pokemonOneStaminaIVTextField, pokemonOneCPText);
     }
 
+    /**
+     * Listener for the pokemon cp field in the pokemon details titlepane for position 2
+     */
+    @FXML
     public void pokemonTwoLevelListener() {
         updateCPText(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoCPText);
     }
@@ -295,9 +382,9 @@ public class BattleSimulatorController implements Initializable {
     private void verifyIVTextFieldInput(TextField ivTextField) {
         ivTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
-                Integer parsedInt = Integer.parseInt(newValue);
+                int parsedInt = Integer.parseInt(newValue);
 
-                if (parsedInt > 15 || parsedInt < 0 || parsedInt == null) {
+                if (parsedInt > 15 || parsedInt < 0) {
                     ivTextField.setStyle("-fx-border-style: solid; -fx-border-width: 1px; -fx-border-color: red;");
                     //error message
                 } else {
@@ -312,7 +399,7 @@ public class BattleSimulatorController implements Initializable {
     private void verifyLevelTextFieldInput(TextField levelTextField) {
         levelTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
-                Double parsedDouble = Double.parseDouble(newValue);
+                double parsedDouble = Double.parseDouble(newValue);
 
                 if (parsedDouble > 40 || parsedDouble < 1) {
                     levelTextField.setStyle("-fx-border-style: solid; -fx-border-width: 1px; -fx-border-color: red;");

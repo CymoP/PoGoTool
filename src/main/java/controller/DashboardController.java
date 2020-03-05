@@ -9,6 +9,9 @@ import services.UserService;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * DashboardController is the class for controlling user interactions on the dashboard window to the model
+ */
 public class DashboardController implements Initializable {
 
     @FXML
@@ -19,9 +22,6 @@ public class DashboardController implements Initializable {
 
     private UserService userService = UserService.getInstance();
 
-    /**
-     * DashboardController is the class for controlling user interactions on the dashboard window to the model
-     */
     public DashboardController() {
     }
 
@@ -33,16 +33,25 @@ public class DashboardController implements Initializable {
         }
     }
 
+    /**
+     * Handler for the load battle simulator component button
+     */
     @FXML
     public void handleBattleSimulatorComponentButtonAction() {
         NavigationService.gotoBattleSimulator();
     }
 
+    /**
+     * Handler for the load user maintenance component button
+     */
     @FXML
     public void handleUserMaintenanceComponentButtonAction() {
         NavigationService.gotoUserMaintenance();
     }
 
+    /**
+     * Handler for the load data maintenance component button
+     */
     @FXML
     public void handleDataMaintenanceComponentButtonAction() {
         NavigationService.gotoDataMaintenance();

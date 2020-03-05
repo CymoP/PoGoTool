@@ -3,6 +3,9 @@ package utils;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * ColourChooser is a simple class used for associating hex code colours to type names
+ */
 public class ColourChooser {
 
     private static Map<String, String> colourMap = new HashMap<>();
