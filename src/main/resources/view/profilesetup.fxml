@@ -3,6 +3,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.LoginController"
@@ -12,6 +13,18 @@
     <top>
         <fx:include source="menubar.fxml"/>
     </top>
+
+    <left>
+        <HBox prefWidth="25"/>
+    </left>
+
+    <right>
+        <HBox prefWidth="25"/>
+    </right>
+
+    <bottom>
+        <HBox prefHeight="25"/>
+    </bottom>
 
     <center>
         <GridPane>

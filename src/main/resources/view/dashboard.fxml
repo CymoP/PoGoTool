@@ -11,6 +11,18 @@
         <fx:include source="menubar.fxml"/>
     </top>
 
+    <left>
+        <HBox prefWidth="25"/>
+    </left>
+
+    <right>
+        <HBox prefWidth="25"/>
+    </right>
+
+    <bottom>
+        <HBox prefHeight="25"/>
+    </bottom>
+
     <center>
         <GridPane>
             <HBox spacing="10"

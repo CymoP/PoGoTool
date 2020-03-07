@@ -13,6 +13,18 @@
         <fx:include source="menubar.fxml"/>
     </top>
 
+    <left>
+        <HBox prefWidth="25"/>
+    </left>
+
+    <right>
+        <HBox prefWidth="25"/>
+    </right>
+
+    <bottom>
+        <HBox prefHeight="25"/>
+    </bottom>
+
     <center>
         <GridPane alignment="TOP_CENTER">
             <VBox GridPane.columnIndex="0"
