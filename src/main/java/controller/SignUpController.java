@@ -17,6 +17,9 @@ import java.sql.SQLException;
 public class SignUpController {
 
     @FXML
+    public Button backButton;
+
+    @FXML
     private PasswordField passwordField;
 
     @FXML
@@ -39,6 +42,11 @@ public class SignUpController {
                 }
             }
         }
+    }
+
+    @FXML
+    public void handleSignUpBackButtonAction() {
+        NavigationService.gotoLogin();
     }
 
     @FXML

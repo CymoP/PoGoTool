@@ -3,50 +3,85 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-<GridPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.SignUpController"
           stylesheets="@signup.css">
 
-    <Text text="Signup"
-          GridPane.columnIndex="0"
-          GridPane.rowIndex="0"
-          GridPane.columnSpan="2"/>
+    <top>
+        <HBox prefHeight="25"/>
+    </top>
 
-    <Label text="User Name:"
-           GridPane.columnIndex="0"
-           GridPane.rowIndex="1"/>
+    <left>
+        <HBox prefWidth="25"/>
+    </left>
 
-    <TextField fx:id="usernameField"
-               GridPane.columnIndex="1"
-               GridPane.rowIndex="1"
-               onKeyPressed="#verifyUserNameInputListener"/>
+    <right>
+        <HBox prefWidth="25"/>
+    </right>
 
-    <Label text="Password:"
-           GridPane.columnIndex="0"
-           GridPane.rowIndex="2"/>
+    <bottom>
+        <HBox prefHeight="25"/>
+    </bottom>
 
-    <PasswordField fx:id="passwordField"
-                   GridPane.columnIndex="1"
-                   GridPane.rowIndex="2"
-                   onKeyPressed="#passwordFieldOneListener"/>
+    <center>
+        <GridPane>
+            <Text id="signUpText"
+                  text="Signup"
+                  GridPane.columnIndex="0"
+                  GridPane.rowIndex="0"
+                  GridPane.columnSpan="2"/>
 
-    <Label text="Re-type Password:"
-           GridPane.columnIndex="0"
-           GridPane.rowIndex="3"/>
+            <Label text="User Name:  "
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="1"/>
 
-    <PasswordField fx:id="rePasswordField"
-                   GridPane.columnIndex="1"
-                   GridPane.rowIndex="3"
-                   onKeyPressed="#passwordFieldTwoListener"/>
+            <TextField fx:id="usernameField"
+                       GridPane.columnIndex="1"
+                       GridPane.rowIndex="1"
+                       onKeyPressed="#verifyUserNameInputListener"/>
 
-    <HBox spacing="10"
-          alignment="bottom_right"
-          GridPane.columnIndex="1"
-          GridPane.rowIndex="4">
-        <Button text="Submit"
-                fx:id="submitButton"
-                onAction="#handleSignUpSubmitButtonAction"
-                onKeyPressed="#handleSubmitButtonKeyPressed"/>
-    </HBox>
-</GridPane>
+            <Label text="Password:  "
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="2"/>
+
+            <PasswordField fx:id="passwordField"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="2"
+                           onKeyPressed="#passwordFieldOneListener"/>
+
+            <Label text="${'Re-type \nPassword:  '}"
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="3"/>
+
+            <PasswordField fx:id="rePasswordField"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="3"
+                           onKeyPressed="#passwordFieldTwoListener"/>
+
+            <VBox prefHeight="15"
+                  prefWidth="100"
+                  GridPane.columnSpan="2"
+                  GridPane.rowIndex="4"/>
+
+            <HBox spacing="10"
+                  alignment="bottom_left"
+                  GridPane.columnIndex="0"
+                  GridPane.rowIndex="5">
+                <Button text="Back"
+                        fx:id="backButton"
+                        onAction="#handleSignUpBackButtonAction"/>
+            </HBox>
+
+            <HBox spacing="10"
+                  alignment="bottom_right"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="5">
+                <Button text="Submit"
+                        fx:id="submitButton"
+                        onAction="#handleSignUpSubmitButtonAction"
+                        onKeyPressed="#handleSubmitButtonKeyPressed"/>
+            </HBox>
+        </GridPane>
+    </center>
+</BorderPane>

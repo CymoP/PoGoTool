@@ -45,7 +45,7 @@ public class NavigationService {
      */
     public static void gotoSignUp() {
         try {
-            replaceSceneContent(SIGN_UP_FXML_FILE_LOCATION, 400, 400);
+            replaceSceneContent(SIGN_UP_FXML_FILE_LOCATION, 300, 300);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }

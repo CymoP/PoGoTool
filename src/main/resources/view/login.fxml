@@ -3,51 +3,77 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
-<GridPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="controller.LoginController"
-          stylesheets="@login.css">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.LoginController"
+            stylesheets="@login.css">
 
-    <Text text="Welcome"
-          GridPane.columnIndex="0"
-          GridPane.rowIndex="0"
-          GridPane.columnSpan="2"/>
+    <top>
+        <HBox prefHeight="25"/>
+    </top>
 
-    <Label text="User Name:"
-           GridPane.columnIndex="0"
-           GridPane.rowIndex="1"/>
+    <left>
+        <HBox prefWidth="25"/>
+    </left>
 
-    <TextField fx:id="usernameField"
-               GridPane.columnIndex="1"
-               GridPane.rowIndex="1"
-               onKeyPressed="#handleLoginButtonKeyPressed"/>
+    <right>
+        <HBox prefWidth="25"/>
+    </right>
 
-    <Label text="Password:"
-           GridPane.columnIndex="0"
-           GridPane.rowIndex="2"/>
+    <bottom>
+        <HBox prefHeight="25"/>
+    </bottom>
 
-    <PasswordField fx:id="passwordField"
-                   GridPane.columnIndex="1"
-                   GridPane.rowIndex="2"
-                   onKeyPressed="#handleLoginButtonKeyPressed"/>
+    <center>
+        <GridPane>
+            <Text id="welcomeText"
+                  text="Welcome"
+                  GridPane.columnIndex="0"
+                  GridPane.rowIndex="0"
+                  GridPane.columnSpan="2"/>
 
-    <HBox spacing="10"
-          alignment="bottom_right"
-          GridPane.columnIndex="0"
-          GridPane.rowIndex="4">
-        <Button fx:id="loginButton"
-                text="Login"
-                onAction="#handleLoginButtonAction"
-                onKeyPressed="#handleLoginButtonKeyPressed"/>
-    </HBox>
+            <Label text="User Name:  "
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="1"/>
 
-    <HBox spacing="10"
-          alignment="bottom_right"
-          GridPane.columnIndex="1"
-          GridPane.rowIndex="4">
-        <Button fx:id="signUpButton"
-                text="Sign Up"
-                onAction="#handleSignUpButtonAction"
-                onKeyPressed="#handleSignUpButtonKeyPressed"/>
-    </HBox>
-</GridPane>
+            <TextField fx:id="usernameField"
+                       GridPane.columnIndex="1"
+                       GridPane.rowIndex="1"
+                       onKeyPressed="#handleLoginButtonKeyPressed"/>
+
+            <Label text="Password:  "
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="2"/>
+
+            <PasswordField fx:id="passwordField"
+                           GridPane.columnIndex="1"
+                           GridPane.rowIndex="2"
+                           onKeyPressed="#handleLoginButtonKeyPressed"/>
+
+            <VBox prefHeight="15"
+                  prefWidth="100"
+                  GridPane.rowIndex="3"
+                  GridPane.columnSpan="2"/>
+
+            <HBox spacing="10"
+                  alignment="bottom_left"
+                  GridPane.columnIndex="0"
+                  GridPane.rowIndex="4">
+                <Button fx:id="loginButton"
+                        text="Login"
+                        onAction="#handleLoginButtonAction"
+                        onKeyPressed="#handleLoginButtonKeyPressed"/>
+            </HBox>
+
+            <HBox spacing="10"
+                  alignment="bottom_right"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="4">
+                <Button fx:id="signUpButton"
+                        text="Sign Up"
+                        onAction="#handleSignUpButtonAction"
+                        onKeyPressed="#handleSignUpButtonKeyPressed"/>
+            </HBox>
+        </GridPane>
+    </center>
+</BorderPane>
