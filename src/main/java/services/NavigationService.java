@@ -107,6 +107,7 @@ public class NavigationService {
 
         if (reportStage == null) {
             reportStage = new Stage();
+            reportStage.setResizable(false);
         }
 
         reportStage.setScene(scene);

@@ -31,6 +31,7 @@ public class ApplicationLoader extends Application {
     public void start(Stage primaryStage) throws Exception {
         try {
             stage = primaryStage;
+            stage.setResizable(false);
             NavigationService.gotoLogin();
             primaryStage.show();
         } catch (Exception ex) {
