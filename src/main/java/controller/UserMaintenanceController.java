@@ -8,12 +8,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import loader.ApplicationLoader;
+import services.NavigationService;
 import services.RoleService;
 import services.UserService;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * UserMaintenanceController is the controller class for controlling user interactions on the User Maintenance window
@@ -69,6 +73,12 @@ public class UserMaintenanceController implements Initializable {
     public void handleEditUserRoleButton() throws SQLException {
         if (userService.isExistingUser(editUserUserNameField.getText())) {
             userService.editUserRole(editUserUserNameField.getText(), editUserRoleComboBox.getSelectionModel().getSelectedItem().toString());
+        }
+
+        if (!userService.checkLoggedInUserIsAdmin()){
+            userService.logout();
+            NavigationService.gotoLogin();
+            Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, "Logged in user is not an Admin, user has been logged out");
         }
     }
 

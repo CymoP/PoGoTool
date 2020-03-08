@@ -92,6 +92,7 @@ public class UserService {
      */
     public void editUserRole(String username, String role) throws SQLException {
         userDA.editUserRoleByUsername(username, role);
+        loggedInUser = userDA.getUserByUsernameAndPassword(loggedInUser.getUsername(), loggedInUser.getPassword());
     }
 
     /**
