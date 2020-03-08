@@ -85,3 +85,6 @@ ALTER TABLE User
 ADD CONSTRAINT FKUser400447
 FOREIGN KEY (ConfigurationOptionID)
 REFERENCES ConfigurationOptions (ConfigurationOptionID);
+
+ALTER TABLE User
+ADD UNIQUE (UserName);

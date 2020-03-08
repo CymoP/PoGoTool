@@ -12,7 +12,7 @@ import services.UserService;
 import java.sql.SQLException;
 
 /**
- * SignUp is the class for controlling user interactions on the signup window to the model
+ * SignUpController is the class for controlling user interactions on the signup window to the model
  */
 public class SignUpController {
 

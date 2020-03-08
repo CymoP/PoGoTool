@@ -77,6 +77,24 @@ public class UserService {
     }
 
     /**
+     * Creates a new user with the given details
+     */
+    public boolean createNewUser(String username, String password, String role) throws SQLException {
+        return userDA.createNewUserByUsernameAndPasswordAndRole(username, password, role);
+    }
+
+
+    /**
+     * Edits the role of a given user
+     *
+     * @param username the given username
+     * @param role     the given role
+     */
+    public void editUserRole(String username, String role) throws SQLException {
+        userDA.editUserRoleByUsername(username, role);
+    }
+
+    /**
      * Checks that the logged in user is an admin
      *
      * @return true|false whether logged in user is an admin
