@@ -2,7 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
 import services.NavigationService;
 import services.UserService;
 
@@ -15,10 +15,10 @@ import java.util.ResourceBundle;
 public class DashboardController implements Initializable {
 
     @FXML
-    public HBox dataMaintenanceButtonHBox;
+    public Button userMaintenanceButton;
 
     @FXML
-    public HBox userMaintenanceButtonHBox;
+    public Button dataMaintenanceButton;
 
     private UserService userService = UserService.getInstance();
 
@@ -27,9 +27,11 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (!userService.checkLoggedInUserIsAdmin()){
-            dataMaintenanceButtonHBox.setVisible(false);
-            userMaintenanceButtonHBox.setVisible(false);
+        if (!userService.checkLoggedInUserIsAdmin()) {
+            userMaintenanceButton.setManaged(false);
+            dataMaintenanceButton.setManaged(false);
+            userMaintenanceButton.setVisible(false);
+            dataMaintenanceButton.setVisible(false);
         }
     }
 
