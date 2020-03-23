@@ -92,6 +92,21 @@ public class BattleSimulatorController implements Initializable {
     public ToggleGroup pokemonTwoShields;
 
     @FXML
+    public Tab summaryTab;
+
+    @FXML
+    public Tab graphicTab;
+
+    @FXML
+    public Tab fullLogTab;
+
+    @FXML
+    public TextArea fullLogTextArea;
+
+    @FXML
+    public TextArea summaryTextArea;
+
+    @FXML
     private ComboBox<String> pokemonOnePokemonListComboBox;
 
     @FXML
@@ -138,7 +153,8 @@ public class BattleSimulatorController implements Initializable {
         SelectedPokemon opponentTwo = buildSelectedPokemon(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox, pokemonTwoShields);
 
         battleSimulator.simulatorAlgorithm(opponentOne, opponentTwo);
-        winnerText.setText(battleSimulatorReport.getWinner());
+        summaryTextArea.setText(battleSimulatorReport.getWinner());
+        fullLogTextArea.setText(battleSimulatorReport.getOutput());
 
         NavigationService.gotoBattleReport();
     }

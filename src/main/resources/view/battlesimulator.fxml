@@ -340,10 +340,40 @@
     </center>
 
     <bottom>
-        <HBox prefWidth="800" prefHeight="100" alignment="CENTER">
-            <Text fx:id="winnerText">
-                <style>-fx-font-size: 20; -fx-font-style: arial</style>
-            </Text>
-        </HBox>
+        <TabPane prefHeight="200"
+                 prefWidth="800">
+
+            <Tab fx:id="summaryTab"
+                 text="Summary"
+                 closable="false">
+
+            <VBox>
+                <TextArea fx:id="summaryTextArea"
+                          editable="false"/>
+            </VBox>
+
+            </Tab>
+
+            <Tab fx:id="graphicTab"
+                 text="Graphic"
+                 closable="false">
+
+                <VBox>
+                    <Text text="test 2"/>
+                </VBox>
+
+            </Tab>
+
+            <Tab fx:id="fullLogTab"
+                 text="Full Log"
+                 closable="false">
+
+                <VBox>
+                    <TextArea fx:id="fullLogTextArea"
+                              editable="false"/>
+                </VBox>
+
+            </Tab>
+        </TabPane>
     </bottom>
 </BorderPane>
