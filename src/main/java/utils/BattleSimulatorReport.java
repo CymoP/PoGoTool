@@ -136,11 +136,11 @@ public class BattleSimulatorReport {
     }
 
     /**
-     * Gets the winner for a simulation by finding the last entry
+     * Gets the summary for a simulation
      *
      * @return the final entry to the battle report which denotes the winner
      */
-    public String getWinner() {
+    public String getSummary() {
         return battleSimulatorReport.get(battleSimulatorReport.size() - 1);
     }
 

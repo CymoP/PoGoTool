@@ -153,7 +153,7 @@ public class BattleSimulatorController implements Initializable {
         SelectedPokemon opponentTwo = buildSelectedPokemon(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox, pokemonTwoShields);
 
         battleSimulator.simulatorAlgorithm(opponentOne, opponentTwo);
-        summaryTextArea.setText(battleSimulatorReport.getWinner());
+        summaryTextArea.setText(battleSimulatorReport.getSummary());
         fullLogTextArea.setText(battleSimulatorReport.getOutput());
 
         NavigationService.gotoBattleReport();
