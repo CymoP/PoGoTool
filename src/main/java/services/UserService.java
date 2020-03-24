@@ -4,6 +4,8 @@ import data_access.UserDA;
 import model.User;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * UserService is a service class for all User related business logic
@@ -108,6 +110,7 @@ public class UserService {
      * Sets loggedInUser to null to destroy previously logged in users information
      */
     public void logout() {
+        Logger.getLogger(UserService.class.getName()).log(Level.INFO, "User has logged out");
         loggedInUser = null;
     }
 }
