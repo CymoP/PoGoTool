@@ -26,7 +26,7 @@ public class PokemonDA implements IPokemonDA {
         verifyUserPrepareStatement.setInt(2, generation);
         verifyUserPrepareStatement.setString(3, type);
 
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getPokemonByNameAndGenerationAndTypeSQL());
+        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, getPokemonByNameAndGenerationAndTypeSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
         if (result.first()) {
             return new Pokemon(result.getString("PokemonName"),
@@ -48,7 +48,7 @@ public class PokemonDA implements IPokemonDA {
 
         PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getAllPokemonSQL());
 
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getAllPokemonSQL());
+        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, getAllPokemonSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
 
         if (result.first()) {
@@ -67,7 +67,7 @@ public class PokemonDA implements IPokemonDA {
 
         PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getPokemonNameSQL());
 
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getPokemonNameSQL());
+        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, getPokemonNameSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
 
         if (result.first()) {

@@ -24,7 +24,7 @@ public class MoveDA implements IMoveDA {
         PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getMoveByNameSQL());
         verifyUserPrepareStatement.setString(1, moveName);
 
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getMoveByNameSQL());
+        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, getMoveByNameSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
         if (result.first()) {
             return mapFastMoveColumnsToObject(result);
@@ -41,7 +41,7 @@ public class MoveDA implements IMoveDA {
         verifyUserPrepareStatement.setInt(2, generation);
         verifyUserPrepareStatement.setString(3, type);
 
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getFastMoveListForPokemonSQL());
+        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, getFastMoveListForPokemonSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
 
         if (result.first()) {
@@ -63,7 +63,7 @@ public class MoveDA implements IMoveDA {
         verifyUserPrepareStatement.setInt(2, generation);
         verifyUserPrepareStatement.setString(3, type);
 
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, getChargedMoveListForPokemonSQL());
+        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, getChargedMoveListForPokemonSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
 
         if (result.first()) {
