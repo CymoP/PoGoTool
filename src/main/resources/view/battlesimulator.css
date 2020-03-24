@@ -34,3 +34,11 @@
 .tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
     -fx-border-width: 0;
 }
+
+.text-area {
+    -fx-background-color: #f6f6f6;
+}
+
+.text-area .content {
+    -fx-background-color: #f6f6f6;
+}
