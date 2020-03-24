@@ -161,7 +161,6 @@ public class BattleSimulatorReport {
         this.output = "";
 
         for (int keyCount = 0; keyCount < battleSimulatorReport.size(); keyCount++) {
-            System.out.println(battleSimulatorReport.get(keyCount));
             output.append(battleSimulatorReport.get(keyCount));
             output.append("\n");
         }

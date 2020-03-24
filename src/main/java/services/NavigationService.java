@@ -4,10 +4,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import loader.ApplicationLoader;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,11 +18,9 @@ public class NavigationService {
     private static final String SIGN_UP_FXML_FILE_LOCATION = "../view/signup.fxml";
     private static final String DASHBOARD_FXML_FILE_LOCATION = "../view/dashboard.fxml";
     private static final String BATTLE_SIMULATOR_FXML_FILE_LOCATION = "../view/battlesimulator.fxml";
-    private static final String BATTLE_SIMULATOR_REPORT_FXML_FILE_LOCATION = "../view/battlesimulatorreport.fxml";
     private static final String USER_MAINTENANCE_FXML_FILE_LOCATION = "../view/usermaintenance.fxml";
     private static final String DATA_MAINTENANCE_FXML_FILE_LOCATION = "../view/datamaintenance.fxml";
     private static final String PROFILE_SETUP_FXML_FILE_LOCATION = "../view/profilesetup.fxml";
-    private static Stage reportStage;
 
     private NavigationService() {
     }
@@ -34,7 +30,6 @@ public class NavigationService {
      */
     public static void gotoDashboard() {
         try {
-            ifExistsCloseReportStage();
             replaceSceneContent(DASHBOARD_FXML_FILE_LOCATION, 1200, 800);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,7 +52,6 @@ public class NavigationService {
      */
     public static void gotoLogin() {
         try {
-            ifExistsCloseReportStage();
             replaceSceneContent(LOGIN_FXML_FILE_LOCATION, 300, 300);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,30 +99,6 @@ public class NavigationService {
             replaceSceneContent(BATTLE_SIMULATOR_FXML_FILE_LOCATION, 1200, 800);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    /**
-     * Opens the report window when using the battle simulator
-     *
-     * @throws IOException IOException thrown
-     */
-    public static void gotoBattleReport() throws IOException {
-        Parent root = FXMLLoader.load(ApplicationLoader.class.getResource(BATTLE_SIMULATOR_REPORT_FXML_FILE_LOCATION));
-        Scene scene = new Scene(root);
-
-        if (reportStage == null) {
-            reportStage = new Stage();
-            reportStage.setResizable(false);
-        }
-
-        reportStage.setScene(scene);
-        reportStage.show();
-    }
-
-    private static void ifExistsCloseReportStage() {
-        if(reportStage != null){
-            reportStage.close();
         }
     }
 

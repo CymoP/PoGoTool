@@ -13,7 +13,6 @@ import model.FastMove;
 import model.Pokemon;
 import model.SelectedPokemon;
 import services.MoveService;
-import services.NavigationService;
 import services.PokemonService;
 import services.SelectedPokemonService;
 import utils.BattleSimulator;
@@ -21,7 +20,6 @@ import utils.BattleSimulatorReport;
 import utils.ColourChooser;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -127,9 +125,6 @@ public class BattleSimulatorController implements Initializable {
     @FXML
     public Button simulateButton;
 
-    @FXML
-    public Text winnerText;
-
     private PokemonService pokemonService = new PokemonService();
     private BattleSimulator battleSimulator = new BattleSimulator();
     private MoveService moveService = new MoveService();
@@ -148,15 +143,13 @@ public class BattleSimulatorController implements Initializable {
     }
 
     @FXML
-    protected void handleSimulateButtonAction() throws IOException {
+    protected void handleSimulateButtonAction() {
         SelectedPokemon opponentOne = buildSelectedPokemon(pokemonOnePokemonListComboBox, pokemonOneLevelTextField, pokemonOneAttackIVTextField, pokemonOneDefenseIVTextField, pokemonOneStaminaIVTextField, pokemonOneFastMoveListComboBox, pokemonOneChargedMoveListComboBox, pokemonOneShields);
         SelectedPokemon opponentTwo = buildSelectedPokemon(pokemonTwoPokemonListComboBox, pokemonTwoLevelTextField, pokemonTwoAttackIVTextField, pokemonTwoDefenseIVTextField, pokemonTwoStaminaIVTextField, pokemonTwoFastMoveListComboBox, pokemonTwoChargedMoveListComboBox, pokemonTwoShields);
 
         battleSimulator.simulatorAlgorithm(opponentOne, opponentTwo);
         summaryTextArea.setText(battleSimulatorReport.getSummary());
         fullLogTextArea.setText(battleSimulatorReport.getOutput());
-
-        NavigationService.gotoBattleReport();
     }
 
     /**
