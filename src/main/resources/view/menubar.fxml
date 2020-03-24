@@ -16,7 +16,8 @@
 
         <MenuBar>
             <Menu text="Profile">
-                <MenuItem text="Setup"/>
+                <MenuItem text="Setup"
+                          onAction="#handleSetup"/>
             </Menu>
 
             <Menu text="Help">

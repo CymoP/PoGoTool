@@ -18,4 +18,9 @@ public class MenuBarController {
         userService.logout();
         NavigationService.gotoLogin();
     }
+
+    @FXML
+    public void handleSetup() {
+        NavigationService.gotoProfileSetup();
+    }
 }

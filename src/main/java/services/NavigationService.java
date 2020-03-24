@@ -23,6 +23,7 @@ public class NavigationService {
     private static final String BATTLE_SIMULATOR_REPORT_FXML_FILE_LOCATION = "../view/battlesimulatorreport.fxml";
     private static final String USER_MAINTENANCE_FXML_FILE_LOCATION = "../view/usermaintenance.fxml";
     private static final String DATA_MAINTENANCE_FXML_FILE_LOCATION = "../view/datamaintenance.fxml";
+    private static final String PROFILE_SETUP_FXML_FILE_LOCATION = "../view/profilesetup.fxml";
     private static Stage reportStage;
 
     private NavigationService() {
@@ -80,6 +81,17 @@ public class NavigationService {
     public static void gotoUserMaintenance() {
         try {
             replaceSceneContent(USER_MAINTENANCE_FXML_FILE_LOCATION, 1200, 800);
+        } catch (Exception ex) {
+            Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Navigate the user to the profile setup scene
+     */
+    public static void gotoProfileSetup() {
+        try {
+            replaceSceneContent(PROFILE_SETUP_FXML_FILE_LOCATION, 1200, 800);
         } catch (Exception ex) {
             Logger.getLogger(ApplicationLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
