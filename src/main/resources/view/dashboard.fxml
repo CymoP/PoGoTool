@@ -76,6 +76,22 @@
             <Button text="Placeholder"
                     prefWidth="220"
                     prefHeight="220"/>
+
+            <Button text="Placeholder"
+                    prefWidth="220"
+                    prefHeight="220"/>
+
+            <Button text="Placeholder"
+                    prefWidth="220"
+                    prefHeight="220"/>
+
+            <Button text="Placeholder"
+                    prefWidth="220"
+                    prefHeight="220"/>
+
+            <Button text="Placeholder"
+                    prefWidth="220"
+                    prefHeight="220"/>
         </FlowPane>
     </center>
 </BorderPane>
