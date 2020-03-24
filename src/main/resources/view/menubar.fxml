@@ -13,20 +13,20 @@
           GridPane.rowIndex="0"
           prefHeight="50"
           prefWidth="1000">
-        <TextField text="placeholder1"
-                   prefWidth="100"
-                   prefHeight="50"
-                   editable="false"/>
 
-        <TextField text="placeholder2"
-                   prefWidth="100"
-                   prefHeight="50"
-                   editable="false"/>
+        <MenuBar>
+            <Menu text="Profile">
+                <MenuItem text="Setup"/>
+            </Menu>
 
-        <TextField text="placeholder3"
-                   prefWidth="100"
-                   prefHeight="50"
-                   editable="false"/>
+            <Menu text="Help">
+                <MenuItem text="About"/>
+
+                <MenuItem text="Manual"/>
+
+                <MenuItem text="Feedback"/>
+            </Menu>
+        </MenuBar>
     </HBox>
 
     <HBox GridPane.columnIndex="1"
