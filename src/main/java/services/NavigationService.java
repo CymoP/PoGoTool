@@ -32,7 +32,7 @@ public class NavigationService {
     public static void gotoDashboard() {
         try {
             replaceSceneContent(DASHBOARD_FXML_FILE_LOCATION, 1200, 800);
-            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to dashboard" + new Timestamp(System.currentTimeMillis()));
+            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to dashboard " + new Timestamp(System.currentTimeMillis()));
         } catch (Exception ex) {
             Logger.getLogger(NavigationService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -56,7 +56,7 @@ public class NavigationService {
     public static void gotoLogin() {
         try {
             replaceSceneContent(LOGIN_FXML_FILE_LOCATION, 300, 300);
-            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to login" + new Timestamp(System.currentTimeMillis()));
+            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to login " + new Timestamp(System.currentTimeMillis()));
         } catch (Exception ex) {
             Logger.getLogger(NavigationService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -68,7 +68,7 @@ public class NavigationService {
     public static void gotoDataMaintenance() {
         try {
             replaceSceneContent(DATA_MAINTENANCE_FXML_FILE_LOCATION, 1200, 800);
-            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to data maintenance" + new Timestamp(System.currentTimeMillis()));
+            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to data maintenance " + new Timestamp(System.currentTimeMillis()));
         } catch (Exception ex) {
             Logger.getLogger(NavigationService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -80,7 +80,7 @@ public class NavigationService {
     public static void gotoUserMaintenance() {
         try {
             replaceSceneContent(USER_MAINTENANCE_FXML_FILE_LOCATION, 1200, 800);
-            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to user maintenance" + new Timestamp(System.currentTimeMillis()));
+            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to user maintenance " + new Timestamp(System.currentTimeMillis()));
         } catch (Exception ex) {
             Logger.getLogger(NavigationService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -92,7 +92,7 @@ public class NavigationService {
     public static void gotoProfileSetup() {
         try {
             replaceSceneContent(PROFILE_SETUP_FXML_FILE_LOCATION, 1200, 800);
-            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to profile setup" + new Timestamp(System.currentTimeMillis()));
+            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to profile setup " + new Timestamp(System.currentTimeMillis()));
         } catch (Exception ex) {
             Logger.getLogger(NavigationService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -104,7 +104,7 @@ public class NavigationService {
     public static void gotoBattleSimulator() {
         try {
             replaceSceneContent(BATTLE_SIMULATOR_FXML_FILE_LOCATION, 1200, 800);
-            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to battle simulator" + new Timestamp(System.currentTimeMillis()));
+            Logger.getLogger(NavigationService.class.getName()).log(Level.INFO, "User navigated to battle simulator " + new Timestamp(System.currentTimeMillis()));
         } catch (Exception ex) {
             Logger.getLogger(NavigationService.class.getName()).log(Level.SEVERE, null, ex);
         }
