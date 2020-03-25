@@ -1,6 +1,6 @@
 <data>
     <pokemon>
-        // **** Pokemon Data ****
+        /**** Pokemon Data ****/
 
         INSERT INTO Pokemon (PokemonName, Generation, TypeName, DualTypeName, BaseAttack, BaseDefense, BaseStamina)
         VALUES ('Charizard', 1, 'fire', 'Flying', 223, 173, 186);
@@ -28,7 +28,7 @@
 
     </pokemon>
     <fastmove>
-        // **** Fast Move Data ****
+        /**** Fast Move Data ****/
 
         INSERT INTO FastMove (MoveName, TypeName, DamagePvP, EnergyPvP, Duration)
         VALUES ('Fire Spin', 'fire', 9, 10, 3);
@@ -77,7 +77,7 @@
 
     </fastmove>
     <chargemove>
-        // **** Charge Move Data ****
+        /**** Charge Move Data ****/
 
         INSERT INTO ChargedMove (MoveName, TypeName, DamagePvP, EnergyPvP)
         VALUES ('Blast Burn', 'fire', 110, 50);
@@ -126,7 +126,7 @@
 
     </chargemove>
     <pokemonfastmove>
-        // **** Pokemon Fast Move Data  ****
+        /**** Pokemon Fast Move Data  ****/
 
         INSERT INTO PokemonFastMove (PokemonID, MoveID)
         VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Charizard' AND Generation = 1 AND TypeName = 'fire'), (SELECT FastMoveID FROM FastMove WHERE MoveName = 'Fire Spin'));
@@ -175,7 +175,7 @@
 
     </pokemonfastmove>
     <pokemonchargemove>
-        // **** Pokemon Charged Move Data  ****
+        /**** Pokemon Charged Move Data  ****/
 
         INSERT INTO PokemonChargedMove (PokemonID, MoveID)
         VALUES ((SELECT PokemonID FROM Pokemon WHERE PokemonName = 'Charizard' AND Generation = 1 AND TypeName = 'fire'), (SELECT ChargedMoveID FROM ChargedMove WHERE MoveName = 'Blast Burn'));
@@ -227,7 +227,7 @@
 
     </pokemonchargemove>
     <role>
-        // **** Role Data ****
+        /**** Role Data ****/
 
         INSERT INTO Role (RoleName) value ('User');
 
@@ -235,7 +235,7 @@
 
     </role>
     <user>
-        // **** User Data ****
+        /**** User Data ****/
 
         INSERT INTO USER (username, userpassword)
         values ('test1', 'test2');
@@ -245,7 +245,7 @@
 
     </user>
     <userrole>
-        // **** User Role Data ****
+        /**** User Role Data ****/
 
         INSERT INTO UserRole (RoleID, UserID)
         values ((SELECT RoleID FROM Role WHERE RoleName = 'user'), (SELECT UserID FROM User WHERE UserName = 'test1' AND UserPassword = 'test2'));
@@ -255,7 +255,7 @@
 
     </userrole>
     <configoptions>
-        // **** Config Option Data ****
+        /**** Config Option Data ****/
 
         INSERT INTO configurationoptions (userid, battlesimulator, tierlist)
         values ((SELECT UserID FROM User WHERE UserName = 'test1'), true, false);
