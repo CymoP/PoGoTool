@@ -9,7 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,10 +36,24 @@ public class UserDA implements IUserDA {
         Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, getUserByUsernameAndPasswordSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
         if (result.first()) {
-            return new User(result.getString("username"), result.getString("password"), result.getString("rolename"));
+            return new User(result.getString("username"),
+                    result.getString("password"),
+                    result.getString("rolename"),
+                    userComponentMap(result));
         }
 
         return null;
+    }
+
+    private Map<String, Boolean> userComponentMap(ResultSet result) throws SQLException {
+        Map<String, Boolean> componentList = new HashMap<>();
+
+        componentList.put("battlesimulator", result.getBoolean("battlesimulator"));
+        componentList.put("tierlist", result.getBoolean("tierlist"));
+        componentList.put("usermaintenance", result.getBoolean("usermaintenance"));
+        componentList.put("datamaintenance", result.getBoolean("datamaintenance"));
+
+        return componentList;
     }
 
     public boolean createNewUserByUsernameAndPassword(String username, String password) throws SQLException {
@@ -149,13 +165,18 @@ public class UserDA implements IUserDA {
     }
 
     private String getUserByUsernameAndPasswordSQL() {
-        return "SELECT Username AS username, " +
-                "UserPassword AS password, " +
-                "r.RoleName AS rolename " +
-                "FROM User u " +
-                "INNER JOIN UserRole ur ON u.UserID = ur.UserID " +
-                "INNER JOIN Role r ON ur.RoleID = r.RoleID " +
-                "WHERE UserName = ? " +
-                "AND UserPassword = ?";
+        return "SELECT Username     AS username,\n" +
+                "       UserPassword AS password,\n" +
+                "       r.RoleName   AS rolename,\n" +
+                "       co.BattleSimulator AS battlesimulator,\n" +
+                "       co.tierlist AS tierlist,\n" +
+                "       co.UserMaintenance AS usermaintenance,\n" +
+                "       co.DataMaintenance AS datamaintenance\n" +
+                "FROM User u\n" +
+                "       INNER JOIN UserRole ur ON u.UserID = ur.UserID\n" +
+                "       INNER JOIN Role r ON ur.RoleID = r.RoleID\n" +
+                "       INNER JOIN configurationoptions co ON u.UserID = co.UserID\n" +
+                "WHERE u.UserName = ?\n" +
+                "  AND u.UserPassword = ?";
     }
 }

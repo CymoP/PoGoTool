@@ -33,12 +33,8 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (!userService.checkLoggedInUserIsAdmin()) {
-            userMaintenanceButton.setManaged(false);
-            dataMaintenanceButton.setManaged(false);
-            userMaintenanceButton.setVisible(false);
-            dataMaintenanceButton.setVisible(false);
-        }
+        checkAdminElseHideAdminComponents();
+        checkProfileConfiguration();
     }
 
     /**
@@ -65,4 +61,19 @@ public class DashboardController implements Initializable {
         NavigationService.gotoDataMaintenance();
     }
 
+    private void checkProfileConfiguration() {
+        battleSimulatorButton.setManaged(userService.getLoggedInUser().getComponentList().get("battlesimulator"));
+        battleSimulatorButton.setVisible(userService.getLoggedInUser().getComponentList().get("battlesimulator"));
+        tierListButton.setManaged(userService.getLoggedInUser().getComponentList().get("tierlist"));
+        tierListButton.setVisible(userService.getLoggedInUser().getComponentList().get("tierlist"));
+    }
+
+    private void checkAdminElseHideAdminComponents() {
+        if (!userService.checkLoggedInUserIsAdmin()) {
+            userMaintenanceButton.setManaged(false);
+            dataMaintenanceButton.setManaged(false);
+            userMaintenanceButton.setVisible(false);
+            dataMaintenanceButton.setVisible(false);
+        }
+    }
 }

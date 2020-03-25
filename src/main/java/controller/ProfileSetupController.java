@@ -30,15 +30,18 @@ public class ProfileSetupController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ifNotAdminHideAdminComponents();
+        checkAdminElseHideAdminComponents();
     }
 
-    private void ifNotAdminHideAdminComponents() {
+    private void checkAdminElseHideAdminComponents() {
         if (!userService.checkLoggedInUserIsAdmin()) {
             userMaintenanceCheckBox.setManaged(false);
             dataMaintenanceCheckBox.setManaged(false);
             userMaintenanceCheckBox.setVisible(false);
             dataMaintenanceCheckBox.setVisible(false);
         }
+    }
+
+    public void handleSubmitButton() {
     }
 }

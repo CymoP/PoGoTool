@@ -47,7 +47,8 @@
 
                     <HBox alignment="BOTTOM_RIGHT">
                         <Button fx:id="submitButton"
-                                text="Submit"/>
+                                text="Submit"
+                                onAction="#handleSubmitButton"/>
                     </HBox>
                 </VBox>
             </TitledPane>
