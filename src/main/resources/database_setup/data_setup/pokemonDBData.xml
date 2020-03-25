@@ -254,4 +254,10 @@
         values ((SELECT RoleID FROM Role WHERE RoleName = 'admin'), (SELECT UserID FROM User WHERE UserName = 'admin' AND UserPassword = 'admin'));
 
     </userrole>
+    <configoptions>
+        // **** Config Option Data ****
+
+        INSERT INTO configurationoptions (userid, battlesimulator)
+        values ((SELECT UserID FROM User WHERE UserName = 'test1'), true);
+    </configoptions>
 </data>
