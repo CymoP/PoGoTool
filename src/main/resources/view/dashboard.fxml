@@ -28,8 +28,14 @@
                   prefHeight="690"
                   hgap="10"
                   vgap="10">
-            <Button text="Battle Simulator"
+            <Button fx:id="battleSimulatorButton"
+                    text="Battle Simulator"
                     onAction="#handleBattleSimulatorComponentButtonAction"
+                    prefWidth="220"
+                    prefHeight="220"/>
+
+            <Button fx:id="tierListButton"
+                    text="Tier List"
                     prefWidth="220"
                     prefHeight="220"/>
 
@@ -42,10 +48,6 @@
             <Button fx:id="dataMaintenanceButton"
                     text="Data Maintenance"
                     onAction="#handleDataMaintenanceComponentButtonAction"
-                    prefWidth="220"
-                    prefHeight="220"/>
-
-            <Button text="Placeholder"
                     prefWidth="220"
                     prefHeight="220"/>
 

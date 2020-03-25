@@ -6,6 +6,7 @@ CREATE TABLE ConfigurationOptions (
 ConfigurationOptionID int(10) NOT NULL AUTO_INCREMENT,
 UserID int(10) NOT NULL,
 BattleSimulator tinyint(1) DEFAULT 0 NOT NULL,
+TierList tinyint(1) DEFAULT 0 NOT NULL,
 UserMaintenance tinyint(1) DEFAULT 0 NOT NULL,
 DataMaintenance tinyint(1) DEFAULT 0 NOT NULL,
 PRIMARY KEY (ConfigurationOptionID));

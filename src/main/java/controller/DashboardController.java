@@ -20,6 +20,12 @@ public class DashboardController implements Initializable {
     @FXML
     public Button dataMaintenanceButton;
 
+    @FXML
+    public Button tierListButton;
+
+    @FXML
+    public Button battleSimulatorButton;
+
     private UserService userService = UserService.getInstance();
 
     public DashboardController() {

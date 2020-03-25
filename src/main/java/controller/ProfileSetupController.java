@@ -23,10 +23,17 @@ public class ProfileSetupController implements Initializable {
     @FXML
     public CheckBox dataMaintenanceCheckBox;
 
+    @FXML
+    public CheckBox tierListCheckBox;
+
     private UserService userService = UserService.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ifNotAdminHideAdminComponents();
+    }
+
+    private void ifNotAdminHideAdminComponents() {
         if (!userService.checkLoggedInUserIsAdmin()) {
             userMaintenanceCheckBox.setManaged(false);
             dataMaintenanceCheckBox.setManaged(false);

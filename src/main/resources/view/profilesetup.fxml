@@ -35,6 +35,9 @@
                         <CheckBox fx:id="battleSimulatorCheckBox"
                                   text="Battle Simulator"/>
 
+                        <CheckBox fx:id="tierListCheckBox"
+                                  text="Tier List"/>
+
                         <CheckBox fx:id="userMaintenanceCheckBox"
                                   text="User Maintenance"/>
 

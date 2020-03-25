@@ -257,7 +257,10 @@
     <configoptions>
         // **** Config Option Data ****
 
-        INSERT INTO configurationoptions (userid, battlesimulator)
-        values ((SELECT UserID FROM User WHERE UserName = 'test1'), true);
+        INSERT INTO configurationoptions (userid, battlesimulator, tierlist)
+        values ((SELECT UserID FROM User WHERE UserName = 'test1'), true, false);
+
+        INSERT INTO configurationoptions (userid, battlesimulator, tierlist)
+        values ((SELECT UserID FROM User WHERE UserName = 'admin'), true, false, true, true);
     </configoptions>
 </data>
