@@ -16,7 +16,6 @@ public class MenuBarController {
     @FXML
     public void handleLogOut() {
         userService.logout();
-        NavigationService.gotoLogin();
     }
 
     @FXML

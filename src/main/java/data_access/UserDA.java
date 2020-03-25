@@ -1,6 +1,5 @@
 package data_access;
 
-import loader.ApplicationLoader;
 import model.User;
 import utils.DatabaseSingleton;
 
@@ -23,9 +22,26 @@ public class UserDA implements IUserDA {
         PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getUserByUsernameSQL());
         verifyUserPrepareStatement.setString(1, username);
 
-        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, getUserByUsernameSQL());
+        Logger.getLogger(UserDA.class.getName()).log(Level.INFO, getUserByUsernameSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
+
         return result.first();
+    }
+
+    public void updateUserProfileConfigurationOptions(String username, boolean battleSimulatorComponent, boolean tierListComponent) throws SQLException {
+        PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(updateUserProfileConfigurationOptionsSQL());
+        verifyUserPrepareStatement.setBoolean(1, battleSimulatorComponent);
+        verifyUserPrepareStatement.setBoolean(2, tierListComponent);
+        verifyUserPrepareStatement.setString(3, username);
+
+        Logger.getLogger(UserDA.class.getName()).log(Level.INFO, updateUserProfileConfigurationOptionsSQL());
+        verifyUserPrepareStatement.execute();
+    }
+
+    private String updateUserProfileConfigurationOptionsSQL() {
+        return "UPDATE ConfigurationOptions\n" +
+                "SET BattleSimulator = ?, TierList = ?\n" +
+                "WHERE UserID = (SELECT UserID FROM User WHERE UserName = ?)";
     }
 
     public User getUserByUsernameAndPassword(String username, String password) throws SQLException {
@@ -33,7 +49,7 @@ public class UserDA implements IUserDA {
         verifyUserPrepareStatement.setString(1, username);
         verifyUserPrepareStatement.setString(2, password);
 
-        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, getUserByUsernameAndPasswordSQL());
+        Logger.getLogger(UserDA.class.getName()).log(Level.INFO, getUserByUsernameAndPasswordSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
         if (result.first()) {
             return new User(result.getString("username"),
@@ -43,17 +59,6 @@ public class UserDA implements IUserDA {
         }
 
         return null;
-    }
-
-    private Map<String, Boolean> userComponentMap(ResultSet result) throws SQLException {
-        Map<String, Boolean> componentList = new HashMap<>();
-
-        componentList.put("battlesimulator", result.getBoolean("battlesimulator"));
-        componentList.put("tierlist", result.getBoolean("tierlist"));
-        componentList.put("usermaintenance", result.getBoolean("usermaintenance"));
-        componentList.put("datamaintenance", result.getBoolean("datamaintenance"));
-
-        return componentList;
     }
 
     public boolean createNewUserByUsernameAndPassword(String username, String password) throws SQLException {
@@ -75,7 +80,7 @@ public class UserDA implements IUserDA {
 
         PreparedStatement verifyUserPrepareStatement = connection.prepareStatement(getAllRoleSQL());
 
-        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, getAllRoleSQL());
+        Logger.getLogger(UserDA.class.getName()).log(Level.INFO, getAllRoleSQL());
         ResultSet result = verifyUserPrepareStatement.executeQuery();
 
         if (result.first()) {
@@ -89,11 +94,11 @@ public class UserDA implements IUserDA {
         return null;
     }
 
-    public void editUserRoleByUsername(String username, String role) throws SQLException {
-        PreparedStatement addRoleToUserPrepareStatement = connection.prepareStatement(editUserRoleByUsernameSQL());
+    public void updateUserRoleByUsername(String username, String role) throws SQLException {
+        PreparedStatement addRoleToUserPrepareStatement = connection.prepareStatement(updateUserRoleByUsernameSQL());
         addRoleToUserPrepareStatement.setString(1, role);
         addRoleToUserPrepareStatement.setString(2, username);
-        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, editUserRoleByUsernameSQL());
+        Logger.getLogger(UserDA.class.getName()).log(Level.INFO, updateUserRoleByUsernameSQL());
 
         addRoleToUserPrepareStatement.execute();
     }
@@ -102,9 +107,20 @@ public class UserDA implements IUserDA {
         PreparedStatement createNewUserPrepareStatement = connection.prepareStatement(createNewUserByUsernameAndPasswordSQL());
         createNewUserPrepareStatement.setString(1, username);
         createNewUserPrepareStatement.setString(2, password);
-        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, createNewUserByUsernameAndPasswordSQL());
+        Logger.getLogger(UserDA.class.getName()).log(Level.INFO, createNewUserByUsernameAndPasswordSQL());
 
         createNewUserPrepareStatement.execute();
+    }
+
+    private Map<String, Boolean> userComponentMap(ResultSet result) throws SQLException {
+        Map<String, Boolean> componentList = new HashMap<>();
+
+        componentList.put("battlesimulator", result.getBoolean("battlesimulator"));
+        componentList.put("tierlist", result.getBoolean("tierlist"));
+        componentList.put("usermaintenance", result.getBoolean("usermaintenance"));
+        componentList.put("datamaintenance", result.getBoolean("datamaintenance"));
+
+        return componentList;
     }
 
     private boolean addRoleToNewUser(String username, String password, String role) throws SQLException {
@@ -112,7 +128,7 @@ public class UserDA implements IUserDA {
         addRoleToUserPrepareStatement.setString(1, role);
         addRoleToUserPrepareStatement.setString(2, username);
         addRoleToUserPrepareStatement.setString(3, password);
-        Logger.getLogger(MoveDA.class.getName()).log(Level.INFO, addRoleToNewUserSQL());
+        Logger.getLogger(UserDA.class.getName()).log(Level.INFO, addRoleToNewUserSQL());
 
         return addRoleToUserPrepareStatement.execute();
     }
@@ -121,12 +137,12 @@ public class UserDA implements IUserDA {
         PreparedStatement addRoleToUserPrepareStatement = connection.prepareStatement(addUserRoleToNewUserSQL());
         addRoleToUserPrepareStatement.setString(1, username);
         addRoleToUserPrepareStatement.setString(2, password);
-        Logger.getLogger(ApplicationLoader.class.getName()).log(Level.INFO, addUserRoleToNewUserSQL());
+        Logger.getLogger(UserDA.class.getName()).log(Level.INFO, addUserRoleToNewUserSQL());
 
         return addRoleToUserPrepareStatement.execute();
     }
 
-    private String editUserRoleByUsernameSQL() {
+    private String updateUserRoleByUsernameSQL() {
         return "UPDATE UserRole " +
                 "SET RoleID = (SELECT RoleID FROM Role WHERE RoleName = ?) " +
                 "WHERE UserID = (SELECT UserID FROM User WHERE UserName = ?)";
@@ -175,7 +191,7 @@ public class UserDA implements IUserDA {
                 "FROM User u\n" +
                 "       INNER JOIN UserRole ur ON u.UserID = ur.UserID\n" +
                 "       INNER JOIN Role r ON ur.RoleID = r.RoleID\n" +
-                "       INNER JOIN configurationoptions co ON u.UserID = co.UserID\n" +
+                "       INNER JOIN ConfigurationOptions co ON u.UserID = co.UserID\n" +
                 "WHERE u.UserName = ?\n" +
                 "  AND u.UserPassword = ?";
     }

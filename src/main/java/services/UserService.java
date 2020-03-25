@@ -93,7 +93,7 @@ public class UserService {
      * @param role     the given role
      */
     public void editUserRole(String username, String role) throws SQLException {
-        userDA.editUserRoleByUsername(username, role);
+        userDA.updateUserRoleByUsername(username, role);
         loggedInUser = userDA.getUserByUsernameAndPassword(loggedInUser.getUsername(), loggedInUser.getPassword());
     }
 
@@ -112,5 +112,7 @@ public class UserService {
     public void logout() {
         Logger.getLogger(UserService.class.getName()).log(Level.INFO, "User has logged out");
         loggedInUser = null;
+
+        NavigationService.gotoLogin();
     }
 }
