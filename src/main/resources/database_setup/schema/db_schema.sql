@@ -4,6 +4,7 @@ USE pokemondb;
 
 CREATE TABLE ConfigurationOptions (
 ConfigurationOptionID int(10) NOT NULL AUTO_INCREMENT,
+UserID int(10) NOT NULL,
 BattleSimulator tinyint(1) DEFAULT 0 NOT NULL,
 UserMaintenance tinyint(1) DEFAULT 0 NOT NULL,
 DataMaintenance tinyint(1) DEFAULT 0 NOT NULL,
@@ -85,6 +86,11 @@ ALTER TABLE User
 ADD CONSTRAINT FKUser400447
 FOREIGN KEY (ConfigurationOptionID)
 REFERENCES ConfigurationOptions (ConfigurationOptionID);
+
+ALTER TABLE UserRole
+ADD CONSTRAINT FKConfigurationOptions458328
+FOREIGN KEY (UserID)
+REFERENCES User (UserID);
 
 ALTER TABLE User
 ADD UNIQUE (UserName);
