@@ -35,10 +35,11 @@ public class SignUpController {
 
     @FXML
     protected void handleSignUpSubmitButtonAction() throws SQLException {
-        if (!userService.isExistingUser(usernameField.getText())) {
+        if (!userService.checkUserExists(usernameField.getText())) {
             if (passwordField.getText().equals(rePasswordField.getText())) {
-                if (userService.createNewUser(usernameField.getText(), passwordField.getText())) {
-                    NavigationService.gotoLogin();
+                userService.createNewUser(usernameField.getText(), passwordField.getText());
+                if (userService.login(usernameField.getText(), passwordField.getText())) {
+                    NavigationService.gotoProfileSetup();
                 }
             }
         }
@@ -54,7 +55,7 @@ public class SignUpController {
         usernameField.textProperty().addListener((observable, oldValue, newValue) -> {
 
             try {
-                if (userService.isExistingUser(usernameField.getText())) {
+                if (userService.checkUserExists(usernameField.getText())) {
                     //Username already exists
                     usernameField.setStyle("-fx-border-style: solid; -fx-border-width: 1px; -fx-border-color: red;");
                 } else {
@@ -65,7 +66,7 @@ public class SignUpController {
             }
         });
 
-        return userService.isExistingUser(usernameField.getText());
+        return userService.checkUserExists(usernameField.getText());
     }
 
     @FXML

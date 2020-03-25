@@ -54,7 +54,6 @@ PRIMARY KEY (RoleID));
 
 CREATE TABLE User (
 UserID int(10) NOT NULL AUTO_INCREMENT,
-ConfigurationOptionID int(10),
 UserName varchar(32) NOT NULL,
 UserPassword varchar(32) NOT NULL,
 PRIMARY KEY (UserID));
@@ -82,11 +81,6 @@ ALTER TABLE UserRole
 ADD CONSTRAINT FKUserRole396295
 FOREIGN KEY (UserID)
 REFERENCES User (UserID);
-
-ALTER TABLE User
-ADD CONSTRAINT FKUser400447
-FOREIGN KEY (ConfigurationOptionID)
-REFERENCES ConfigurationOptions (ConfigurationOptionID);
 
 ALTER TABLE UserRole
 ADD CONSTRAINT FKConfigurationOptions458328

@@ -62,7 +62,7 @@ public class UserMaintenanceController implements Initializable {
 
     @FXML
     public void handleCreateUserButton() throws SQLException {
-        if (!userService.isExistingUser(createUserUserNameField.getText())) {
+        if (!userService.checkUserExists(createUserUserNameField.getText())) {
             if (createUserPasswordField.getText().equals(createUserRePasswordField.getText())) {
                 userService.createNewUser(createUserUserNameField.getText(), createUserPasswordField.getText(), createUserRoleComboBox.getSelectionModel().getSelectedItem().toString());
             }
@@ -71,7 +71,7 @@ public class UserMaintenanceController implements Initializable {
 
     @FXML
     public void handleEditUserRoleButton() throws SQLException {
-        if (userService.isExistingUser(editUserUserNameField.getText())) {
+        if (userService.checkUserExists(editUserUserNameField.getText())) {
             userService.editUserRole(editUserUserNameField.getText(), editUserRoleComboBox.getSelectionModel().getSelectedItem().toString());
         }
 

@@ -39,7 +39,7 @@ public class UserService {
      * @return true|false depending on whether or not the user exists
      * @throws SQLException
      */
-    public boolean isExistingUser(String username) throws SQLException {
+    public boolean checkUserExists(String username) throws SQLException {
         return userDA.getUserByUsername(username);
     }
 
@@ -51,7 +51,7 @@ public class UserService {
      * @return the given user in object format
      * @throws SQLException SQLException thrown
      */
-    public boolean isExistingUser(String username, String password) throws SQLException {
+    public boolean login(String username, String password) throws SQLException {
         loggedInUser = userDA.getUserByUsernameAndPassword(username, password);
 
         if (loggedInUser != null) {
@@ -74,15 +74,15 @@ public class UserService {
     /**
      * Creates a new user with the given details
      */
-    public boolean createNewUser(String username, String password) throws SQLException {
-        return userDA.createNewUserByUsernameAndPassword(username, password);
+    public void createNewUser(String username, String password) throws SQLException {
+        userDA.createNewUserByUsernameAndPassword(username, password);
     }
 
     /**
      * Creates a new user with the given details
      */
-    public boolean createNewUser(String username, String password, String role) throws SQLException {
-        return userDA.createNewUserByUsernameAndPasswordAndRole(username, password, role);
+    public void createNewUser(String username, String password, String role) throws SQLException {
+        userDA.createNewUserByUsernameAndPasswordAndRole(username, password, role);
     }
 
 

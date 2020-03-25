@@ -25,7 +25,7 @@ public interface IUserDA {
      * @return true|false based on successful user creation
      * @throws SQLException
      */
-    boolean createNewUserByUsernameAndPassword(String username, String password) throws SQLException;
+    void createNewUserByUsernameAndPassword(String username, String password) throws SQLException;
 
 
     /**
@@ -37,7 +37,7 @@ public interface IUserDA {
      * @return true|false based on successful user creation
      * @throws SQLException
      */
-    boolean createNewUserByUsernameAndPasswordAndRole(String username, String password, String role) throws SQLException;
+    void createNewUserByUsernameAndPasswordAndRole(String username, String password, String role) throws SQLException;
 
     /**
      * Returns all the roles found in the database

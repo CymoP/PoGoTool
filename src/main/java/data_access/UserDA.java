@@ -61,18 +61,16 @@ public class UserDA implements IUserDA {
         return null;
     }
 
-    public boolean createNewUserByUsernameAndPassword(String username, String password) throws SQLException {
+    public void createNewUserByUsernameAndPassword(String username, String password) throws SQLException {
         createNewUser(username, password);
         addRoleToNewUser(username, password);
-
-        return false;
+        addDefaultConfigurationOptionsToNewUser(username);
     }
 
-    public boolean createNewUserByUsernameAndPasswordAndRole(String username, String password, String role) throws SQLException {
+    public void createNewUserByUsernameAndPasswordAndRole(String username, String password, String role) throws SQLException {
         createNewUser(username, password);
         addRoleToNewUser(username, password, role);
-
-        return false;
+        addDefaultConfigurationOptionsToNewUser(username);
     }
 
     public List<String> getRoleList() throws SQLException {
@@ -140,6 +138,19 @@ public class UserDA implements IUserDA {
         Logger.getLogger(UserDA.class.getName()).log(Level.INFO, addUserRoleToNewUserSQL());
 
         return addRoleToUserPrepareStatement.execute();
+    }
+
+    private boolean addDefaultConfigurationOptionsToNewUser(String username) throws SQLException {
+        PreparedStatement addRoleToUserPrepareStatement = connection.prepareStatement(addUserDefaultConfigurationOptionsSQL());
+        addRoleToUserPrepareStatement.setString(1, username);
+        Logger.getLogger(UserDA.class.getName()).log(Level.INFO, addUserDefaultConfigurationOptionsSQL());
+
+        return addRoleToUserPrepareStatement.execute();
+    }
+
+    private String addUserDefaultConfigurationOptionsSQL() {
+        return "INSERT INTO ConfigurationOptions (UserID)\n" +
+                "VALUES ((SELECT UserID FROM User WHERE UserName = ?))";
     }
 
     private String updateUserRoleByUsernameSQL() {

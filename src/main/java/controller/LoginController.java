@@ -36,7 +36,7 @@ public class LoginController {
 
     @FXML
     protected void handleLoginButtonAction() throws SQLException {
-        if (userService.isExistingUser(usernameField.getText(), passwordField.getText())) {
+        if (userService.login(usernameField.getText(), passwordField.getText())) {
             NavigationService.gotoDashboard();
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

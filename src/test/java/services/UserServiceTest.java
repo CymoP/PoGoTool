@@ -62,7 +62,7 @@ public class UserServiceTest {
         }
 
         private void whenIsExistingUserIsCalled() throws SQLException {
-            actualResult = userService.isExistingUser("username", "password");
+            actualResult = userService.login("username", "password");
         }
 
         private void thenUserIsFound(boolean expectedResult) {
