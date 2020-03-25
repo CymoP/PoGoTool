@@ -62,6 +62,7 @@ public class ProfileSetupController implements Initializable {
             tierListCheckBox.setDisable(true);
             userMaintenanceCheckBox.setDisable(true);
             dataMaintenanceCheckBox.setDisable(true);
+            submitButton.setDisable(true);
         }
     }
 }
