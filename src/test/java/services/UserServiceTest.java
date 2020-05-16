@@ -51,18 +51,20 @@ public class UserServiceTest {
 
     private class Fixture {
 
+        private static final String TEST_USERNAME = "username";
+        private static final String TEST_PASSWORD = "password";
         private boolean actualResult;
 
         private void givenUserExists() throws SQLException {
-            when(userDA.getUserByUsernameAndPassword("username", "password")).thenReturn(user);
+            when(userDA.getUserByUsernameAndPassword(TEST_USERNAME, TEST_PASSWORD)).thenReturn(user);
         }
 
         private void givenUserDoesNotExist() throws SQLException {
-            when(userDA.getUserByUsernameAndPassword("username", "password")).thenReturn(null);
+            when(userDA.getUserByUsernameAndPassword(TEST_USERNAME, TEST_PASSWORD)).thenReturn(null);
         }
 
         private void whenIsExistingUserIsCalled() throws SQLException {
-            actualResult = userService.login("username", "password");
+            actualResult = userService.login(TEST_USERNAME, TEST_PASSWORD);
         }
 
         private void thenUserIsFound(boolean expectedResult) {
