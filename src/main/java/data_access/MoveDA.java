@@ -1,6 +1,5 @@
 package data_access;
 
-import loader.ApplicationLoader;
 import model.ChargedMove;
 import model.FastMove;
 import services.TypeService;
