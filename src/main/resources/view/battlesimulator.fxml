@@ -180,6 +180,8 @@
                   alignment="BOTTOM_CENTER">
                 <Button fx:id="simulateButton"
                         text="Simulate"
+                        prefWidth="75"
+                        prefHeight="50"
                         onAction="#handleSimulateButtonAction"/>
             </VBox>
 
